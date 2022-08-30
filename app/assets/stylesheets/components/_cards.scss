@@ -1,0 +1,21 @@
+.card-movie{
+  display: flex;
+  height: 280px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 30px lightgrey;
+  margin-bottom: 24px;
+
+  .infos{
+    padding-left: 16px;
+  }
+  .title{
+    font-size: 1.75rem;
+    font-weight: 500;
+    line-height: 2rem;
+  }
+
+  .poster{
+    border-radius: 5px 0 0 5px;
+  }
+}
