@@ -1,14 +1,18 @@
-<div class="container">
-  <div class="row mt-5">
-    <% 14.times do %>
-      <div class="col-4">
-        <div class="card-movie">
-          <img class="poster" src="https://fr.web.img2.acsta.net/pictures/210/428/21042887_20130923111327536.jpg" alt="">
-          <div class="infos">
-            <p class="title">antre de la folie</p>
-            <div>
-              <p>carpenter</p>
-              <p>1980</p>
+<h1>Films</h1>
+<div>
+  <% @movies.each do |movie| %>
+    <%= link_to movie do %>
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <%= image_tag movie.poster, class: 'img-fluid rounded-start' %>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><%= movie.title %></h5>
+              <p class="card-text">Synopsis: <%= movie.synopsis %></p>
+              <p class="card-text">Sortie: <%= movie.release_date %></p>
+              <p class="card-text">Note: <%= movie.imdb_rating %> /10</p>
             </div>
           </div>
         </div>
