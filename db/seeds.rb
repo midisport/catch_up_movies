@@ -24,11 +24,11 @@ puts "creating users"
 user1 = User.create!(username: "Nabil", email: "test@test.fr", password: '123456')
 user2 = User.create!(username: "Youssef", email: "test1@test.fr", password: '123456')
 user3 = User.create!(username: "Samuel", email: "test2@test.fr", password: '123456')
-user4 = User.create!(username: "Lazare", email: "test2@test.fr", password: '123456')
+user4 = User.create!(username: "Lazare", email: "test3@test.fr", password: '123456')
 
 # Movies
 puts "creating movies"
-movie1 = Movie.new{
+movie1 = Movie.new(
   title: "RRR",
   synopsis: "Une histoire fictive sur deux révolutionnaires légendaires et leur voyage loin de chez eux avant qu'ils ne commencent à se battre pour leur pays dans les années 1920.",
   duration: 187,
@@ -38,9 +38,9 @@ movie1 = Movie.new{
   genre: "Action",
   release_date: 2022,
   imbd_rating: 8.0
-}
+)
 movie1.save!
-movie2 = Movie.new{
+movie2 = Movie.new(
   title: "L'étrange Noël de monsieur Jack",
   synopsis: "Jack Skellington, roi de la ville d'Halloween, fait la découverte de la ville de Noël, mais ses tentatives de ramener Noël chez lui deviennent source de confusion.",
   duration: 76,
@@ -50,9 +50,9 @@ movie2 = Movie.new{
   genre: "Animation",
   release_date: 1993,
   imbd_rating: 7.9
-}
+)
 movie2.save!
-movie3 = Movie.new{
+movie3 = Movie.new(
   title: "Arnaques, crimes et botanique",
   synopsis: "Un jeu de cartes bâclé à Londres incite quatre amis, des voyous, des cultivateurs de mauvaise herbe, des gangsters, des usuriers et des créanciers à se faire entrer en collision dans une série d'événements inattendus, le tout dans un souci d'argent, de cannabis et de deux anciens fusils.",
   duration: 107,
@@ -62,9 +62,9 @@ movie3 = Movie.new{
   genre: "Comédie",
   release_date: 1998,
   imbd_rating: 8.2
-}
+)
 movie3.save!
-movie4 = Movie.new{
+movie4 = Movie.new(
   title: "Enter the Void",
   synopsis: "Un trafiquant de drogue français vivant à Tokyo est trahi par son meilleur ami et tué dans une affaire de drogue. Son âme, observant les répercussions de sa mort, cherche la résurrection.",
   duration: 161,
@@ -74,9 +74,9 @@ movie4 = Movie.new{
   genre: "Drame",
   release_date: 2009,
   imbd_rating: 7.2
-}
+)
 movie4.save!
-movie5 = Movie.new{
+movie5 = Movie.new(
   title: "La Ligne Rouge",
   synopsis: "Adaptation du roman autobiographique de James Jones datant de 1962, axé sur le conflit de Guadalcanal pendant la seconde guerre mondiale.",
   duration: 170,
@@ -86,9 +86,9 @@ movie5 = Movie.new{
   genre: "Guerre",
   release_date: 1998,
   imbd_rating: 7.6
-}
+)
 movie5.save!
-movie6 = Movie.new{
+movie6 = Movie.new(
   title: "Pulp Fiction",
   synopsis: "Les vies de deux hommes de main, d'un boxeur, de la femme d'un gangster et de deux braqueurs s'entremêlent dans quatre histoires de violence et de rédemption.",
   duration: 154,
@@ -98,182 +98,179 @@ movie6 = Movie.new{
   genre: "Drame",
   release_date: 1994,
   imbd_rating: 8.9
-}
+)
 movie6.save!
 
-# Cinémas
+# Cinemas
 puts "creating cinémas"
-cinéma1 = Cinema.new {
+cinema1 = Cinema.new(
   lat: 48.85462324446117,
   lng: 2.369382443779865,
   name: "Mk2 - Bastille",
-  type: "Multiplex",
   address: "4 Bd Beaumarchais",
-}
-cinéma1.save!
-cinéma2 = Cinema.new {
+)
+cinema1.save!
+cinema2 = Cinema.new(
   lat: 48.84994515786409,
   lng: 2.3432563614260578,
   name: "Le Champo - Espace Jacques Tati",
-  type: "Art et Essai",
   address: "51 Rue des Écoles, 75005 Paris"
-}
-cinéma2.save!
-cinéma3 = Cinema.new {
+)
+cinema2.save!
+cinema3 = Cinema.new(
   lat: 48.837275464447245,
   lng: 2.3824665121839663,
-  name: "La Cinémathèque française",
-  type: "Art et Essai",
+  name: "La Cinemathèque française",
   address: "51 Rue de Bercy, 75012 Paris"
-}
-cinéma3.save!
+)
+cinema3.save!
 
 # Artists
 puts "creating artists"
-artist1 = Artist.new {
+artist1 = Artist.new(
   name: "Gaspard Noé",
   photo: "gaspard_noe.jpg"
-}
+)
 artist1.save!
-artist2 = Artist.new {
+artist2 = Artist.new(
   name: "Terrence Malick",
   photo: "terence_malick.jpg"
-}
+)
 artist2.save!
-artist3 = Artist.new {
+artist3 = Artist.new(
   name: "Guy Ritchie",
   photo: "guy_ritchie.jpg"
-}
+)
 artist3.save!
-artist4 = Artist.new {
+artist4 = Artist.new(
   name: "S. S. Rajamouli",
   photo: "rajamouli.jpg"
-}
+)
 artist4.save!
-artist5 = Artist.new {
+artist5 = Artist.new(
   name: "John Travolta",
   photo: "travolta.jpg"
-}
+)
 artist5.save!
 
 # Movie shows
 puts "creating movie shows"
-movie-show1 = MovieShow.new {
-  start_at: 20:10,
+movie_show1 = MovieShow.new(
+  start_at: Time.parse("20:10"),
   language: "Indien",
   subtitle: "Français"
-}
-movie-show1.movie = movie1
-movie-show1.cinema = cinéma2
-movie-show1.save!
-movie-show1 = MovieShow.new {
-  start_at: 15:30,
+)
+movie_show1.movie = movie1
+movie_show1.cinema = cinema2
+movie_show1.save!
+movie_show2 = MovieShow.new(
+  start_at: Time.parse("15:30"),
   language: "Anglais",
   subtitle: "Français"
-}
-movie-show1.movie = movie2
-movie-show1.cinema = cinéma1
-movie-show1.save!
-movie-show2 = MovieShow.new {
-  start_at: 19:45,
+)
+movie_show2.movie = movie2
+movie_show2.cinema = cinema1
+movie_show2.save!
+movie_show3 = MovieShow.new(
+  start_at: Time.parse("19:45"),
   language: "Anglais",
   subtitle: "Français"
-}
-movie-show2.movie = movie3
-movie-show2.cinema = cinéma1
-movie-show3.save!
-movie-show4 = MovieShow.new {
-  start_at: 20:30,
+)
+movie_show3.movie = movie3
+movie_show3.cinema = cinema1
+movie_show3.save!
+movie_show4 = MovieShow.new(
+  start_at: Time.parse("20:30"),
   language: "Français",
   subtitle: ""
-}
-movie-show4.movie = movie4
-movie-show4.cinema = cinéma3
-movie-show4.save!
-movie-show5 = MovieShow.new {
-  start_at:
-  language:
-  subtitle:
-}
-movie-show5.movie = movie4
-movie-show5.cinema = cinéma3
-movie-show5.save!
-movie-show6 = MovieShow.new {
-  start_at: 21:00,
+)
+movie_show4.movie = movie4
+movie_show4.cinema = cinema3
+movie_show4.save!
+movie_show5 = MovieShow.new(
+  start_at: Time.parse("18:00"),
   language: "Anglais",
   subtitle: "Français"
-}
-movie-show6.movie = movie4
-movie-show6.cinema = cinéma3
-movie-show6.save!
-movie-show7 = MovieShow.new {
-  start_at: 18:00,
+)
+movie_show5.movie = movie4
+movie_show5.cinema = cinema3
+movie_show5.save!
+movie_show6 = MovieShow.new(
+  start_at: Time.parse("21:00"),
   language: "Anglais",
   subtitle: "Français"
-}
-movie-show7.movie = movie5
-movie-show7.cinema = cinéma2
-movie-show7.save!
-movie-show8 = MovieShow.new {
-  start_at: 21:00,
+)
+movie_show6.movie = movie4
+movie_show6.cinema = cinema3
+movie_show6.save!
+movie_show7 = MovieShow.new(
+  start_at: Time.parse("18:00"),
   language: "Anglais",
   subtitle: "Français"
-}
-movie-show8.movie = movie5
-movie-show8.cinema = cinéma2
-movie-show8.save!
-movie-show9 = MovieShow.new {
-  start_at: 15:30,
+)
+movie_show7.movie = movie5
+movie_show7.cinema = cinema2
+movie_show7.save!
+movie_show8 = MovieShow.new(
+  start_at: Time.parse("21:00"),
   language: "Anglais",
   subtitle: "Français"
-}
-movie-show9.movie = movie3
-movie-show9.cinema = cinéma3
-movie-show9.save!
-movie-show10 = MovieShow.new {
-  start_at: 20:15,
+)
+movie_show8.movie = movie5
+movie_show8.cinema = cinema2
+movie_show8.save!
+movie_show9 = MovieShow.new(
+  start_at: Time.parse("15:30"),
+  language: "Anglais",
+  subtitle: "Français"
+)
+movie_show9.movie = movie3
+movie_show9.cinema = cinema3
+movie_show9.save!
+movie_show10 = MovieShow.new(
+  start_at: Time.parse("20:15"),
   language: "Français",
   subtitle: ""
-}
-movie-show10.movie = movie2
-movie-show10.cinema = cinéma1
-movie-show10.save!
+)
+movie_show10.movie = movie2
+movie_show10.cinema = cinema1
+movie_show10.save!
 
 # Casting
 puts "creating castings"
-casting1 = Casting.new {
+casting1 = Casting.new(
   role: "Réalisateur"
-}
+)
 casting1.movie = movie4
 casting1.artist = artist1
 casting1.save!
-casting2 = Casting.new {
+casting2 = Casting.new(
   role: "Réalisateur"
-}
+)
 casting2.movie = movie5
 casting2.artist = artist2
 casting2.save!
-casting3 = Casting.new {
+casting3 = Casting.new(
   role: "Réalisateur"
-}
+)
 casting3.movie = movie3
 casting3.artist = artist3
 casting3.save!
-casting4 = Casting.new {
+casting4 = Casting.new(
   role: "Réalisateur"
-}
+)
 casting4.movie = movie1
 casting4.artist = artist4
 casting4.save!
-casting5 = Casting.new {
+casting5 = Casting.new(
   role: "Acteur"
-}
+)
 casting5.movie = movie5
 casting5.artist = artist5
 casting5.save!
-casting6 = Casting.new {
+casting6 = Casting.new(
   role: "Acteur"
-}
+)
 casting6.movie = movie6
 casting6.artist = artist5
 casting6.save!
