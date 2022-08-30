@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_30_100224) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_30_144751) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,13 +41,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_100224) do
   end
 
   create_table "cinemas", force: :cascade do |t|
-    t.decimal "lat"
-    t.decimal "lng"
     t.string "name"
-    t.string "type"
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "lat"
+    t.float "lng"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -89,10 +88,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_100224) do
     t.string "original_language"
     t.string "country"
     t.string "genre"
-    t.date "release_date"
     t.integer "imbd_rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "release_date"
   end
 
   create_table "users", force: :cascade do |t|
