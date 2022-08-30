@@ -14,15 +14,19 @@ puts "destroying cinemas"
 Cinema.destroy_all
 puts "destroying artists"
 Artist.destroy_all
-# puts "destroying movie shows"
-# MovieShow.destroy_all
+puts "destroying movie shows"
+MovieShow.destroy_all
+puts "destroying castings"
+Casting.destroy_all
 
+# Users
 puts "creating users"
 user1 = User.create!(username: "Nabil", email: "test@test.fr", password: '123456')
 user2 = User.create!(username: "Youssef", email: "test1@test.fr", password: '123456')
 user3 = User.create!(username: "Samuel", email: "test2@test.fr", password: '123456')
 user4 = User.create!(username: "Lazare", email: "test2@test.fr", password: '123456')
 
+# Movies
 puts "creating movies"
 movie1 = Movie.new{
   title: "RRR",
@@ -97,6 +101,8 @@ movie6 = Movie.new{
 }
 movie6.save!
 
+# Cinémas
+puts "creating cinémas"
 cinéma1 = Cinema.new {
   lat: 48.85462324446117,
   lng: 2.369382443779865,
@@ -122,6 +128,7 @@ cinéma3 = Cinema.new {
 }
 cinéma3.save!
 
+# Artists
 puts "creating artists"
 artist1 = Artist.new {
   name: "Gaspard Noé",
@@ -148,3 +155,125 @@ artist5 = Artist.new {
   photo: "travolta.jpg"
 }
 artist5.save!
+
+# Movie shows
+puts "creating movie shows"
+movie-show1 = MovieShow.new {
+  start_at: 20:10,
+  language: "Indien",
+  subtitle: "Français"
+}
+movie-show1.movie = movie1
+movie-show1.cinema = cinéma2
+movie-show1.save!
+movie-show1 = MovieShow.new {
+  start_at: 15:30,
+  language: "Anglais",
+  subtitle: "Français"
+}
+movie-show1.movie = movie2
+movie-show1.cinema = cinéma1
+movie-show1.save!
+movie-show2 = MovieShow.new {
+  start_at: 19:45,
+  language: "Anglais",
+  subtitle: "Français"
+}
+movie-show2.movie = movie3
+movie-show2.cinema = cinéma1
+movie-show3.save!
+movie-show4 = MovieShow.new {
+  start_at: 20:30,
+  language: "Français",
+  subtitle: ""
+}
+movie-show4.movie = movie4
+movie-show4.cinema = cinéma3
+movie-show4.save!
+movie-show5 = MovieShow.new {
+  start_at:
+  language:
+  subtitle:
+}
+movie-show5.movie = movie4
+movie-show5.cinema = cinéma3
+movie-show5.save!
+movie-show6 = MovieShow.new {
+  start_at: 21:00,
+  language: "Anglais",
+  subtitle: "Français"
+}
+movie-show6.movie = movie4
+movie-show6.cinema = cinéma3
+movie-show6.save!
+movie-show7 = MovieShow.new {
+  start_at: 18:00,
+  language: "Anglais",
+  subtitle: "Français"
+}
+movie-show7.movie = movie5
+movie-show7.cinema = cinéma2
+movie-show7.save!
+movie-show8 = MovieShow.new {
+  start_at: 21:00,
+  language: "Anglais",
+  subtitle: "Français"
+}
+movie-show8.movie = movie5
+movie-show8.cinema = cinéma2
+movie-show8.save!
+movie-show9 = MovieShow.new {
+  start_at: 15:30,
+  language: "Anglais",
+  subtitle: "Français"
+}
+movie-show9.movie = movie3
+movie-show9.cinema = cinéma3
+movie-show9.save!
+movie-show10 = MovieShow.new {
+  start_at: 20:15,
+  language: "Français",
+  subtitle: ""
+}
+movie-show10.movie = movie2
+movie-show10.cinema = cinéma1
+movie-show10.save!
+
+# Casting
+puts "creating castings"
+casting1 = Casting.new {
+  role: "Réalisateur"
+}
+casting1.movie = movie4
+casting1.artist = artist1
+casting1.save!
+casting2 = Casting.new {
+  role: "Réalisateur"
+}
+casting2.movie = movie5
+casting2.artist = artist2
+casting2.save!
+casting3 = Casting.new {
+  role: "Réalisateur"
+}
+casting3.movie = movie3
+casting3.artist = artist3
+casting3.save!
+casting4 = Casting.new {
+  role: "Réalisateur"
+}
+casting4.movie = movie1
+casting4.artist = artist4
+casting4.save!
+casting5 = Casting.new {
+  role: "Acteur"
+}
+casting5.movie = movie5
+casting5.artist = artist5
+casting5.save!
+casting6 = Casting.new {
+  role: "Acteur"
+}
+casting6.movie = movie6
+casting6.artist = artist5
+casting6.save!
