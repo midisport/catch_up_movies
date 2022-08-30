@@ -37,7 +37,7 @@ movie1 = Movie.new(
   country: "Inde",
   genre: "Action",
   release_date: 2022,
-  imbd_rating: 8.0
+  imdb_rating: 8.0
 )
 movie1.save!
 movie2 = Movie.new(
@@ -49,7 +49,7 @@ movie2 = Movie.new(
   country: "Etats-Unis",
   genre: "Animation",
   release_date: 1993,
-  imbd_rating: 7.9
+  imdb_rating: 7.9
 )
 movie2.save!
 movie3 = Movie.new(
@@ -61,7 +61,7 @@ movie3 = Movie.new(
   country: "Angleterre",
   genre: "Comédie",
   release_date: 1998,
-  imbd_rating: 8.2
+  imdb_rating: 8.2
 )
 movie3.save!
 movie4 = Movie.new(
@@ -73,7 +73,7 @@ movie4 = Movie.new(
   country: "France",
   genre: "Drame",
   release_date: 2009,
-  imbd_rating: 7.2
+  imdb_rating: 7.2
 )
 movie4.save!
 movie5 = Movie.new(
@@ -85,7 +85,7 @@ movie5 = Movie.new(
   country: "Etats-Unis",
   genre: "Guerre",
   release_date: 1998,
-  imbd_rating: 7.6
+  imdb_rating: 7.6
 )
 movie5.save!
 movie6 = Movie.new(
@@ -97,7 +97,7 @@ movie6 = Movie.new(
   country: "Etats-Unis",
   genre: "Drame",
   release_date: 1994,
-  imbd_rating: 8.9
+  imdb_rating: 8.9
 )
 movie6.save!
 
