@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :comments, only: :create
   resources :cinemas, only: :show
   resources :movies, only: %I[index show] do
-    resources :interests, only: %I[create]
+    resources :interests, only: :create
   end
 
   resources :interests, only: %I[index destroy]

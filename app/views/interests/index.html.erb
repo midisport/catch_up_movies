@@ -1,1 +1,7 @@
 <h1>My Watchlist</h1>
+
+<div>
+  <% @interests.each do |interest| %>
+    <%= interest.movie %>
+  <% end %>
+</div>
