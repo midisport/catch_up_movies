@@ -13,5 +13,6 @@ class MoviesController < ApplicationController
     @directors = @movie.artists
     @actors = @movie.artists
     @comment = Comment.new
+    @interest = Interest.new
   end
 end
