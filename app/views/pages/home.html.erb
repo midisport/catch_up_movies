@@ -1,2 +1,21 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%# <h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p> %>
+<div class="row">
+    <div class="col-10 mx-auto">
+    </div>
+  </div>
+</div>
+<div class="banner d-none d-md-block home_info-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i0.wp.com/www.videodrome2.fr/wp-content/uploads/2-in-the-mouth-of-madness.jpg?resize=1610%2C717&ssl=1)">
+  <div class="container">
+    <h1>Un film à rattraper?</h1>
+    <%= form_with url: movies_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a movie"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+  </div>
+</div>
+<%= render 'shared/footer' %>

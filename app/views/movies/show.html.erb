@@ -1,11 +1,11 @@
 <h1><%= @movie.title %></h1>
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-4" id="poster">
     <%= image_tag @movie.poster, class: 'poster' %>
   </div>
   <div class="col-md-8">
-    <p>Réalisé par: <%= @directors %></p>
+    <p>Réalisé par: <%= @directors.map { |casting| casting.artist.name }.join(', ') %></p>
     <p>Synopsis: <%= @movie.synopsis %></p>
     <p>Genre: <%= @movie.genre %></p>
     <p>Sortie: <%= @movie.release_date %></p>
@@ -13,6 +13,6 @@
     <p>Pays: <%= @movie.country %></p>
     <p>Langue d'origine: <%= @movie.original_language %></p>
     <p>Note: <%= @movie.imdb_rating %>/10</p>
-    <p>Casting: <%= @actors %></p>
+    <p>Casting: <%= @actors.map { |casting| casting.artist.name }.join(', ') %></p>
   </div>
 </div>

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :interests, only: %I[index destroy]
+
   # Defines the root path route ("/")
   # root "articles#index"
 end
