@@ -15,7 +15,9 @@
 
           <div class="col-4">
             <div class="options">
-              <button class="btn btn-danger"><i class="fa-solid fa-eraser"></i></button>
+              <%= link_to interest_path(interest), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete #{interest.movie.title} from your Watchlist?"} do %>
+                <button class="btn btn-danger"><i class="fa-solid fa-eraser"></i></button>
+              <% end %>
             </div>
           </div>
         </div>
