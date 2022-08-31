@@ -1,10 +1,10 @@
 <h1><%= @movie.title %></h1>
 
 <div class="row">
-  <div class="col-md-4" id="poster">
-    <%= image_tag @movie.poster, class: 'poster' %>
+  <div class="col-md-3">
+    <%= image_tag @movie.poster, class: 'w-100 p-2' %>
   </div>
-  <div class="col-md-8">
+  <div class="col-md-9">
     <p>Réalisé par:
       <% @directors.each do |director| %>
         <%= link_to director.name, artist_path(director) %>

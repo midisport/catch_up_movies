@@ -19,3 +19,25 @@
     border-radius: 5px 0 0 5px;
   }
 }
+
+.movies_card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+}
+
+// .card-poster {
+//   max-width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+// }
+
+.card-text.text-ellipsis--3{
+  text-overflow:ellipsis;
+  overflow:hidden;
+  // Addition lines for 2 line or multiline ellipsis
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
