@@ -6,6 +6,7 @@ class MoviesController < ApplicationController
     else
       @movies = Movie.all
     end
+  end
 
   def show
     @movie = Movie.find(params[:id])
