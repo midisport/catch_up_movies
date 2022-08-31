@@ -1,8 +1,11 @@
 <div class="container">
-  <div class="col-md-2">
-    <%= image_tag @artist.photo, class: 'img-fluid rounded-start' %>
+  <div class="row align-items-center artist-info">
+    <div class="col-md-2">
+      <%= image_tag @artist.photo, class: 'img-fluid artist-avatar' %>
+    </div>
+    <h3 class="col-md-4"><%= @artist.name %></h3>
+    <div class="col-md-auto"></div>
   </div>
-  <h3><%= @artist.name %></h3>
   <h4>Filmographie :</h4>
   <div>
     <%= @movies.each do |movie| %>
