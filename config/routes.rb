@@ -10,10 +10,9 @@ Rails.application.routes.draw do
     resources :comments, only: :create
     resources :interests, only: :create
   end
-
-  resources :interests, only: %I[index destroy]
+  resources :users do
+    resources :interests, only: :index
+  end
+  resources :interests, only: :destroy
   resources :follows, only: %I[index create destroy]
-
-  # Defines the root path route ("/")
-  # root "articles#index"
 end

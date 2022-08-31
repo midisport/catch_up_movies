@@ -6,8 +6,9 @@
 
 
   <% unless @user == current_user %>
-    <%= simple_form_for [@user, current_user] do |f| %>
+    <%= simple_form_for @follow do |f| %>
       <%= f.error :follower, class: "text-danger" %>
+      <%= f.input :followed_id, as: :hidden, input_html: { value: @user.id } %>
       <%= f.button :submit, class: "btn btn-primary" %>
     <% end %>
 
