@@ -1,0 +1,10 @@
+.artist-avatar {
+  height: 140px;
+  width: 140px;
+  clip-path: circle();
+  object-fit: cover;
+}
+
+.artist-info {
+  margin: 20px 0;
+}
