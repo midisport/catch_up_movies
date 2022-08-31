@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="col-md-2">
+    <%= image_tag @artist.photo, class: 'img-fluid rounded-start' %>
+  </div>
+  <h3><%= @artist.name %></h3>
+  <h4>Filmographie :</h4>
+  <div>
+    <%= @movies.each do |movie| %>
+      <%= link_to movie do %>
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <%= image_tag movie.poster, class: 'img-fluid rounded-start' %>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><%= movie.title %></h5>
+                <p class="card-text">Synopsis: <%= movie.synopsis %></p>
+                <p class="card-text">Sortie: <%= movie.release_date %></p>
+                <p class="card-text">Note: <%= movie.imdb_rating %> /10</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
