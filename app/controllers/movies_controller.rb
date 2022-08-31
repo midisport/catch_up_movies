@@ -14,9 +14,10 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @directors = @movie.artists
     @actors = @movie.artists
-    authorize @movie
 
     # Empty instance for new interest form
     @interest = Interest.new
+    
+    authorize @movie
   end
 end
