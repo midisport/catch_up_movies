@@ -1,22 +1,26 @@
-<h1>Films</h1>
-<div>
-  <% @movies.each do |movie| %>
-    <%= link_to movie do %>
-      <div class="card mb-3" style="max-width: 540px;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <%= image_tag movie.poster, class: 'img-fluid rounded-start' %>
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title"><%= movie.title %></h5>
-              <p class="card-text">Synopsis: <%= movie.synopsis %></p>
-              <p class="card-text">Sortie: <%= movie.release_date %></p>
-              <p class="card-text">Note: <%= movie.imdb_rating %> /10</p>
-            </div>
+<div class="container">
+  <h1>Films</h1>
+  <div class="movies_card">
+    <% @movies.each do |movie| %>
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <%= link_to movie do %>
+              <div class="d-flex">
+                <div class="col-md-4">
+                  <%= image_tag movie.poster, class: 'img-fluid' %>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= movie.title %></h5>
+                    <p class="card-text text-ellipsis--3"><strong>Synopsis:</strong> <%= movie.synopsis %></p>
+                    <p class="card-text"><strong>Sortie:</strong> <%= movie.release_date %></p>
+                    <p class="card-text"><strong>Note:</strong> <%= movie.imdb_rating %> /10</p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
-      </div>
     <% end %>
-  <% end %>
+  </div>
 </div>
