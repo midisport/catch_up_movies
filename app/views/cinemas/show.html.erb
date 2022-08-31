@@ -2,6 +2,10 @@
   <h3><%= @cinema.name %></h3>
   <p><%= @cinema.address %></p>
   <% @cinema.movie_shows.each do |movie_show| %>
-  
+    <h5><%= movie_show.movie.title %></h5>
+    <p><%= movie_show.date %></p>
+    <p><%= movie_show.start_at %></p>
+    <p><%= movie_show.language %></p>
+    <p><%= movie_show.subtitle %></p>
   <% end %>
 </div>
