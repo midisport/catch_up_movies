@@ -10,8 +10,9 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-    @directors = Casting.where(movie_id: @movie, role: 'Réalisateur')
-    @actors = Casting.where(movie_id: @movie, role: 'Acteur')
+
+    @directors = @movie.artists
+    @actors = @movie.artists
 
     # Empty instance for new interest form
     @interest = Interest.new
