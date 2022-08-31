@@ -15,5 +15,8 @@ class MoviesController < ApplicationController
     @directors = @movie.artists
     @actors = @movie.artists
     authorize @movie
+
+    # Empty instance for new interest form
+    @interest = Interest.new
   end
 end
