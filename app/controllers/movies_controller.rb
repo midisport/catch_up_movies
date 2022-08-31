@@ -12,5 +12,8 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @directors = Casting.where(movie_id: @movie, role: 'Réalisateur')
     @actors = Casting.where(movie_id: @movie, role: 'Acteur')
+
+    # Empty instance for new interest form
+    @interest = Interest.new
   end
 end
