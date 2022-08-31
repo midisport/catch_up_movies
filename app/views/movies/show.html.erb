@@ -34,3 +34,18 @@
     </div>
   </div>
 </div>
+<div class="comment p-2 m-5">
+  <div class="comment-list">
+    <ul class="list-group list-group-flush p-2">
+      <% @movie.comments.each do |comment| %>
+        <li class="list-group-item"><strong><%= comment.user.username %></strong> : <%= comment.content %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="comment-form">
+       <%= simple_form_for [@movie, @comment] do |f| %>
+          <%= f.input :content, class: "infor" %>
+          <%= f.submit "Poster", class: "btn btn-warning" %>
+        <% end %>
+  </div>
+</div>

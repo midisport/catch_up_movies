@@ -10,11 +10,9 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-
     @directors = @movie.artists
     @actors = @movie.artists
-
-    # Empty instance for new interest form
+    @comment = Comment.new
     @interest = Interest.new
   end
 end

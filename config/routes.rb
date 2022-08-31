@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :artists, only: :show
   resources :bookings, only: %I[index create]
-  resources :comments, only: :create
   resources :cinemas, only: :show
+
   resources :movies, only: %I[index show] do
+    resources :comments, only: :create
     resources :interests, only: :create
   end
 
