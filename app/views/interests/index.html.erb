@@ -1,16 +1,11 @@
 <div class="container">
   <h1>My Watchlist</h1>
   <div>
-    <%= render "watchlist" %>
+    <%= render "interests/watchlist" %>
   </div>
 
 
   <% unless @user == current_user %>
-    <%= simple_form_for @follow do |f| %>
-      <%= f.error :follower, class: "text-danger" %>
-      <%= f.input :followed_id, as: :hidden, input_html: { value: @user.id } %>
-      <%= f.button :submit, class: "btn btn-primary" %>
-    <% end %>
-
+    <%= render "follows/form" %>
   <% end %>
 </div>
