@@ -12,5 +12,6 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @directors = @movie.artists
     @actors = @movie.artists
+    @comment = Comment.new
   end
 end
