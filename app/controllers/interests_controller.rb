@@ -9,8 +9,12 @@ class InterestsController < ApplicationController
     @movie = Movie.find(params[:movie_id])
     @user = current_user
     @interest = Interest.new(movie: @movie, user: @user)
-    @interest.save
-    redirect_to interests_path
+
+    if @interest.save
+      redirect_to interests_path
+    else
+      render "movies/show", status: :unprocessable_entity
+    end
   end
 
   def destroy
