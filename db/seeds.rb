@@ -26,6 +26,15 @@ user2 = User.create!(username: "Youssef", email: "test1@test.fr", password: '123
 user3 = User.create!(username: "Samuel", email: "test2@test.fr", password: '123456')
 user4 = User.create!(username: "Lazare", email: "test3@test.fr", password: '123456')
 
+# Follows
+puts "creating follows"
+Follow.create!(follower: user1, followed: user2)
+Follow.create!(follower: user2, followed: user3)
+Follow.create!(follower: user3, followed: user4)
+Follow.create!(follower: user3, followed: user2)
+Follow.create!(follower: user4, followed: user1)
+puts "follows created"
+
 # Movies
 puts "creating movies"
 movie1 = Movie.new(
