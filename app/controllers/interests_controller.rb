@@ -24,6 +24,7 @@ class InterestsController < ApplicationController
       @actors = @movie.artists
       @comment = Comment.new
       @interest = Interest.new
+
       render "movies/show", status: :unprocessable_entity
     end
   end

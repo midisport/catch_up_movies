@@ -8,14 +8,17 @@ class FollowsController < ApplicationController
   def create
     @follow = Follow.new
     @follow.follower = current_user
-    followed = User.find(params[:follow][:followed_id])
+    followed = User.find(follow_params[:followed_id])
     @follow.followed = followed
 
     if @follow.save
       redirect_to user_interests_path(followed)
     else
       # make this a render and use ajax, so errors are actually displayed ? (Need to ask if there's a better way)
-      redirect_to user_interests_path(followed), status: :unprocessable_entity
+      @user = User.find(followed.id)
+      @interests = Interest.where(user: @user)
+
+      render "interests/index", status: :unprocessable_entity
     end
     authorize @follow
   end
