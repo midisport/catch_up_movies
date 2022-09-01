@@ -3,9 +3,10 @@ class MoviesController < ApplicationController
 
   def index
     if params[:query].present?
-      @movies = Movie.where(title: params[:query])
+      # @movies = Movie.where(title: params[:query])
+      @movies = policy_scope(Movie.where(title: params[:query]))
     else
-      @movies = Movie.all
+      @movies = policy_scope(Movie)
     end
   end
 
@@ -15,5 +16,6 @@ class MoviesController < ApplicationController
     @actors = @movie.artists
     @comment = Comment.new
     @interest = Interest.new
+    authorize @movie
   end
 end
