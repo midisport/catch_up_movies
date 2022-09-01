@@ -18,12 +18,12 @@
                   <h5 class="card-title text-center"><%= movie_show.movie.title %></h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Le : <%= movie_show.date.strftime('%A %d %B') %></li>
+                  <li class="list-group-item">Le : <%= l movie_show.date, format: '%A %d %B' %></li>
                   <li class="list-group-item">À : <%= movie_show.start_at.strftime('%H:%M') %></li>
                   <li class="list-group-item">Langue : <%= movie_show.language %></li>
                   <li class="list-group-item">Sous-titres :
                   <% if movie_show.subtitle == "" %>
-                    Sans
+                     ❌
                   <% else %>
                     <%= movie_show.subtitle %>
                   <% end %></li>
