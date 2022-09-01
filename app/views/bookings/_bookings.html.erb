@@ -1,17 +1,19 @@
 <h2>Vous allez regarder : </h2>
 <% bookings.each do |booking|  %>
-  <div class="card_interest">
+  <div class="card_booking">
     <%= image_tag booking.movie_show.movie.poster, class: "img-fluid" %>
+    <div class="text d-flex justify-content-between w-100">
     <div class="info">
       <h6><%= booking.movie_show.movie.title %></h6>
       <p><i class="fa-solid fa-comment"></i> <%= booking.movie_show.language %></p>
       <p><i class="fa-solid fa-closed-captioning"></i> <%= booking.movie_show.subtitle %></p>
       <p><i class="fa-regular fa-hourglass"></i> <%= pluralize(booking.movie_show.movie.duration, "minute") %></p>
     </div>
-    <div class="options d-flex flex-column justify-content-evenly">
+    <div class="options">
       <h6><%= booking.movie_show.cinema.name %></h6>
       <p><i class="fa-solid fa-calendar-days"></i> <%= l(booking.movie_show.date, format: '%a %e %B') %> à <%= l(booking.movie_show.start_at, :format => '%l:%M %p') %></p>
       <p><i class="fa-solid fa-map-location-dot"></i> <%= booking.movie_show.cinema.address %></p>
+    </div>
     </div>
   </div>
 <% end %>

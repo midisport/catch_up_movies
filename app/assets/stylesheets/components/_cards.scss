@@ -79,3 +79,38 @@
     justify-content: end;
   }
 }
+
+/* Bookings Card */
+.card_booking {
+  border-radius: $border-radius;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 0.5em 50px -20px, rgba(0, 0, 0, 0.3) 0px 10px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  display: flex;
+  height: 20vh;
+  justify-content: space-between;
+  margin: 1.5em 0;
+
+  img {
+    border-radius: $border-radius;
+    object-fit: contain;
+  }
+
+  .text {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .info, .options {
+    padding: 0 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 1em;
+  }
+
+  .info {
+    p {
+      margin: 0;
+    }
+  }
+}
