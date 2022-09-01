@@ -1,0 +1,10 @@
+.tab_btn {
+  color: black;
+  background-color: white;
+  border-radius: $border-radius $border-radius 0 0;
+}
+
+  .tab_btn:hover {
+    color:darkred;
+    background-color: black;
+  }

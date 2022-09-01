@@ -1,15 +1,30 @@
-<div class="container">
+<div class="container dash_container">
   <div class="row">
-    <h1>Dashboard</h1>
+    <div class="dashboard_tabs">
+      <h1>Dashboard :</h1>
+      <button class="tab_btn"><i class="fa-solid fa-address-book"></i> Ami(e)s</button>
+      <button class="tab_btn"><i class="fa-solid fa-ticket"></i> Séances</button>
+      <button class="tab_btn"><i class="fa-solid fa-eye"></i> Watchlist</button>
+    </div>
   </div>
+
+
+
   <div class="row">
-    <div class="col-12 mx-auto">
+    <div class="col-8 mx-auto">
+
       <div class="follows">
         <%= render 'follows' %>
       </div>
-      <div class="bookings">
+
+      <div class="bookings d-none">
         <%= render "bookings/bookings", bookings: @bookings %>
       </div>
+
+      <div class="watchlist d-none">
+        <%= render "interests/watchlist" %>
+      </div>
+
     </div>
   </div>
 </div>
