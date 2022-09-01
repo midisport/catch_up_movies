@@ -1,11 +1,12 @@
 class FollowsController < ApplicationController
   def index
+    @follows = policy_scope(Follow)
     @followers = Follow.where(followed: current_user)
     @followeds = Follow.where(follower: current_user)
   end
 
   def create
-    @follow = Follow.new()
+    @follow = Follow.new
     @follow.follower = current_user
     followed = User.find(params[:follow][:followed_id])
     @follow.followed = followed
@@ -13,16 +14,18 @@ class FollowsController < ApplicationController
     if @follow.save
       redirect_to user_interests_path(followed)
     else
-      # ajaxify this so errors are actually displayed ? (Need to ask if there's a better way)
-      render user_interests_path(followed), status: :unprocessable_entity
+      # make this a render and use ajax, so errors are actually displayed ? (Need to ask if there's a better way)
+      redirect_to user_interests_path(followed), status: :unprocessable_entity
     end
+    authorize @follow
   end
 
   def destroy
     @follow = Follow.find(params[:id])
     @follow.destroy
 
-    redirect_to
+    redirect_to follows_path
+    authorize @follow
   end
 
   private
