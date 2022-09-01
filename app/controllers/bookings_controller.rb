@@ -1,5 +1,11 @@
 class BookingsController < ApplicationController
 
+  def index
+    @bookings = policy_scope(Booking)
+    @user = User.find(params[:user_id])
+    @bookings = Booking.where(user: @user)
+  end
+
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user

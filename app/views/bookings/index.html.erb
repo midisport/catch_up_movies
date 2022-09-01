@@ -1,0 +1,4 @@
+<% @bookings.each do |booking|  %>
+  <p><%= booking.user.username %></p>
+  <p><%= booking.movie_show.movie.title %></p>
+<% end %>
