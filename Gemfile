@@ -53,7 +53,10 @@ gem "devise"
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
+# Internationalisation - enables setting locale to :fr
 gem 'rails-i18n', '~> 7.0.0'
+# Adds inflections for multiple languages, so methods like pluralize work properly for non-english words
+gem 'inflections'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
