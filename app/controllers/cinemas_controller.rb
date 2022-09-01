@@ -3,7 +3,6 @@ class CinemasController < ApplicationController
 
   def show
     @cinema = Cinema.find(params[:id])
-    @movie_shows = MovieShow.where(cinema_id: @cinema.id)
     @booking = Booking.new
     authorize @cinema
   end
