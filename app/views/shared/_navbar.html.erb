@@ -20,7 +20,7 @@
             <%= image_tag "https://img.thedailybeast.com/image/upload/dpr_2.0/c_crop,h_1687,w_1687,x_568,y_-1/c_limit,w_128/d_placeholder_euli9k,fl_lossy,q_auto/v1570853751/191011-Schager-why-we-hate-tease_bsxuab", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Parcourir les Films", movies_path, class: "dropdown-item" %>
-              <%= link_to "Consulter votre Watchlist", interests_path, class: "dropdown-item" %>
+              <%= link_to "Consulter votre Watchlist", user_interests_path(current_user), class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>

@@ -53,7 +53,7 @@
   <div class="comment-form">
     <% if user_signed_in? %>
        <%= simple_form_for [@movie, @comment] do |f| %>
-          <%= f.input :content, class: "infor" %>
+          <%= f.input :content, input_html:{class: "infor"} %>
           <%= f.submit "Poster", class: "btn btn-warning" %>
         <% end %>
     <% else %>

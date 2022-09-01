@@ -104,6 +104,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.10.2)
+      devise (>= 4.8.0)
     digest (3.1.0)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
@@ -119,6 +121,8 @@ GEM
       activesupport (>= 5.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
+    inflections (4.1.0)
+      activesupport (>= 4.0.0)
     io-console (0.5.11)
     irb (1.4.1)
       reline (>= 0.3.0)
@@ -187,6 +191,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.3)
       loofah (~> 2.3)
+    rails-i18n (7.0.5)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     railties (7.0.3.1)
       actionpack (= 7.0.3.1)
       activesupport (= 7.0.3.1)
@@ -264,15 +271,21 @@ DEPENDENCIES
   capybara
   debug
   devise
+  devise-i18n
   dotenv-rails
   font-awesome-sass (~> 6.1)
+<<<<<<< HEAD
   geocoder
+=======
+  inflections
+>>>>>>> master
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
   puma (~> 5.0)
   pundit
   rails (~> 7.0.3, >= 7.0.3.1)
+  rails-i18n (~> 7.0.0)
   sassc-rails
   selenium-webdriver
   simple_form!

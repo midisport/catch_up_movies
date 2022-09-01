@@ -1,4 +1,9 @@
 .comment-list {
-  overflow-y: scroll;
-  max-height: 300px;
+  .list-group-item {
+    background-color: #F4F4F4;
+  }
+}
+
+.infor {
+  background-color: white;
 }

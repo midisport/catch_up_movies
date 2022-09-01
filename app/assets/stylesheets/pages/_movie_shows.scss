@@ -1,0 +1,50 @@
+.cine-presentation {
+  margin: 20px auto;
+}
+
+.sous-titres-seances {
+  margin-left: 10px;
+}
+
+.seance-card {
+  margin: 15px 0;
+  height: 310px;
+  width: 530px;
+  // overflow: hidden;
+
+  // .movie-poster {
+  //   height: 310px;
+  // }
+  .d-flex {
+    padding: 0;
+  }
+
+  .card-body {
+    flex: unset;
+  }
+
+  img {
+    object-fit: contain;
+    object-position: left;
+    height: 309px;
+  }
+
+  .card-title {
+    margin: 8px 0;
+  }
+
+  .list-group {
+    border-top-style: solid;
+    border-top-width: thin;
+    border-top-color: lightgray;
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    border-bottom-color: lightgray;
+
+  }
+
+  .btn {
+    margin: 0 10px;
+    margin-bottom: 2px;
+  }
+}

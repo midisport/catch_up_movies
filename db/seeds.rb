@@ -157,6 +157,7 @@ artist5.save!
 puts "creating movie shows"
 movie_show1 = MovieShow.new(
   start_at: Time.parse("20:10"),
+  date: Date.parse("2022-09-10"),
   language: "Indien",
   subtitle: "Français"
 )
@@ -165,6 +166,7 @@ movie_show1.cinema = cinema2
 movie_show1.save!
 movie_show2 = MovieShow.new(
   start_at: Time.parse("15:30"),
+  date: Date.parse("2022-09-10"),
   language: "Anglais",
   subtitle: "Français"
 )
@@ -173,6 +175,7 @@ movie_show2.cinema = cinema1
 movie_show2.save!
 movie_show3 = MovieShow.new(
   start_at: Time.parse("19:45"),
+  date: Date.parse("2022-09-11"),
   language: "Anglais",
   subtitle: "Français"
 )
@@ -181,6 +184,7 @@ movie_show3.cinema = cinema1
 movie_show3.save!
 movie_show4 = MovieShow.new(
   start_at: Time.parse("20:30"),
+  date: Date.parse("2022-09-10"),
   language: "Français",
   subtitle: ""
 )
@@ -189,6 +193,7 @@ movie_show4.cinema = cinema3
 movie_show4.save!
 movie_show5 = MovieShow.new(
   start_at: Time.parse("18:00"),
+  date: Date.parse("2022-09-11"),
   language: "Anglais",
   subtitle: "Français"
 )
@@ -197,6 +202,7 @@ movie_show5.cinema = cinema3
 movie_show5.save!
 movie_show6 = MovieShow.new(
   start_at: Time.parse("21:00"),
+  date: Date.parse("2022-09-10"),
   language: "Anglais",
   subtitle: "Français"
 )
@@ -205,6 +211,7 @@ movie_show6.cinema = cinema3
 movie_show6.save!
 movie_show7 = MovieShow.new(
   start_at: Time.parse("18:00"),
+  date: Date.parse("2022-09-10"),
   language: "Anglais",
   subtitle: "Français"
 )
@@ -213,6 +220,7 @@ movie_show7.cinema = cinema2
 movie_show7.save!
 movie_show8 = MovieShow.new(
   start_at: Time.parse("21:00"),
+  date: Date.parse("2022-09-11"),
   language: "Anglais",
   subtitle: "Français"
 )
@@ -221,6 +229,7 @@ movie_show8.cinema = cinema2
 movie_show8.save!
 movie_show9 = MovieShow.new(
   start_at: Time.parse("15:30"),
+  date: Date.parse("2022-09-11"),
   language: "Anglais",
   subtitle: "Français"
 )
@@ -229,6 +238,7 @@ movie_show9.cinema = cinema3
 movie_show9.save!
 movie_show10 = MovieShow.new(
   start_at: Time.parse("20:15"),
+  date: Date.parse("2022-09-11"),
   language: "Français",
   subtitle: ""
 )
@@ -271,6 +281,6 @@ casting5.save!
 casting6 = Casting.new(
   role: "Acteur"
 )
-casting6.movie = movie6
+casting6.movie = movie2
 casting6.artist = artist5
 casting6.save!
