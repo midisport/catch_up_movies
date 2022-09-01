@@ -1,0 +1,9 @@
+<div class="seance-container">
+  <h4>Où voir ce film au cinéma :</h4>
+  <div class="seances">
+    <% @movie_shows.each do |movie_show| %>
+      <p><span><%= movie_show.cinema.name %> :</span> le <span><%= l movie_show.date, format: '%A %d %B' %></span>, à <span><%= movie_show.start_at.strftime('%H:%M') %></span></p>
+
+    <% end %>
+  </div>
+</div>

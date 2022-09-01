@@ -16,9 +16,7 @@ class MoviesController < ApplicationController
     @actors = @movie.castings.where(role: "Acteur")
     @comment = Comment.new
     @interest = Interest.new
+    @movie_shows = MovieShow.where(movie_id: params[:id])
     authorize @movie
   end
 end
-
-#
-# .castings.where(role: "Acteur")
