@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :artists, only: :show
-  resources :bookings, only: %I[index create]
   resources :cinemas, only: :show
 
   resources :movies, only: %I[index show] do
@@ -13,6 +12,11 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :interests, only: :index
+    resources :bookings, only: :index
+  end
+
+  resources :movie_shows, only: [:index] do
+    resources :bookings, only: :create
   end
 
   resources :interests, only: :destroy
