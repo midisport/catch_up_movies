@@ -1,11 +1,39 @@
 <div class="container">
-  <h3><%= @cinema.name %></h3>
-  <p><%= @cinema.address %></p>
-  <% @cinema.movie_shows.each do |movie_show| %>
-    <h5><%= movie_show.movie.title %></h5>
-    <p><%= movie_show.date %></p>
-    <p><%= movie_show.start_at %></p>
-    <p><%= movie_show.language %></p>
-    <p><%= movie_show.subtitle %></p>
-  <% end %>
+  <div class="cine-presentation text-center">
+    <h2><%= @cinema.name %></h3>
+    <h5><%= @cinema.address %></h5>
+  </div>
+  <h3 class="sous-titres-seances">Les prochaines séances :</h5>
+  <div class="seances col">
+    <div class="row">
+      <% @cinema.movie_shows.each do |movie_show| %>
+        <div class="col">
+          <div class="row card seance-card">
+            <div class="d-flex">
+              <div class="col movie-poster">
+                <%= image_tag movie_show.movie.poster, class: "card-img-top" %>
+              </div>
+              <div class="col d-flex flex-column justify-content-around">
+                <div class="card-body">
+                  <h5 class="card-title text-center"><%= movie_show.movie.title %></h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Le : <%= movie_show.date.strftime('%A %d %B') %></li>
+                  <li class="list-group-item">À : <%= movie_show.start_at.strftime('%H:%M') %></li>
+                  <li class="list-group-item">Langue : <%= movie_show.language %></li>
+                  <li class="list-group-item">Sous-titres :
+                  <% if movie_show.subtitle == "" %>
+                    Sans
+                  <% else %>
+                    <%= movie_show.subtitle %>
+                  <% end %></li>
+                </ul>
+                <a href="#" class="btn btn-primary">Enregistrer cette séance</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
