@@ -9,13 +9,16 @@ class MoviesController < ApplicationController
       @movies = policy_scope(Movie)
     end
   end
-  
+
   def show
     @movie = Movie.find(params[:id])
-    @directors = @movie.artists
-    @actors = @movie.artists
+    @directors = @movie.castings.where(role: "Réalisateur")
+    @actors = @movie.castings.where(role: "Acteur")
     @comment = Comment.new
     @interest = Interest.new
     authorize @movie
   end
 end
+
+#
+# .castings.where(role: "Acteur")
