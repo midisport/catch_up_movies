@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   resources :users do
     resources :interests, only: :index
   end
-  
+
   resources :interests, only: :destroy
   resources :follows, only: %I[index create destroy]
+
+  devise_scope :user do
+    get 'sign_in', to: 'devise/sessions#new'
+  end
 end
