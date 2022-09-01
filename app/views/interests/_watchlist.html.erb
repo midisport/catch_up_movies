@@ -5,8 +5,8 @@
 
       <div class="info">
         <h2><%= interest.movie.title %></h2>
-        <p><i class="fa-brands fa-imdb"></i> <%= interest.movie.imdb_rating %></p>
-        <p class="date-added">Added <%= time_ago_in_words(interest.movie.created_at) %> ago</p>
+        <p><i class="fa-brands fa-imdb"></i> <%= interest.movie.imdb_rating %>/10</p>
+        <p class="date-added">Ajouté il y a <%= time_ago_in_words(interest.movie.created_at) %></p>
       </div>
     </div>
 

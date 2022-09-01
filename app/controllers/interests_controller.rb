@@ -31,7 +31,7 @@ class InterestsController < ApplicationController
   def destroy
     @interest = Interest.find(params[:id])
     @interest.destroy
-    authorize @interest
     redirect_to user_interests_path(current_user), status: :see_other
+    authorize @interest
   end
 end
