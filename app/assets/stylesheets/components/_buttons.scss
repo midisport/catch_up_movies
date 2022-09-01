@@ -4,7 +4,12 @@
   border-radius: $border-radius $border-radius 0 0;
 }
 
-  .tab_btn:hover {
-    color:darkred;
-    background-color: black;
-  }
+.tab_btn-active {
+  color:darkred;
+  background-color: black;
+}
+
+.tab_btn:hover {
+  color:darkred;
+  background-color: black;
+}
