@@ -2,9 +2,9 @@
   <div class="row">
     <div class="dashboard_tabs">
       <h1>Dashboard :</h1>
-      <button  id="follows-btn" class="tab_btn tab_btn-active" data-action="click->tabs#reveal" data-tabs-target="btn"><i class="fa-solid fa-address-book"></i> Ami(e)s</button>
+      <button id="watchlist-btn" class="tab_btn tab_btn-active" data-action="click->tabs#reveal" data-tabs-target="btn"><i class="fa-solid fa-eye"></i> Watchlist</button>
       <button id="bookings-btn" class="tab_btn" data-action="click->tabs#reveal" data-tabs-target="btn"><i class="fa-solid fa-ticket"></i> Séances</button>
-      <button id="watchlist-btn" class="tab_btn" data-action="click->tabs#reveal" data-tabs-target="btn"><i class="fa-solid fa-eye"></i> Watchlist</button>
+      <button  id="follows-btn" class="tab_btn" data-action="click->tabs#reveal" data-tabs-target="btn"><i class="fa-solid fa-address-book"></i> Ami(e)s</button>
     </div>
   </div>
 
@@ -13,16 +13,16 @@
   <div class="row">
     <div class="col-8 mx-auto">
 
+      <div data-tabs-target="watchlist" class="watchlist d-none">
+        <%= render "interests/watchlist" %>
+      </div>
+
       <div  data-tabs-target="follows" class="follows">
         <%= render 'follows' %>
       </div>
 
       <div data-tabs-target="bookings" class="bookings d-none">
         <%= render "bookings/bookings", bookings: @bookings %>
-      </div>
-
-      <div data-tabs-target="watchlist" class="watchlist d-none">
-        <%= render "interests/watchlist" %>
       </div>
 
     </div>
