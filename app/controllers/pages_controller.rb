@@ -5,14 +5,19 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    # Variables for follows
     @follows = policy_scope(Follow)
     @followers = Follow.where(followed: current_user)
     @followeds = Follow.where(follower: current_user)
 
+    # Variables for Watchlist
     @interests = policy_scope(Interest)
-
     @user = User.find(params[:id])
     @interests = Interest.where(user: @user)
     @follow = Follow.new
+
+    # Variables for Bookings
+    @bookings = policy_scope(Booking)
+    @bookings = Booking.where(user: @user)
   end
 end
