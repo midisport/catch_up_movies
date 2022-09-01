@@ -14,7 +14,8 @@
           <li class="nav-item active">
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
-            <li class="nav-item">
+          <li class="nav-item">
+            <%= link_to "Tableau de bord", "/dashboard/#{current_user.id}", class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "https://img.thedailybeast.com/image/upload/dpr_2.0/c_crop,h_1687,w_1687,x_568,y_-1/c_limit,w_128/d_placeholder_euli9k,fl_lossy,q_auto/v1570853751/191011-Schager-why-we-hate-tease_bsxuab", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
