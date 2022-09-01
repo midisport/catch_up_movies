@@ -109,6 +109,24 @@ movie6 = Movie.new(
   imdb_rating: 8.9
 )
 movie6.save!
+puts "movies created"
+
+# Interests
+puts "creating interests"
+Interest.create!(user: user3, movie: movie6)
+Interest.create!(user: user3, movie: movie5)
+Interest.create!(user: user3, movie: movie4)
+Interest.create!(user: user1, movie: movie1)
+Interest.create!(user: user1, movie: movie2)
+Interest.create!(user: user1, movie: movie6)
+Interest.create!(user: user2, movie: movie6)
+Interest.create!(user: user2, movie: movie3)
+Interest.create!(user: user2, movie: movie4)
+Interest.create!(user: user4, movie: movie1)
+Interest.create!(user: user4, movie: movie6)
+Interest.create!(user: user4, movie: movie3)
+
+puts "interests created"
 
 # Cinemas
 puts "creating cinémas"
