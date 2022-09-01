@@ -274,11 +274,8 @@ DEPENDENCIES
   devise-i18n
   dotenv-rails
   font-awesome-sass (~> 6.1)
-<<<<<<< HEAD
   geocoder
-=======
   inflections
->>>>>>> master
   jbuilder
   jsbundling-rails
   pg (~> 1.1)

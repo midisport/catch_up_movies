@@ -4,4 +4,5 @@ class Movie < ApplicationRecord
   has_many :movie_shows, dependent: :destroy
   has_many :castings, dependent: :destroy
   has_many :artists, through: :castings
+  has_many :cinemas, through: :movie_shows
 end

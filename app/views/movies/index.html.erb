@@ -3,11 +3,6 @@
   <div class="movies_card">
     <% @movies.each do |movie| %>
        <%= render "shared/movie_card", movie: movie %>
-
-       <div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['pk.eyJ1IjoibmFhYWIiLCJhIjoiY2w3aGN2cXU2MGQ2YTNvc2FweGtrYTQ2MCJ9.YYl87WkOqwuHykzycdBbSA'] %>"></div>
     <% end %>
   </div>
 </div>

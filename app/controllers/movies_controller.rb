@@ -3,8 +3,11 @@ class MoviesController < ApplicationController
 
   def index
     if params[:query].present?
-      # @movies = Movie.where(title: params[:query])
-      @movies = policy_scope(Movie.where(title: params[:query]))
+      sql_query = <<~SQL
+        movies.title @@ :query
+        OR artists.name @@ :query
+      SQL
+      @movies = policy_scope(Movie).joins(:artists).where(sql_query, query: "%#{params[:query]}%")
     else
       @movies = policy_scope(Movie)
     end
@@ -17,5 +20,11 @@ class MoviesController < ApplicationController
     @comment = Comment.new
     @interest = Interest.new
     authorize @movie
+    @markers = @movie.cinemas.geocoded.map do |cinema|
+      {
+        lat: cinema.lat,
+        lng: cinema.lng
+      }
+    end
   end
 end
