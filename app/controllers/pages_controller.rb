@@ -3,4 +3,10 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def dashboard
+    @follows = policy_scope(Follow)
+    @followers = Follow.where(followed: current_user)
+    @followeds = Follow.where(follower: current_user)
+  end
 end
