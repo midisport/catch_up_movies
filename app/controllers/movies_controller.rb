@@ -16,7 +16,6 @@ class MoviesController < ApplicationController
     @actors = @movie.artists
     @comment = Comment.new
     @interest = Interest.new
-    
     authorize @movie
   end
 end
