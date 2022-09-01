@@ -273,6 +273,22 @@ movie_show10.movie = movie2
 movie_show10.cinema = cinema1
 movie_show10.save!
 
+puts "Movie_shows created"
+
+# Bookings
+puts "Creating bookings"
+
+Booking.create!(user: user3, movie_show: movie_show1)
+Booking.create!(user: user3, movie_show: movie_show2)
+Booking.create!(user: user3, movie_show: movie_show3)
+Booking.create!(user: user3, movie_show: movie_show4)
+Booking.create!(user: user3, movie_show: movie_show5)
+Booking.create!(user: user1, movie_show: movie_show6)
+Booking.create!(user: user1, movie_show: movie_show7)
+Booking.create!(user: user2, movie_show: movie_show8)
+Booking.create!(user: user2, movie_show: movie_show9)
+Booking.create!(user: user4, movie_show: movie_show10)
+
 # Casting
 puts "creating castings"
 casting1 = Casting.new(
@@ -308,6 +324,6 @@ casting5.save!
 casting6 = Casting.new(
   role: "Acteur"
 )
-casting6.movie = movie2
+casting6.movie = movie6
 casting6.artist = artist5
 casting6.save!
