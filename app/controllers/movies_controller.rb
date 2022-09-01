@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %I[index show]
+  skip_before_action :authenticate_user!
 
   def index
     if params[:query].present?
@@ -16,7 +16,6 @@ class MoviesController < ApplicationController
     @actors = @movie.artists
     @comment = Comment.new
     @interest = Interest.new
-    
     authorize @movie
   end
 end

@@ -1,6 +1,11 @@
 <div class="container">
   <h1>My Watchlist</h1>
   <div>
-    <%= render "watchlist" %>
+    <%= render "interests/watchlist" %>
   </div>
+
+
+  <% unless @user == current_user %>
+    <%= render "follows/form" %>
+  <% end %>
 </div>

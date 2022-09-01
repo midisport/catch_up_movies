@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user = current_user
     @comment.movie = @movie
+    authorize @comment
     if @comment.save!
       redirect_to movie_path(@movie)
     else

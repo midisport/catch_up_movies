@@ -11,8 +11,10 @@
     </div>
 
     <div class="options">
-      <%= link_to interest_path(interest), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete #{interest.movie.title} from your Watchlist?"} do %>
-        <button class="btn btn-danger"><i class="fa-solid fa-eraser"></i></button>
+      <% if interest.user == current_user %>
+        <%= link_to interest_path(interest), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete #{interest.movie.title} from your Watchlist?"} do %>
+          <button class="btn btn-danger"><i class="fa-solid fa-eraser"></i></button>
+        <% end %>
       <% end %>
     </div>
   </div>
