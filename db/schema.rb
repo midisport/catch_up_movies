@@ -59,6 +59,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_101235) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "follows", force: :cascade do |t|
+    t.bigint "follower_id", null: false
+    t.bigint "followed_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_follows_on_followed_id"
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+  end
+
   create_table "interests", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "movie_id", null: false
@@ -115,6 +124,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_101235) do
   add_foreign_key "castings", "movies"
   add_foreign_key "comments", "movies"
   add_foreign_key "comments", "users"
+  add_foreign_key "follows", "users", column: "followed_id"
+  add_foreign_key "follows", "users", column: "follower_id"
   add_foreign_key "interests", "movies"
   add_foreign_key "interests", "users"
   add_foreign_key "movie_shows", "cinemas"
