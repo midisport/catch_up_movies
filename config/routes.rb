@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     get 'sign_in', to: 'devise/sessions#new'
   end
 
+  get "dashboard", to: "pages#dashboard"
+
   # Defines the root path route ("/")
   # root "articles#index"
 end
