@@ -1,0 +1,4 @@
+<h2>Vous etes suivi par : </h2>
+  <% @followers.each do |follow| %>
+    <p><%= follow.follower.username %></p>
+  <% end %>
