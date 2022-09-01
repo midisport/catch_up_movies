@@ -13,7 +13,7 @@ class FollowsController < ApplicationController
     if @follow.save
       redirect_to user_interests_path(followed)
     else
-      render "follows/form", status: :unprocessable_entity # this doesn't work - rails can't find the template
+      redirect_to user_interests_path(followed), status: :unprocessable_entity # ajaxify this so errors are actually displayed
     end
   end
 
