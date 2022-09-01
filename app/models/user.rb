@@ -8,5 +8,5 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :comments
   validates :password, :email, :username, presence: true
-  validates :email, format: { with: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ }
+  validates :email, format: { with: /\^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+\$/ }
 end
