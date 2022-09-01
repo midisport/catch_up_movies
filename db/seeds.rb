@@ -281,6 +281,6 @@ casting5.save!
 casting6 = Casting.new(
   role: "Acteur"
 )
-casting6.movie = movie6
+casting6.movie = movie2
 casting6.artist = artist5
 casting6.save!
