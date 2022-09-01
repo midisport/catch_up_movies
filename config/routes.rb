@@ -11,12 +11,14 @@ Rails.application.routes.draw do
     resources :interests, only: :create
   end
 
-  resources :interests, only: %I[index destroy]
+  resources :users do
+    resources :interests, only: :index
+  end
+
+  resources :interests, only: :destroy
+  resources :follows, only: %I[index create destroy]
 
   devise_scope :user do
     get 'sign_in', to: 'devise/sessions#new'
   end
-
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
