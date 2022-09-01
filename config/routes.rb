@@ -10,9 +10,11 @@ Rails.application.routes.draw do
     resources :comments, only: :create
     resources :interests, only: :create
   end
+
   resources :users do
     resources :interests, only: :index
   end
+  
   resources :interests, only: :destroy
   resources :follows, only: %I[index create destroy]
 end

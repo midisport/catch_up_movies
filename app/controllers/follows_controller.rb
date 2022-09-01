@@ -13,8 +13,16 @@ class FollowsController < ApplicationController
     if @follow.save
       redirect_to user_interests_path(followed)
     else
-      redirect_to user_interests_path(followed), status: :unprocessable_entity # ajaxify this so errors are actually displayed
+      # ajaxify this so errors are actually displayed ? (Need to ask if there's a better way)
+      render user_interests_path(followed), status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @follow = Follow.find(params[:id])
+    @follow.destroy
+
+    redirect_to
   end
 
   private

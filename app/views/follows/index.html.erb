@@ -1,14 +1,19 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-6">
+    <div class="col-4 mx-auto">
       <h2>Vous suivez :</h2>
       <% @followeds.each do |follow| %>
-        <p><%= follow.followed.username %></p>
+        <div class="d-flex justify-content-between">
+          <p><%= follow.followed.username %></p>
+          <%= link_to follow_path(follow), data: {turbo_method: :delete, turbo_confirm: "Vous voulez vraiment arreter de suivre #{follow.followed.username} ?"} do %>
+            <button><i class="fa-solid fa-user-xmark"></i></button>
+          <% end %>
+        </div>
       <% end %>
     </div>
 
-    <div class="col-6">
+    <div class="col-4 mx-auto">
       <h2>Vous etes suivi par : </h2>
       <% @followers.each do |follow| %>
         <p><%= follow.follower.username %></p>
