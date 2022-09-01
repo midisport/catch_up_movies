@@ -28,7 +28,9 @@
                     <%= movie_show.subtitle %>
                   <% end %></li>
                 </ul>
-                <a href="#" class="btn btn-primary">Enregistrer cette séance</a>
+
+                <%= render "bookings/form", movie_show: movie_show, booking: @booking %>
+
               </div>
             </div>
           </div>
