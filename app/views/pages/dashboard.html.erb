@@ -3,9 +3,13 @@
     <h1>Dashboard</h1>
   </div>
   <div class="row">
-    <%= render 'follows' %>
-  </div>
-  <div class="row">
-    <%= render "bookings/bookings", bookings: @bookings %>
+    <div class="col-12 mx-auto">
+      <div class="follows">
+        <%= render 'follows' %>
+      </div>
+      <div class="bookings">
+        <%= render "bookings/bookings", bookings: @bookings %>
+      </div>
+    </div>
   </div>
 </div>
