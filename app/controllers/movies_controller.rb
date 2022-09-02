@@ -17,6 +17,7 @@ class MoviesController < ApplicationController
     @comment = Comment.new
     @interest = Interest.new
     @movie_shows = MovieShow.where(movie_id: params[:id])
+    @booking = Booking.new
     authorize @movie
   end
 end
