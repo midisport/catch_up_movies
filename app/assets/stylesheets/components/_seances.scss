@@ -1,0 +1,43 @@
+.seance-container {
+  margin-top: 30px;
+  margin-left: 5rem;
+  border-style: solid;
+  border-width: thin;
+  border-color: lightgray;
+  width: 1000px;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+  h4 {
+    margin-top: 5px;
+  }
+
+  .seance {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    margin-bottom: 8px;
+    align-items: center;
+  }
+  .cine-name {
+    grid-area: 1 / 1 / 2 / 4;
+  }
+  .seance-date {
+    grid-area: 1 / 4 / 2 / 6;
+  }
+  .seance-time {
+    grid-area: 1 / 6 / 2 / 7;
+  }
+  .seance-lang {
+    grid-area: 1 / 7 / 2 / 9;
+  }
+  .seance-sub {
+    grid-area: 1 / 9 / 2 / 11;
+  }
+  .seance-booking {
+    grid-area: 1 / 11 / 2 / 13;
+  }
+}

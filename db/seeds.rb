@@ -128,7 +128,7 @@ cinema3.save!
 # Artists
 puts "creating artists"
 artist1 = Artist.new(
-  name: "Gaspard Noé",
+  name: "Gaspar Noé",
   photo: "gaspard_noe.jpg"
 )
 artist1.save!
@@ -281,6 +281,6 @@ casting5.save!
 casting6 = Casting.new(
   role: "Acteur"
 )
-casting6.movie = movie2
+casting6.movie = movie6
 casting6.artist = artist5
 casting6.save!
