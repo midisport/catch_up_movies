@@ -6,52 +6,50 @@
     </div>
     <div class="col-md-9">
       <div class="d-flex">
-        <div>
-      <p>Réalisé par:
-        <% unless @directors.nil? %>
-          <% @directors.each do |director| %>
-            <%= link_to director.artist.name, artist_path(director.artist) %>
-          <% end %>
-        <% end %>
-      </p>
-      <p>Synopsis: <%= @movie.synopsis %></p>
-      <p>Genre: <%= @movie.genre %></p>
-      <p>Sortie: <%= @movie.release_date %></p>
-      <p>Durée: <%= @movie.duration %> min</p>
-      <p>Pays: <%= @movie.country %></p>
-      <p>Langue d'origine: <%= @movie.original_language %></p>
-      <p>Note: <%= @movie.imdb_rating %>/10</p>
-      <p>Casting:
-        <% unless @actors.nil? %>
-          <% @actors.each do |actor| %>
-            <%= link_to actor.artist.name, artist_path(actor.artist) %>
-              <% end %>
+        <p>Réalisé par:
+          <% unless @directors.nil? %>
+            <% @directors.each do |director| %>
+              <%= link_to director.artist.name, artist_path(director.artist) %>
             <% end %>
-          </p>
-        </div>
-
-          <% unless @movie_show.nil? %>
-            <div style="width: 50%; min-width: 30vw; height: 300px;"
+          <% end %>
+        </p>
+        <p>Synopsis: <%= @movie.synopsis %></p>
+        <p>Genre: <%= @movie.genre %></p>
+        <p>Sortie: <%= @movie.release_date %></p>
+        <p>Durée: <%= @movie.duration %> min</p>
+        <p>Pays: <%= @movie.country %></p>
+        <p>Langue d'origine: <%= @movie.original_language %></p>
+        <p>Note: <%= @movie.imdb_rating %>/10</p>
+        <p>Casting:
+          <% unless @actors.nil? %>
+            <% @actors.each do |actor| %>
+              <%= link_to actor.artist.name, artist_path(actor.artist) %>
+            <% end %>
+          <% end %>
+        </p>
+        <% unless @movie_show.nil? %>
+          <div style="width: 50%; min-width: 30vw; height: 300px;"
             data-controller="map"
             data-map-markers-value="<%= @markers.to_json %>"
             data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-            </div>
+          </div>
+        <% end  %>
       </div>
     </div>
   </div>
-  <div class="row">
-    <% if user_signed_in? %>
-      <div class="col-8 mx-auto">
-        <%= render "interests/form"  %>
-      </div>
-    <% else %>
-      <div class="col-8 mx-auto">
-        <%= link_to new_user_session_path do %>
-          <span class="btn btn-primary">Create Interest</span>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+</div>
+<div class="row">
+  <% if user_signed_in? %>
+    <div class="col-8 mx-auto">
+      <%= render "interests/form"  %>
+    </div>
+  <% else %>
+    <div class="col-8 mx-auto">
+      <%= link_to new_user_session_path do %>
+        <span class="btn btn-primary">Create Interest</span>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
 <%= render "movie_shows/seances" %>
