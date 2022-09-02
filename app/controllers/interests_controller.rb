@@ -20,8 +20,15 @@ class InterestsController < ApplicationController
     if @interest.save
       redirect_to user_interests_path(@interested_user)
     else
-      @directors = @movie.artists
-      @actors = @movie.artists
+      @directors = @movie.castings.where(role: "Réalisateur")
+      @actors = @movie.castings.where(role: "Acteur")
+      @movie_shows = MovieShow.where(movie_id: params[:id])
+      @markers = @movie.cinemas.geocoded.map do |cinema|
+        {
+          lat: cinema.lat,
+          lng: cinema.lng
+        }
+      end
       @comment = Comment.new
 
       render "movies/show", status: :unprocessable_entity
