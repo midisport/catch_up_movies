@@ -35,3 +35,22 @@
 @media all and (max-width: 500px) {
 .vid-info .acronym { display: none; }
 }
+
+.container {
+  padding: 10%;
+
+  .form-control {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .btn {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border-color: #F4F4F4;
+  }
+}
