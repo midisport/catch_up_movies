@@ -12,9 +12,10 @@ class MoviesController < ApplicationController
       @movies = policy_scope(Movie)
     end
   end
-  
+
   def show
     @movie = Movie.find(params[:id])
+    @movie_show = MovieShow.where(movie_id: @movie)
     @directors = @movie.artists
     @actors = @movie.artists
     @comment = Comment.new

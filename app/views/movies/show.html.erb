@@ -2,35 +2,43 @@
   <h1 class="name"><%= @movie.title %></h1>
   <div class="row">
     <div class="col-md-3">
-      <%= image_tag @movie.poster, class: 'w-100 p-2' %>
+      <%= image_tag @movie.poster, class: 'w-100' %>
     </div>
     <div class="col-md-9">
-      <p>Réalisé par:
-        <% unless @directors.nil? %>
-          <% @directors.each do |director| %>
-            <%= link_to director.name, artist_path(director) %>
+      <div class="d-flex">
+        <div>
+          <p>Réalisé par:
+            <% unless @directors.nil? %>
+              <% @directors.each do |director| %>
+                <%= link_to director.name, artist_path(director) %>
+              <% end %>
+            <% end %>
+          </p>
+          <p>Synopsis: <%= @movie.synopsis %></p>
+          <p>Genre: <%= @movie.genre %></p>
+          <p>Sortie: <%= @movie.release_date %></p>
+          <p>Durée: <%= @movie.duration %> min</p>
+          <p>Pays: <%= @movie.country %></p>
+          <p>Langue d'origine: <%= @movie.original_language %></p>
+          <p>Note: <%= @movie.imdb_rating %>/10</p>
+          <p>Casting:
+            <% unless @actors.nil? %>
+              <% @actors.each do |actor| %>
+                <%= link_to actor.name, artist_path(actor) %>
+              <% end %>
+            <% end %>
+          </p>
+        </div>
+
+          <% unless @movie_show.nil? %>
+            <div style="width: 50%; min-width: 30vw; height: 300px;"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
           <% end %>
-        <% end %>
-      </p>
-      <p>Synopsis: <%= @movie.synopsis %></p>
-      <p>Genre: <%= @movie.genre %></p>
-      <p>Sortie: <%= @movie.release_date %></p>
-      <p>Durée: <%= @movie.duration %> min</p>
-      <p>Pays: <%= @movie.country %></p>
-      <p>Langue d'origine: <%= @movie.original_language %></p>
-      <p>Note: <%= @movie.imdb_rating %>/10</p>
-      <p>Casting:
-        <% unless @actors.nil? %>
-          <% @actors.each do |actor| %>
-            <%= link_to actor.name, artist_path(actor) %>
-          <% end %>
-        <% end %>
-          <div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
-      </p>
+
+      </div>
     </div>
   </div>
   <div class="row">
@@ -46,23 +54,22 @@
       </div>
     <% end %>
   </div>
-</div>
-<div class="comment p-2 m-5">
-  <div class="comment-list">
-    <ul class="list-group list-group-flush p-2">
-      <% @movie.comments.each do |comment| %>
-        <li class="list-group-item"><strong><%= comment.user.username %></strong> : <%= comment.content %></li>
-      <% end %>
-    </ul>
-  </div>
-  <div class="comment-form">
-    <% if user_signed_in? %>
-       <%= simple_form_for [@movie, @comment] do |f| %>
-          <%= f.input :content, input_html:{class: "infor"} %>
-          <%= f.submit "Poster", class: "btn btn-warning" %>
+  <div class="comment p-2 m-5">
+    <div class="comment-list">
+      <ul class="list-group list-group-flush p-2">
+        <% @movie.comments.each do |comment| %>
+          <li class="list-group-item"><strong><%= comment.user.username %></strong> : <%= comment.content %></li>
         <% end %>
-    <% else %>
-    <% end %>
+      </ul>
+    </div>
+    <div class="comment-form">
+      <% if user_signed_in? %>
+        <%= simple_form_for [@movie, @comment] do |f| %>
+            <%= f.input :content, input_html:{class: "infor"} %>
+            <%= f.submit "Poster", class: "btn btn-warning" %>
+          <% end %>
+      <% else %>
+      <% end %>
+    </div>
   </div>
-
 </div>
