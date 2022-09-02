@@ -1,40 +1,40 @@
-<div class="container">
-  <h1 class="name"><%= @movie.title %></h1>
+<div class="container m-0">
+  <h1><%= @movie.title %></h1>
   <div class="row">
     <div class="col-md-3">
       <%= image_tag @movie.poster, class: 'w-100' %>
     </div>
-    <div class="col-md-9">
-      <div class="d-flex">
-        <p>Réalisé par:
-          <% unless @directors.nil? %>
-            <% @directors.each do |director| %>
-              <%= link_to director.artist.name, artist_path(director.artist) %>
-            <% end %>
+    <div class="col-md-6">
+      <p>Réalisé par:
+        <% unless @directors.nil? %>
+          <% @directors.each do |director| %>
+            <%= link_to director.artist.name, artist_path(director.artist) %>
           <% end %>
-        </p>
-        <p>Synopsis: <%= @movie.synopsis %></p>
-        <p>Genre: <%= @movie.genre %></p>
-        <p>Sortie: <%= @movie.release_date %></p>
-        <p>Durée: <%= @movie.duration %> min</p>
-        <p>Pays: <%= @movie.country %></p>
-        <p>Langue d'origine: <%= @movie.original_language %></p>
-        <p>Note: <%= @movie.imdb_rating %>/10</p>
-        <p>Casting:
-          <% unless @actors.nil? %>
-            <% @actors.each do |actor| %>
-              <%= link_to actor.artist.name, artist_path(actor.artist) %>
-            <% end %>
+        <% end %>
+      </p>
+      <p>Synopsis: <%= @movie.synopsis %></p>
+      <p>Genre: <%= @movie.genre %></p>
+      <p>Sortie: <%= @movie.release_date %></p>
+      <p>Durée: <%= @movie.duration %> min</p>
+      <p>Pays: <%= @movie.country %></p>
+      <p>Langue d'origine: <%= @movie.original_language %></p>
+      <p>Note: <%= @movie.imdb_rating %>/10</p>
+      <p>Casting:
+        <% unless @actors.nil? %>
+          <% @actors.each do |actor| %>
+            <%= link_to actor.artist.name, artist_path(actor.artist) %>
           <% end %>
-        </p>
-        <% unless @movie_show.nil? %>
-          <div style="width: 50%; min-width: 30vw; height: 300px;"
-            data-controller="map"
-            data-map-markers-value="<%= @markers.to_json %>"
-            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-          </div>
-        <% end  %>
-      </div>
+        <% end %>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <% unless @movie_show.nil? %>
+        <div style="width: 50%; min-width: 30vw; height: 300px;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      <% end  %>
     </div>
   </div>
 </div>
