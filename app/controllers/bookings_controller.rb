@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
     @cinema = Cinema.find(@movie_show.cinema.id)
 
     if @booking.save
-      redirect_to cinema_path(@cinema)
+      redirect_to "/dashboard/#{current_user.id}"
     else
 
       render "cinemas/show", status: :unprocessable_entity
