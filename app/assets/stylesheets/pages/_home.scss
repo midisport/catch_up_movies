@@ -36,8 +36,12 @@
 .vid-info .acronym { display: none; }
 }
 
-.container {
+.container.home {
   padding: 10%;
+
+  .d-flex {
+    padding-top: 15px;
+  }
 
   .form-control {
     border-bottom-left-radius: 5px;
