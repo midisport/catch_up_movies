@@ -26,6 +26,15 @@ user2 = User.create!(username: "Youssef", email: "test1@test.fr", password: '123
 user3 = User.create!(username: "Samuel", email: "test2@test.fr", password: '123456')
 user4 = User.create!(username: "Lazare", email: "test3@test.fr", password: '123456')
 
+# Follows
+puts "creating follows"
+Follow.create!(follower: user1, followed: user2)
+Follow.create!(follower: user2, followed: user3)
+Follow.create!(follower: user3, followed: user4)
+Follow.create!(follower: user3, followed: user2)
+Follow.create!(follower: user4, followed: user1)
+puts "follows created"
+
 # Movies
 puts "creating movies"
 movie1 = Movie.new(
@@ -100,6 +109,24 @@ movie6 = Movie.new(
   imdb_rating: 8.9
 )
 movie6.save!
+puts "movies created"
+
+# Interests
+puts "creating interests"
+Interest.create!(user: user3, movie: movie6)
+Interest.create!(user: user3, movie: movie5)
+Interest.create!(user: user3, movie: movie4)
+Interest.create!(user: user1, movie: movie1)
+Interest.create!(user: user1, movie: movie2)
+Interest.create!(user: user1, movie: movie6)
+Interest.create!(user: user2, movie: movie6)
+Interest.create!(user: user2, movie: movie3)
+Interest.create!(user: user2, movie: movie4)
+Interest.create!(user: user4, movie: movie1)
+Interest.create!(user: user4, movie: movie6)
+Interest.create!(user: user4, movie: movie3)
+
+puts "interests created"
 
 # Cinemas
 puts "creating cinémas"
@@ -245,6 +272,22 @@ movie_show10 = MovieShow.new(
 movie_show10.movie = movie2
 movie_show10.cinema = cinema1
 movie_show10.save!
+
+puts "Movie_shows created"
+
+# Bookings
+puts "Creating bookings"
+
+Booking.create!(user: user3, movie_show: movie_show1)
+Booking.create!(user: user3, movie_show: movie_show2)
+Booking.create!(user: user3, movie_show: movie_show3)
+Booking.create!(user: user3, movie_show: movie_show4)
+Booking.create!(user: user3, movie_show: movie_show5)
+Booking.create!(user: user1, movie_show: movie_show6)
+Booking.create!(user: user1, movie_show: movie_show7)
+Booking.create!(user: user2, movie_show: movie_show8)
+Booking.create!(user: user2, movie_show: movie_show9)
+Booking.create!(user: user4, movie_show: movie_show10)
 
 # Casting
 puts "creating castings"

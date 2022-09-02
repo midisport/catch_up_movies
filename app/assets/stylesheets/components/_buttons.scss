@@ -1,0 +1,41 @@
+/* Tabs */
+
+.tab_btn {
+  color: black;
+  background-color: white;
+  border-radius: $border-radius $border-radius 0 0;
+  font-size: 1.25em;
+}
+
+.tab_btn-active {
+  color:darkred;
+  background-color: black;
+}
+
+.tab_btn:hover {
+  color:darkred;
+  background-color: black;
+}
+
+
+/* follower card */
+.follow_back_btn {
+  color: white;
+  border: solid;
+}
+
+.follow_back_btn:hover {
+  background-color: darkgreen;
+  border: solid darkgreen;
+}
+
+.watchlist_btn {
+  color: white;
+  border: solid;
+}
+
+.watchlist_btn:hover {
+  color: white;
+  background-color: darkred;
+  border: solid darkred;
+}
