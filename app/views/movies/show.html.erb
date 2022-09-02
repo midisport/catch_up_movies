@@ -47,22 +47,25 @@
     <% end %>
   </div>
 </div>
-<div class="comment p-2 m-5">
+<div class="comment p-2">
   <div class="comment-list">
     <ul class="list-group list-group-flush p-2">
       <% @movie.comments.each do |comment| %>
-        <li class="list-group-item"><strong><%= comment.user.username %></strong> : <%= comment.content %></li>
+        <li class="list-group-item">
+          <div class="d-flex">
+            <span><strong><%= comment.user.username %></strong></span>
+            <p class="ms-2"> : <%= comment.content %></p>
+          </div>
+        </li>
       <% end %>
     </ul>
   </div>
   <div class="comment-form">
     <% if user_signed_in? %>
-       <%= simple_form_for [@movie, @comment] do |f| %>
-          <%= f.input :content, input_html:{class: "infor"} %>
-          <%= f.submit "Poster", class: "btn btn-warning" %>
-        <% end %>
-    <% else %>
+      <%= simple_form_for [@movie, @comment] do |f| %>
+        <%= f.input :content, input_html:{class: "infor"} %>
+        <%= f.submit "Poster", class: "btn btn-warning" %>
+      <% end %>
     <% end %>
   </div>
-
 </div>
