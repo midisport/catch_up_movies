@@ -155,7 +155,7 @@ cinema3.save!
 # Artists
 puts "creating artists"
 artist1 = Artist.new(
-  name: "Gaspard Noé",
+  name: "Gaspar Noé",
   photo: "gaspard_noe.jpg"
 )
 artist1.save!
