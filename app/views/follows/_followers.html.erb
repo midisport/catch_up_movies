@@ -1,4 +1,18 @@
 <h2>Vous etes suivi par : </h2>
   <% @followers.each do |follow| %>
+
     <p><%= follow.follower.username %></p>
+    <p>Depuis : <%= follow.created_at %></p>
+
+    <% unless follow.followed?(current_user) %>
+
+      <%= simple_form_for @follow do |f| %>
+        <%= f.error :follower, class: "text-danger" %>
+        <%= f.input :followed_id, as: :hidden , input_html: { value: follow.follower.id } %>
+        <%= button_tag type: 'submit', class: "btn btn-primary", id: "register-button" do %>
+          <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+        <% end %>
+      <% end %>
+      
+    <% end %>
   <% end %>

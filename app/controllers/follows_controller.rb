@@ -17,7 +17,7 @@ class FollowsController < ApplicationController
       # make this a render and use ajax, so errors are actually displayed ? (Need to ask if there's a better way)
       @user = User.find(followed.id)
       @interests = Interest.where(user: @user)
-
+      raise
       render "interests/index", status: :unprocessable_entity
     end
     authorize @follow
