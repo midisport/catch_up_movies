@@ -16,10 +16,12 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
     @movie_show = MovieShow.where(movie_id: @movie)
-    @directors = @movie.artists
-    @actors = @movie.artists
+    @directors = @movie.castings.where(role: "Réalisateur")
+    @actors = @movie.castings.where(role: "Acteur")
     @comment = Comment.new
     @interest = Interest.new
+    @movie_shows = MovieShow.where(movie_id: params[:id])
+    @booking = Booking.new
     authorize @movie
     @markers = @movie.cinemas.geocoded.map do |cinema|
       {

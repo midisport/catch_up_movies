@@ -1,13 +1,12 @@
 <%# <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p> %>
 <div class="row">
-    <div class="col-10 mx-auto">
-    </div>
+  <div class="col-10 mx-auto">
   </div>
 </div>
 <div class="banner d-none d-md-block home_info-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), ">
-  <div class="container">
-    <h1>Un film à rattraper?</h1>
+  <div class="container home">
+    <h1>Un film à rattraper ?</h1>
     <%= form_with url: movies_path, method: :get, class: "d-flex" do %>
   <%= text_field_tag :query,
     params[:query],
@@ -16,19 +15,21 @@
   %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
+
   </div>
 </div>
 <div class="video-background">
-    <div class="video-foreground">
-      <iframe src="https://www.youtube.com/embed/watch?v=665o5OwV_KU?controls=0&showinfo=0&rel=0&autoplay=1&mute=1&loop=1&playlist=665o5OwV_KU" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-    </div>
+  <div class="video-foreground">
+    <iframe src="https://www.youtube.com/embed/watch?v=665o5OwV_KU?controls=0&showinfo=0&rel=0&autoplay=1&mute=1&loop=1&playlist=665o5OwV_KU" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
   </div>
+</div>
 
 <div id="vidtop-content">
 <div class="vid-info">
 	  <p>Un classique à rattraper? Une recommandation que tu ne souhaites pas oublier?</p>
     <p>Ne loupe plus rien en nous rejoignant!</p>
      <p>Sois averti des (re)sorties et rencontre les cinephiles les plus chauds!</p>
+
   </div>
 </div>
 <%= render 'shared/footer' %>
