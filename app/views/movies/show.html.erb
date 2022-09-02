@@ -2,9 +2,11 @@
   <h1 class="name"><%= @movie.title %></h1>
   <div class="row">
     <div class="col-md-3">
-      <%= image_tag @movie.poster, class: 'w-100 p-2' %>
+      <%= image_tag @movie.poster, class: 'w-100' %>
     </div>
     <div class="col-md-9">
+      <div class="d-flex">
+        <div>
       <p>Réalisé par:
         <% unless @directors.nil? %>
           <% @directors.each do |director| %>
@@ -23,14 +25,18 @@
         <% unless @actors.nil? %>
           <% @actors.each do |actor| %>
             <%= link_to actor.artist.name, artist_path(actor.artist) %>
-          <% end %>
-        <% end %>
-          <div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
-      </p>
+              <% end %>
+            <% end %>
+          </p>
+        </div>
+
+          <% unless @movie_show.nil? %>
+            <div style="width: 50%; min-width: 30vw; height: 300px;"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
+      </div>
     </div>
   </div>
   <div class="row">
