@@ -118,5 +118,36 @@
 /* Follows card */
 
 .followers_card {
-  
+  display: flex;
+  justify-content: space-between;
+  background-color: #404040;
+  border-radius: $border-radius;
+  padding: 1em;
+  margin-bottom: 2em;
+
+  .follower_details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .username {
+      font-size: 1.3em;
+    }
+
+    .followed_at {
+      color:lightgrey;
+      font-size: 0.7em;
+      margin-bottom: 0;
+    }
+  }
+
+  .options {
+    display: flex;
+    justify-content: space-between;
+    // align-items: center;
+
+    button {
+      margin: auto 0.5em;
+    }
+  }
 }
