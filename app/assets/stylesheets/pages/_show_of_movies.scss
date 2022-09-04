@@ -1,0 +1,42 @@
+.show-of-movies {
+  margin-left: 16px;
+
+  h1 {
+    margin: 16px 0 16px 0;
+  }
+
+  .row1 {
+    display: flex;
+    width: 100%;
+  }
+
+  .movie-poster {
+    width: 25%;
+  }
+
+  .movie-infos {
+    width: 48%;
+  }
+
+  .movie-map {
+    width: 25%;
+  }
+
+  .comment {
+    background-color: white;
+    border-color: lightgray;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: thin;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    margin: 30px 0 16px 0;
+    padding: 0 8px;
+    width: 1100px;
+
+    .comment-list {
+      .list-group-item {
+        background-color: #F4F4F4;
+      }
+    }
+  }
+}

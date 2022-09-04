@@ -1,25 +1,25 @@
-<div class="container m-0">
+<div class="container show-of-movies">
   <h1><%= @movie.title %></h1>
-  <div class="row">
-    <div class="col-md-3">
+  <div class="row row1">
+    <div class="col-md-3 movie-poster">
       <%= image_tag @movie.poster, class: 'w-100' %>
     </div>
-    <div class="col-md-6">
-      <p>Réalisé par:
+    <div class="col-md-6 movie-infos">
+      <p class="movie-director">Réalisé par :
         <% unless @directors.nil? %>
           <% @directors.each do |director| %>
             <%= link_to director.artist.name, artist_path(director.artist) %>
           <% end %>
         <% end %>
       </p>
-      <p>Synopsis: <%= @movie.synopsis %></p>
-      <p>Genre: <%= @movie.genre %></p>
-      <p>Sortie: <%= @movie.release_date %></p>
-      <p>Durée: <%= @movie.duration %> min</p>
-      <p>Pays: <%= @movie.country %></p>
-      <p>Langue d'origine: <%= @movie.original_language %></p>
-      <p>Note: <%= @movie.imdb_rating %>/10</p>
-      <p>Casting:
+      <p class="movie-year">Sortie : <%= @movie.release_date %></p>
+      <p class="movie-plot">Synopsis : <%= @movie.synopsis %></p>
+      <p class="movie-genre">Genre : <%= @movie.genre %></p>
+      <p class="movie-runtime">Durée : <%= @movie.duration %> min</p>
+      <p class="movie-country">Pays : <%= @movie.country %></p>
+      <p class="movie-langage">Langue d'origine : <%= @movie.original_language %></p>
+      <p class="movie-rate">Note IMDB: <%= @movie.imdb_rating %>/10</p>
+      <p class="movie-actors">Casting :
         <% unless @actors.nil? %>
           <% @actors.each do |actor| %>
             <%= link_to actor.artist.name, artist_path(actor.artist) %>
@@ -27,7 +27,7 @@
         <% end %>
       </p>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 movie-map">
       <% unless @movie_show.nil? %>
         <div style="width: 50%; min-width: 30vw; height: 300px;"
           data-controller="map"
@@ -37,42 +37,66 @@
       <% end  %>
     </div>
   </div>
-</div>
-<div class="row">
-  <% if user_signed_in? %>
-    <div class="col-8 mx-auto">
-      <%= render "interests/form"  %>
-    </div>
-  <% else %>
-    <div class="col-8 mx-auto">
-      <%= link_to new_user_session_path do %>
-        <span class="btn btn-primary">Ajouter à votre watchlist</span>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-<div>
-  <%= render "movie_shows/seances" %>
-</div>
-<div class="comment p-2">
-  <div class="comment-list">
-    <ul class="list-group list-group-flush p-2">
-      <% @movie.comments.includes([:user]).each do |comment| %>
-        <li class="list-group-item">
-          <div class="d-flex">
-            <span><strong><%= comment.user.username %></strong></span>
-            <p class="ms-2"> : <%= comment.content %></p>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-  <div class="comment-form">
+  <div class="row">
     <% if user_signed_in? %>
-      <%= simple_form_for [@movie, @comment] do |f| %>
-        <%= f.input :content, input_html:{class: "infor"} %>
-        <%= f.submit "Poster", class: "btn btn-warning" %>
+      <div class="col-8 mx-auto">
+        <%= render "interests/form"  %>
+      </div>
+    <% else %>
+      <div class="col-8 mx-auto">
+        <%= link_to new_user_session_path do %>
+          <span class="btn btn-primary">Ajouter à votre watchlist</span>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="seance-container">
+    <h4>Où voir ce film au cinéma :</h4>
+  <div class="seances">
+    <% if @movie_shows.empty? %>
+      <div>Aucune séance n'est prévue pour ce film</p>
+    <% else %>
+      <% @movie_shows.each do |movie_show| %>
+        <div class="seance">
+          <div class="cine-name"><strong><%= link_to movie_show.cinema.name, cinema_path(movie_show.cinema) %> :</strong></div>
+          <div class="seance-date"><%= l movie_show.date, format: '%a %d %B' %></div>
+          <div class="seance-time"><%= movie_show.start_at.strftime('%H:%M') %></div>
+          <div class="seance-lang">Langue : <%= movie_show.language %></div>
+          <div class="seance-sub">Sous-titres :
+            <% if movie_show.subtitle == "" %>
+                ❌
+            <% else %>
+              <%= movie_show.subtitle %>
+            <% end %>
+          </div>
+          <div class="seance-booking">
+            <%= render "bookings/form", movie_show: movie_show, booking: @booking %>
+          </div>
+        </div>
       <% end %>
     <% end %>
+  </div>
+  </div>
+  <div class="comment p-2">
+    <div class="comment-list">
+      <ul class="list-group list-group-flush p-2">
+        <% @movie.comments.includes([:user]).each do |comment| %>
+          <li class="list-group-item">
+            <div class="d-flex">
+              <span><strong><%= comment.user.username %></strong></span>
+              <p class="ms-2"> : <%= comment.content %></p>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="comment-form">
+      <% if user_signed_in? %>
+        <%= simple_form_for [@movie, @comment] do |f| %>
+          <%= f.input :content, input_html:{class: "infor"} %>
+          <%= f.submit "Poster", class: "btn btn-warning" %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
