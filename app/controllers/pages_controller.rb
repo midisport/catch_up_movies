@@ -7,8 +7,8 @@ class PagesController < ApplicationController
   def dashboard
     # Variables for follows
     @follows = policy_scope(Follow)
-    @followers = Follow.where(followed: current_user)
-    @followeds = Follow.includes(:followed).where(follower: current_user)
+    @followers = Follow.where(followed: params[:id])
+    @followeds = Follow.includes(:followed).where(follower: params[:id])
     @follow = Follow.new
 
     # Variables for Watchlist
