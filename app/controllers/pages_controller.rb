@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     # Variables for follows
     @follows = policy_scope(Follow)
     @followers = Follow.includes(:followed, :follower).where(followed: params[:id])
-    @followeds = Follow.includes(:followed).where(follower: params[:id])
+    @followeds = Follow.includes(:followed, :follower).where(follower: params[:id])
     @follow = Follow.new
 
     # Variables for Watchlist

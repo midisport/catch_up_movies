@@ -19,8 +19,8 @@ class Follow < ApplicationRecord
   end
 
   def shared_bookings
-    follower_movie_shows = follower.bookings.map(&:movie_show)
-    followed_movie_shows = followed.bookings.map(&:movie_show)
+    follower_movie_shows = follower.bookings.includes(:movie_show).map(&:movie_show)
+    followed_movie_shows = followed.bookings.includes(:movie_show).map(&:movie_show)
     shared = follower_movie_shows.select { |show| followed_movie_shows.include?(show) }
     return shared
   end
