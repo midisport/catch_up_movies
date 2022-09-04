@@ -5,7 +5,7 @@ class InterestsController < ApplicationController
     @interests = policy_scope(Interest)
 
     @user = User.find(params[:user_id])
-    @interests = Interest.where(user: @user)
+    @interests = Interest.includes(:user, :movie).where(user: @user)
     @follow = Follow.new
   end
 
