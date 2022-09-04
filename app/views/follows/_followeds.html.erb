@@ -3,8 +3,15 @@
   <% followeds.each do |follow| %>
     <div class="card_followeds">
       <p class="username"><%= follow.followed.username %></p>
-      <div class="shared_films">
-      </div>
+      
+      <% unless follow.shared_bookings.empty? %>
+        <div class="shared_bookings">
+          <p>va aussi à : </p>
+          <% follow.shared_bookings.each do |movie_show| %>
+            <p><%= movie_show.movie.title %></p>
+          <% end %>
+        </div>
+      <% end %>
 
       <div class="options">
         <%= link_to user_interests_path(follow.followed) do %>
