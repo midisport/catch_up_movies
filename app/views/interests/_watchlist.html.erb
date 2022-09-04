@@ -1,21 +1,48 @@
-<% @interests.each do |interest| %>
-  <div class="card_interest">
-    <div class="d-flex">
-      <%= image_tag interest.movie.poster %>
-
-      <div class="info">
-        <h2><%= interest.movie.title %></h2>
-        <p><i class="fa-brands fa-imdb"></i> <%= interest.movie.imdb_rating %>/10</p>
-        <p class="date-added">Ajouté il y a <%= time_ago_in_words(interest.movie.created_at) %></p>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h2><%= user == current_user ? "Ma Watchlist" : "La Watchlist de #{user.username}" %></h2>
     </div>
+    <div class="col-6">
+      <h2>Seances à Venir</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <% interests.each do |interest| %>
+        <div class="card_interest">
+          <div class="d-flex">
+            <%= image_tag interest.movie.poster %>
 
-    <div class="options">
-      <% if interest.user == current_user %>
-        <%= link_to interest_path(interest), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete #{interest.movie.title} from your Watchlist?"} do %>
-          <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-        <% end %>
+            <div class="info">
+              <h2><%= interest.movie.title %></h2>
+              <p><i class="fa-brands fa-imdb"></i> <%= interest.movie.imdb_rating %>/10</p>
+              <p class="date-added">Ajouté il y a <%= time_ago_in_words(interest.movie.created_at) %></p>
+            </div>
+          </div>
+
+          <div class="options">
+            <% if interest.user == current_user %>
+              <%= link_to interest_path(interest), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete #{interest.movie.title} from your Watchlist?"} do %>
+                <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-6">
+      <% if interest_shows.empty? %>
+        <p>Pas de séances encore :(</p>
+      <% else %>
+        <ul>
+          <% interest_shows.each do |show| %>
+            <li><%= show.cinema.name %>,
+            <%= show.movie.title %>,
+            <%= show.date %> à <%= show.start_at %></li>
+          <% end %>
+        </ul>
       <% end %>
     </div>
   </div>
-<% end %>
+</div>
