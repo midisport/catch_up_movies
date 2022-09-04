@@ -3,9 +3,10 @@ class InterestsController < ApplicationController
 
   def index
     @interests = policy_scope(Interest)
+    params[:user_id].present? ? @user = User.find(params[:user_id]) : @user = User.find(:id)
 
-    @user = User.find(params[:user_id])
     @interests = Interest.where(user: @user)
+    @interest_shows = movie_shows_for_movies_in_watchlist(@interests)
     @follow = Follow.new
   end
 
@@ -40,5 +41,16 @@ class InterestsController < ApplicationController
     @interest.destroy
     redirect_to user_interests_path(current_user), status: :see_other
     authorize @interest
+  end
+
+  private
+
+  def movie_shows_for_movies_in_watchlist(interests)
+    interest_shows = []
+    interest_movies = interests.map(&:movie)
+    MovieShow.all.each do |show|
+      interest_shows << show if interest_movies.include?(show.movie)
+    end
+    return interest_shows
   end
 end
