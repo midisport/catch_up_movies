@@ -13,7 +13,7 @@
     <div class="options">
       <% if interest.user == current_user %>
         <%= link_to interest_path(interest), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete #{interest.movie.title} from your Watchlist?"} do %>
-          <button class="btn btn-danger"><i class="fa-solid fa-eraser"></i></button>
+          <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
         <% end %>
       <% end %>
     </div>
