@@ -16,6 +16,9 @@
 
   .movie-infos {
     width: 48%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
   }
 
   .movie-map {
