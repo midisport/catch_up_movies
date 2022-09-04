@@ -1,5 +1,5 @@
 <h2>Vous allez regarder : </h2>
-<% bookings.includes(movie_show: [:movie, :cinema] ).each do |booking|  %>
+<% bookings.each do |booking|  %>
   <div class="card_booking">
     <%= image_tag booking.movie_show.movie.poster, class: "img-fluid" %>
     <div class="text d-flex justify-content-between w-100">
