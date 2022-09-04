@@ -4,9 +4,9 @@ class InterestsController < ApplicationController
   def index
     @interests = policy_scope(Interest)
     params[:user_id].present? ? @user = User.find(params[:user_id]) : @user = User.find(:id)
-
-    @interests = Interest.where(user: @user)
     @interest_shows = movie_shows_for_movies_in_watchlist(@interests)
+    @user = User.find(params[:user_id])
+    @interests = Interest.includes(:user, :movie).where(user: @user)
     @follow = Follow.new
   end
 

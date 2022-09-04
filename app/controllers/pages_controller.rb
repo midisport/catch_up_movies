@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     # Variables for follows
     @follows = policy_scope(Follow)
     @followers = Follow.where(followed: current_user)
-    @followeds = Follow.where(follower: current_user)
+    @followeds = Follow.includes(:followed).where(follower: current_user)
     @follow = Follow.new
 
     # Variables for Watchlist
@@ -16,15 +16,11 @@ class PagesController < ApplicationController
     @user = User.find(params[:id])
     @interests = Interest.where(user: @user)
     @interest_shows = movie_shows_for_movies_in_watchlist(@interests)
-    # iterate over interests
-    # detect movie from interest
-    # find all the movie_shows of that movie
-    # add them to array
-
+    @interests = Interest.includes(:movie, :user).where(user: @user)
 
     # Variables for Bookings
     @bookings = policy_scope(Booking)
-    @bookings = Booking.where(user: @user)
+    @bookings = Booking.includes(:movie_show).where(user: @user)
   end
 
   private
