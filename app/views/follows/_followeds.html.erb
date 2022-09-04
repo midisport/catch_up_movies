@@ -1,9 +1,19 @@
 <h2>Vous suivez :</h2>
+<div class="followed_cards_container">
   <% followeds.each do |follow| %>
-    <div class="d-flex justify-content-between">
-      <p><%= follow.followed.username %></p>
-      <%= link_to follow_path(follow), data: {turbo_method: :delete, turbo_confirm: "Vous voulez vraiment arreter de suivre #{follow.followed.username} ?"} do %>
-        <button><i class="fa-solid fa-user-xmark"></i></button>
-      <% end %>
+    <div class="card_followeds">
+      <p class="username"><%= follow.followed.username %></p>
+      <div class="shared_films">
+      </div>
+
+      <div class="options">
+        <%= link_to user_interests_path(follow.followed) do %>
+          <button class="btn watchlist_btn"><i class="fa-solid fa-eye"></i></button>
+        <% end %>
+        <%= link_to follow_path(follow), data: {turbo_method: :delete, turbo_confirm: "Vous voulez vraiment arreter de suivre #{follow.followed.username} ?"} do %>
+          <button class="btn unfollow_btn"><i class="fa-solid fa-user-xmark"></i></button>
+        <% end %>
+      </div>
     </div>
   <% end %>
+</div>
