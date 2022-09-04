@@ -20,7 +20,7 @@ class PagesController < ApplicationController
 
     # Variables for Bookings
     @bookings = policy_scope(Booking)
-    @bookings = Booking.includes(:movie_show, :user).where(user: @user)
+    @bookings = Booking.includes(:user, movie_show: [:movie, :cinema]).where(user: @user)
   end
 
   private
