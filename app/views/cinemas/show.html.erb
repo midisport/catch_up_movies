@@ -6,7 +6,7 @@
   <h3 class="sous-titres-seances">Les prochaines séances :</h5>
   <div class="seances col">
     <div class="row">
-      <% @cinema.movie_shows.each do |movie_show| %>
+      <% @cinema.movie_shows.includes(:movie).each do |movie_show| %>
         <div class="col">
           <div class="row card seance-card">
             <div class="d-flex">

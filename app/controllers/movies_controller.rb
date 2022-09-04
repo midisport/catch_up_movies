@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
     @actors = @movie.castings.where(role: "Acteur")
     @comment = Comment.new
     @interest = Interest.new
-    @movie_shows = MovieShow.where(movie_id: params[:id])
+    @movie_shows = MovieShow.includes(:cinema).where(movie_id: params[:id])
     @booking = Booking.new
     authorize @movie
     @markers = @movie.cinemas.geocoded.map do |cinema|
