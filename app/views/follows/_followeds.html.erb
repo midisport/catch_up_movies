@@ -1,5 +1,5 @@
 <h2>Vous suivez :</h2>
-  <% @followeds.each do |follow| %>
+  <% followeds.each do |follow| %>
     <div class="d-flex justify-content-between">
       <p><%= follow.followed.username %></p>
       <%= link_to follow_path(follow), data: {turbo_method: :delete, turbo_confirm: "Vous voulez vraiment arreter de suivre #{follow.followed.username} ?"} do %>
