@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-
+  before_action :set_booking, only: :destroy
   def index
     @bookings = policy_scope(Booking)
     @user = User.find(params[:user_id])
@@ -21,9 +21,19 @@ class BookingsController < ApplicationController
     authorize @booking
   end
 
+  def destroy
+    @booking.destroy
+    redirect_to "/dashboard/#{current_user.id}", status: :see_other
+    authorize @booking
+  end
+
   private
 
   def booking_params
     params.permit(:movie_show_id)
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 end
