@@ -12,13 +12,15 @@ class BookingsController < ApplicationController
     @movie_show = MovieShow.find(params[:movie_show_id])
     @cinema = Cinema.find(@movie_show.cinema.id)
 
+    authorize @cinema
+    authorize @movie_show
+    authorize @booking
+
     if @booking.save
       redirect_to "/dashboard/#{current_user.id}"
     else
-
       render "cinemas/show", status: :unprocessable_entity
     end
-    authorize @booking
   end
 
   private
