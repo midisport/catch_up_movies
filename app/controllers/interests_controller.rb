@@ -2,11 +2,11 @@ class InterestsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
+    @user = User.find(params[:user_id])
     @interests = policy_scope(Interest)
+    @interests = Interest.includes(:user, :movie).where(user: @user)
     params[:user_id].present? ? @user = User.find(params[:user_id]) : @user = User.find(:id)
     @interest_shows = movie_shows_for_movies_in_watchlist(@interests)
-    @user = User.find(params[:user_id])
-    @interests = Interest.includes(:user, :movie).where(user: @user)
     @follow = Follow.new
   end
 
@@ -48,7 +48,7 @@ class InterestsController < ApplicationController
   def movie_shows_for_movies_in_watchlist(interests)
     interest_shows = []
     interest_movies = interests.map(&:movie)
-    MovieShow.all.each do |show|
+    MovieShow.includes(:cinema, :movie).all.each do |show|
       interest_shows << show if interest_movies.include?(show.movie)
     end
     return interest_shows
