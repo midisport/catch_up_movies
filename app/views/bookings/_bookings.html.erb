@@ -11,7 +11,7 @@
     </div>
     <div class="options">
       <h6><%= booking.movie_show.cinema.name %></h6>
-      <p><i class="fa-solid fa-calendar-days"></i> <%= l(booking.movie_show.date, format: '%a %e %B') %> à <%= l(booking.movie_show.start_at, :format => '%l:%M %p') %></p>
+      <p><i class="fa-solid fa-calendar-days"></i> <%= l(booking.movie_show.date, format: '%a %e %B') %> à <%= l(booking.movie_show.start_at, :format => '%H:%M') %></p>
       <p><i class="fa-solid fa-map-location-dot"></i> <%= booking.movie_show.cinema.address %></p>
     </div>
     </div>
