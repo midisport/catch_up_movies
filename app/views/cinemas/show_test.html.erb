@@ -1,0 +1,47 @@
+<div class="seances col">
+    <div class="row">
+      <% @cinema.movie_shows.includes(:movie).each do |movie_show| %>
+        <div class="col">
+          <div class="row card seance-card">
+            <div class="d-flex">
+              <div class="col movie-poster">
+                <%= image_tag movie_show.movie.poster, class: "card-img-top" %>
+              </div>
+              <div class="col d-flex flex-column justify-content-around">
+                <div class="card-body">
+                  <h5 class="card-title text-center"><%= movie_show.movie.title %></h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Le : <%= l movie_show.date, format: '%a %d %B' %></li>
+                  <li class="list-group-item">À : <%= movie_show.start_at.strftime('%H:%M') %></li>
+                  <li class="list-group-item">Langue : <%= movie_show.language %></li>
+                  <li class="list-group-item">Sous-titres :
+                  <% if movie_show.subtitle == "" %>
+                     ❌
+                  <% else %>
+                    <%= movie_show.subtitle %>
+                  <% end %></li>
+                </ul>
+                <% if current_user.movie_shows.include?(movie_show) %>
+                  <div class="rmv-booking">
+                    <%= link_to booking_path(Booking.find_by(user:current_user, movie_show:movie_show), source: "cine"), data: {turbo_method: :delete} do %>
+                      <button class="btn-remove-booking"><i class="fa-solid fa-bookmark fa-xl"></i></button>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <div class="cine-booking">
+                    <%= simple_form_for [movie_show, @booking] do |f| %>
+                      <%= hidden_field_tag :source, "cine" %>
+                      <%= button_tag(class: 'btn-booking') do %>
+                        <i class="fa-regular fa-bookmark fa-xl btn-book"></i>
+                      <% end %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>

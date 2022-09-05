@@ -5,28 +5,47 @@
 .sous-titres-seances {
   margin-left: 10px;
 }
-
-.seance-card {
+.cine-seances {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
   margin: 15px 0;
-  height: 310px;
-  width: 530px;
-  // overflow: hidden;
+  height: 200px;
+  width: 60vw;
+  background-color: $grey-light;
 
-  // .movie-poster {
-  //   height: 310px;
-  // }
-  .d-flex {
-    padding: 0;
+  .movie-poster {
+    grid-area: 1 / 1 / 4 / 2;
+  }
+  .seance-title {
+    grid-area: 1 / 2 / 2 / 5;
+    align-self: center;
+    justify-self: center;
+  }
+  .seance-booking {
+    grid-area: 1 / 5 / 2 / 6;
+  }
+  .seance-date {
+    grid-area: 2 / 2 / 3 / 4;
+  }
+  .seance-time {
+    grid-area: 2 / 4 / 3 / 6;
+  }
+  .seance-lang {
+    grid-area: 3 / 2 / 4 / 4;
+  }
+  .seance-sub {
+    grid-area: 3 / 4 / 4 / 6;
   }
 
-  .card-body {
-    flex: unset;
-  }
+
 
   img {
     object-fit: contain;
     object-position: left;
-    height: 309px;
+    height: 200px;
   }
 
   .card-title {
@@ -40,11 +59,29 @@
     border-bottom-style: solid;
     border-bottom-width: thin;
     border-bottom-color: lightgray;
-
+  }
+  .list-group-item {
+    background-color: $grey-light;
+    color: $white;
   }
 
-  .btn {
-    margin: 0 10px;
-    margin-bottom: 2px;
+  .btn-booking {
+    border-style: none;
+    box-shadow: none;
+    background-color: #1fe0;
+    color: $violet;
+  }
+  .btn-booking:hover {
+    color: $violet-muted;
+  }
+
+  .btn-remove-booking {
+    border-style: none;
+    box-shadow: none;
+    background-color: #1fe0;
+    color: $violet;
+  }
+  .btn-remove-booking:hover {
+    color: $violet-muted;
   }
 }
