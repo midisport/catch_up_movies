@@ -3,7 +3,8 @@
   color: $text-main;
   height: 100vh;
   padding: 1em;
-  
+  position: sticky;
+  top: 0;
 
   .sidebar_title {
     display: flex;
