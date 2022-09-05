@@ -1,12 +1,13 @@
 class InterestsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
-
+  before_action :set_interest, only: [:destroy, :update]
   def index
     @user = User.find(params[:user_id])
     @interests = policy_scope(Interest)
-    @interests = Interest.includes(:user, :movie).where(user: @user)
+    @unseen_interests = Interest.includes(:user, :movie).where(user: @user, seen: false)
+    @seen_interests = Interest.includes(:user, :movie).where(user: @user, seen: true)
     params[:user_id].present? ? @user = User.find(params[:user_id]) : @user = User.find(:id)
-    @interest_shows = movie_shows_for_movies_in_watchlist(@interests)
+   
     @follow = Follow.new
   end
 
@@ -38,14 +39,34 @@ class InterestsController < ApplicationController
     end
   end
 
+  def update
+    @interest.update(interest_params)
+    @interests = policy_scope(Interest)
+    @user = User.find(params[:id])
+    @interests = Interest.includes(:user, :movie).where(user: @user)
+    @unseen_interests = Interest.includes(:user, :movie).where(user: @user, seen: false)
+    @seen_interests = Interest.includes(:user, :movie).where(user: @user, seen: true)
+    @interests = Interest.includes(:movie, :user).where(user: @user)
+
+    render "interests/watchlist"
+    authorize @interest
+  end
+
   def destroy
-    @interest = Interest.find(params[:id])
     @interest.destroy
     redirect_to user_interests_path(current_user), status: :see_other
     authorize @interest
   end
 
   private
+
+  def set_interest
+    @interest = Interest.find(params[:id])
+  end
+
+  def interest_params
+    params.require(:interest).permit(:seen)
+  end
 
   def movie_shows_for_movies_in_watchlist(interests)
     interest_shows = []
