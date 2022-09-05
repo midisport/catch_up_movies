@@ -6,7 +6,9 @@
 
 <% bookings.each do |booking|  %>
   <div class="card_booking">
-    <%= image_tag booking.movie_show.movie.poster, class: "img-fluid" %>
+    <%= link_to movie_path(booking.movie_show.movie) do %>
+      <%= image_tag booking.movie_show.movie.poster %>
+    <% end %>
     <div class="text d-flex justify-content-between w-100">
     <div class="info">
       <h4><%= booking.movie_show.movie.title %></h4>
