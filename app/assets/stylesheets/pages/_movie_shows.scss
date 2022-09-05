@@ -7,40 +7,59 @@
 }
 .cine-seances {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-row-gap: 5px;
   margin: 15px 0;
   height: 200px;
-  width: 60vw;
+  width: 50vw;
   background-color: $grey-light;
+  border-radius: 5px;
 
   .movie-poster {
-    grid-area: 1 / 1 / 4 / 2;
+    grid-area: 1 / 1 / 6 / 2;
   }
   .seance-title {
-    grid-area: 1 / 2 / 2 / 5;
+    grid-area: 1 / 2 / 2 / 4;
     align-self: center;
-    justify-self: center;
+    justify-self: start;
+    margin: 3px 0 0 0;
   }
   .seance-booking {
-    grid-area: 1 / 5 / 2 / 6;
+    grid-area: 1 / 4 / 2 / 5;
+    align-self: center;
+    justify-self: end;
+    margin-right: 8px;
+    margin-top: 3px;
+  }
+  .seance-plot {
+    grid-area: 2 / 2 / 4 / 5;
+    align-self: center;
+    justify-self: start;
   }
   .seance-date {
-    grid-area: 2 / 2 / 3 / 4;
+    grid-area: 4 / 2 / 5 / 3;
+    align-self: center;
+    justify-self: start;
   }
   .seance-time {
-    grid-area: 2 / 4 / 3 / 6;
+    grid-area: 4 / 4 / 5 / 5;
+    align-self: center;
+    justify-self: end;
+    margin-right: 8px;
   }
   .seance-lang {
-    grid-area: 3 / 2 / 4 / 4;
+    grid-area: 5 / 2 / 6 / 3;
+    align-self: center;
+    justify-self: start;
   }
   .seance-sub {
-    grid-area: 3 / 4 / 4 / 6;
+    grid-area: 5 / 4 / 6 / 5;
+    align-self: center;
+    justify-self: end;
+    margin-right: 8px;
   }
-
-
 
   img {
     object-fit: contain;
