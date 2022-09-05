@@ -3,6 +3,19 @@
   <div class="row row1">
     <div class="col-md-3 movie-poster">
       <%= image_tag @movie.poster, class: 'w-100' %>
+      <div class="row add-watchlist">
+        <% if user_signed_in? %>
+          <div class="col-8 mx-auto pl-0">
+            <%= render "interests/form"  %>
+          </div>
+        <% else %>
+          <div class="col-8 mx-auto pl-0">
+            <%= link_to new_user_session_path do %>
+              <span class="btn btn-primary">Ajouter à votre watchlist</span>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
     <div class="col-md-6 movie-infos">
       <p class="movie-director">Réalisé par :
@@ -37,19 +50,7 @@
       <% end  %>
     </div>
   </div>
-  <div class="row">
-    <% if user_signed_in? %>
-      <div class="col-8 mx-auto">
-        <%= render "interests/form"  %>
-      </div>
-    <% else %>
-      <div class="col-8 mx-auto">
-        <%= link_to new_user_session_path do %>
-          <span class="btn btn-primary">Ajouter à votre watchlist</span>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+
   <div class="seance-container">
     <h4>Où voir ce film au cinéma :</h4>
   <div class="seances">
