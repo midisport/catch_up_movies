@@ -12,13 +12,13 @@
           <% end %>
         <% end %>
       </p>
-      <p class="movie-year">Sortie : <%= @movie.release_date %></p>
       <p class="movie-plot">Synopsis : <%= @movie.synopsis %></p>
-      <p class="movie-genre">Genre : <%= @movie.genre %></p>
       <p class="movie-runtime">Durée : <%= @movie.duration %> min</p>
-      <p class="movie-country">Pays : <%= @movie.country %></p>
+      <p class="movie-year">Sortie : <%= @movie.release_date %></p>
       <p class="movie-langage">Langue d'origine : <%= @movie.original_language %></p>
-      <p class="movie-rate">Note IMDB: <%= @movie.imdb_rating %>/10</p>
+      <p class="movie-country">Pays : <%= @movie.country %></p>
+      <p class="movie-genre">Genre : <%= @movie.genre %></p>
+      <p class="movie-rate">Note IMDB : <%= @movie.imdb_rating %>/10</p>
       <p class="movie-actors">Casting :
         <% unless @actors.nil? %>
           <% @actors.each do |actor| %>
