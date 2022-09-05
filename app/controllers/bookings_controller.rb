@@ -15,16 +15,24 @@ class BookingsController < ApplicationController
     authorize @booking
 
     if @booking.save
-      redirect_to "/dashboard/#{current_user.id}"
+      if params[:source] == "movie"
+        redirect_to movie_path(@booking.movie_show.movie), status: :see_other
+      else
+        redirect_to "/dashboard/#{current_user.id}"
+      end
     else
       render "cinemas/show", status: :unprocessable_entity
     end
   end
 
   def destroy
-    @booking.destroy
-    redirect_to "/dashboard/#{current_user.id}", status: :see_other
     authorize @booking
+    @booking.destroy
+    if params[:source] == "movie"
+      redirect_to movie_path(@booking.movie_show.movie), status: :see_other
+    else
+      redirect_to "/dashboard/#{current_user.id}", status: :see_other
+    end
   end
 
   private

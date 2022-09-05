@@ -1,13 +1,14 @@
 class InterestsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
-  before_action :set_interest, only: [:destroy, :update]
+  before_action :set_interest, only: %I[destroy update]
+
   def index
     @user = User.find(params[:user_id])
     @interests = policy_scope(Interest)
     @unseen_interests = Interest.includes(:user, :movie).where(user: @user, seen: false)
     @seen_interests = Interest.includes(:user, :movie).where(user: @user, seen: true)
     params[:user_id].present? ? @user = User.find(params[:user_id]) : @user = User.find(:id)
-   
+
     @follow = Follow.new
   end
 
@@ -21,7 +22,11 @@ class InterestsController < ApplicationController
     authorize @interest
 
     if @interest.save
-      redirect_to user_interests_path(@interested_user)
+      if params[:source] == "movie"
+        redirect_to movie_path(@interest.movie), status: :see_other
+      else
+        redirect_to user_interests_path(@interested_user)
+      end
     else
       @directors = @movie.castings.where(role: "Réalisateur")
       @actors = @movie.castings.where(role: "Acteur")
@@ -53,9 +58,13 @@ class InterestsController < ApplicationController
   end
 
   def destroy
-    @interest.destroy
-    redirect_to user_interests_path(current_user), status: :see_other
     authorize @interest
+    @interest.destroy
+    if params[:source] == "movie"
+      redirect_to movie_path(@interest.movie), status: :see_other
+    else
+      redirect_to user_interests_path(current_user), status: :see_other
+    end
   end
 
   private

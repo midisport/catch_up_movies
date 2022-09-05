@@ -24,7 +24,7 @@
 .movies_card {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 16px;
+  grid-gap: 1em;
 }
 
 .card-text.text-ellipsis--3{
