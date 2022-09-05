@@ -14,8 +14,11 @@ class InterestsController < ApplicationController
     @interested_user = current_user
 
     @interest = Interest.new(movie: @movie, user: @interested_user) # refactor this to use strong params
+    @movie_show = MovieShow.where(movie_id: @movie)
 
     authorize @interest
+
+    end
 
     if @interest.save
       redirect_to user_interests_path(@interested_user)
@@ -29,6 +32,7 @@ class InterestsController < ApplicationController
           lng: cinema.lng
         }
       end
+
       @comment = Comment.new
 
       render "movies/show", status: :unprocessable_entity
@@ -41,4 +45,3 @@ class InterestsController < ApplicationController
     redirect_to user_interests_path(current_user), status: :see_other
     authorize @interest
   end
-end
