@@ -1,4 +1,7 @@
 footer {
   background-color: #000000;
-  max-height: 10vh;
+}
+
+.custom_container {
+  min-height: calc(100vh - 32px);
 }

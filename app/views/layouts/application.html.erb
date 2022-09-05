@@ -19,12 +19,14 @@
   <body>
     <div class="row">
       <% unless current_page?(root_path) %>
-        <div class="col-2">
+        <div class="col-2 p-0">
             <%= render "shared/sidebar" %>
         </div>
       <% end %>
-      <div class="col-10 mx-auto">
-        <%= yield %>
+      <div class="col-10 mx-auto p-0">
+        <div class="custom_container">
+          <%= yield %>
+        </div>
         <%= render "shared/flashes" %>
         <%= render 'shared/footer' %>
       </div>
