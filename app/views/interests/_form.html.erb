@@ -1,6 +1,6 @@
 <%= simple_form_for [@movie, @interest] do |f| %>
-  <%= f.error :movie, class: "text-danger" %>
-  <%= button_tag do %>
-    <i class="fa-regular fa-star btn-watchlist"></i>
+  <%#= f.error :movie, class: "text-danger" %>
+  <%= button_tag(class: 'btn-interest') do %>
+    <i class="fa-regular fa-star btn-watchlist fa-xl"></i>
   <% end %>
 <% end %>

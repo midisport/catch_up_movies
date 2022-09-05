@@ -6,6 +6,7 @@
     margin: 16px 0 16px 0;
   }
 
+  // Movie infos (poster / infos / map)
   .row1 {
     display: flex;
     width: 90vw;
@@ -18,12 +19,26 @@
 
   .add-watchlist {
     position: absolute;
-    top: 10px;
+    top: 13px;
     right: 29px;
   }
-  .btn-watchlist {
+  .btn-interest {
     border-style: none;
     box-shadow: none;
+    background-color: #1fe0;
+    color: $violet;
+  }
+  .btn-remove-watchlist {
+    border-style: none;
+    box-shadow: none;
+    background-color: #1fe0;
+    color: $violet;
+  }
+  .btn-watchlist:hover {
+    color: $violet-muted;
+  }
+  .btn-remove-watchlist:hover {
+    color: $violet-muted;
   }
 
   .movie-infos {
@@ -87,13 +102,41 @@
     align-self: center;
   }
 
+  // Movie_shows (seances)
+  h4 {
+    color: $white;
+  }
+  .cine-name {
+    color: $white;
+  }
+  .btn-booking {
+    border-style: none;
+    box-shadow: none;
+    background-color: #1fe0;
+    color: $violet;
+  }
+  .btn-booking:hover {
+    color: $violet-muted;
+  }
+
+  .btn-remove-booking {
+    border-style: none;
+    box-shadow: none;
+    background-color: #1fe0;
+    color: $violet;
+  }
+  .btn-remove-booking:hover {
+    color: $violet-muted;
+  }
+
+    // Comments
   .comment {
-    background-color: white;
-    border-color: lightgray;
+    background-color: $white-muted;
+    border-color: $white-muted;
     border-radius: 5px;
     border-style: solid;
     border-width: thin;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    // box-shadow: rgba(251, 251, 251, 0.15) 1.95px 1.95px 2.6px;
     margin: 30px 0 16px 0;
     padding: 0 8px;
     width: 1100px;
@@ -105,7 +148,7 @@
       }
 
       .list-group-item {
-        background-color: #F4F4F4;
+        background-color: $white-muted;
       }
     }
   }

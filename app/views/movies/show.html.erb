@@ -5,13 +5,26 @@
       <%= image_tag @movie.poster, class: 'w-100' %>
       <div class="row add-watchlist">
         <% if user_signed_in? %>
-          <div class="col-8 mx-auto pl-0">
-            <%= render "interests/form"  %>
-          </div>
+          <% if current_user.movies.include?(@movie) %>
+            <div class="col-8 mx-auto pl-0">
+              <%= link_to interest_path(Interest.find_by(user:current_user, movie:@movie), source: "movie"), data: {turbo_method: :delete}, class: 'btn-rmv' do %>
+                <button class="btn-remove-watchlist"><i class="fa-solid fa-star fa-xl"></i></button>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="col-8 mx-auto pl-0">
+              <%= simple_form_for [@movie, @interest] do |f| %>
+                <%= hidden_field_tag :source, "movie" %>
+                <%= button_tag(class: 'btn-interest') do %>
+                  <i class="fa-regular fa-star btn-watchlist fa-xl"></i>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
         <% else %>
           <div class="col-8 mx-auto pl-0">
             <%= link_to new_user_session_path do %>
-              <span class="btn btn-primary">Ajouter à votre watchlist</span>
+              <i class="fa-regular fa-star btn-watchlist fa-xl"></i>
             <% end %>
           </div>
         <% end %>
@@ -54,30 +67,43 @@
 
   <div class="seance-container">
     <h4>Où voir ce film au cinéma :</h4>
-  <div class="seances">
-    <% if @movie_shows.empty? %>
-      <div>Aucune séance n'est prévue pour ce film</p>
-    <% else %>
-      <% @movie_shows.each do |movie_show| %>
-        <div class="seance">
-          <div class="cine-name"><strong><%= link_to movie_show.cinema.name, cinema_path(movie_show.cinema) %> :</strong></div>
-          <div class="seance-date"><%= l movie_show.date, format: '%a %d %B' %></div>
-          <div class="seance-time"><%= movie_show.start_at.strftime('%H:%M') %></div>
-          <div class="seance-lang">Langue : <%= movie_show.language %></div>
-          <div class="seance-sub">Sous-titres :
-            <% if movie_show.subtitle == "" %>
-                ❌
+    <div class="seances">
+      <% if @movie_shows.empty? %>
+        <div>Aucune séance n'est prévue pour ce film</p>
+      <% else %>
+        <% @movie_shows.each do |movie_show| %>
+          <div class="seance">
+            <div class="cine-name"><strong><%= link_to movie_show.cinema.name, cinema_path(movie_show.cinema) %> :</strong></div>
+            <div class="seance-date"><%= l movie_show.date, format: '%a %d %B' %></div>
+            <div class="seance-time"><%= movie_show.start_at.strftime('%H:%M') %></div>
+            <div class="seance-lang">Langue : <%= movie_show.language %></div>
+            <div class="seance-sub">Sous-titres :
+              <% if movie_show.subtitle == "" %>
+                  ❌
+              <% else %>
+                <%= movie_show.subtitle %>
+              <% end %>
+            </div>
+            <% if current_user.movie_shows.include?(movie_show) %>
+              <div class="rmv-booking">
+                <%= link_to booking_path(Booking.find_by(user:current_user, movie_show:movie_show), source: "movie"), data: {turbo_method: :delete} do %>
+                  <button class="btn-remove-booking"><i class="fa-solid fa-bookmark fa-xl"></i></button>
+                <% end %>
+              </div>
             <% else %>
-              <%= movie_show.subtitle %>
+              <div class="seance-booking">
+                <%= simple_form_for [movie_show, @booking] do |f| %>
+                  <%= hidden_field_tag :source, "movie" %>
+                  <%= button_tag(class: 'btn-booking') do %>
+                    <i class="fa-regular fa-bookmark fa-xl btn-book"></i>
+                  <% end %>
+                <% end %>
+              </div>
             <% end %>
           </div>
-          <div class="seance-booking">
-            <%= render "bookings/form", movie_show: movie_show, booking: @booking %>
-          </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
   </div>
   <div class="comment p-2" data-controller="insert-in-list">
     <div class="comment-list">

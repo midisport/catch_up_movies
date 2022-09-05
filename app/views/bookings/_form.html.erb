@@ -1,4 +1,6 @@
 <%= simple_form_for [movie_show, booking] do |f| %>
-  <%= f.error :movie, class: "text-danger" %>
-  <%= f.button :submit, 'Sauvegarder la séance', class: "btn btn-primary" %>
+  <%#= f.error :movie, class: "text-danger" %>
+  <%= button_tag(class: 'btn-booking') do %>
+    <i class="fa-regular fa-bookmark fa-xl btn-book"></i>
+  <% end %>
 <% end %>
