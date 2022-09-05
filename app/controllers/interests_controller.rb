@@ -20,7 +20,6 @@ class InterestsController < ApplicationController
 
     authorize @interest
 
-
     if @interest.save
       redirect_to user_interests_path(@interested_user)
     else

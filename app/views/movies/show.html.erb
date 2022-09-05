@@ -40,8 +40,9 @@
         <% end %>
       </p>
     </div>
-    <div class="col-md-3 movie-map">
-      <% unless @movie_show.nil? %>
+
+    <div class="col-md-3">
+      <% unless @movie_show.empty? %>
         <div style="width: 50%; min-width: 30vw; height: 300px;"
           data-controller="map"
           data-map-markers-value="<%= @markers.to_json %>"
