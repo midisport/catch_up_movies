@@ -30,13 +30,15 @@
 
             <div class="options">
               <% if interest.user == current_user %>
-
-                 <%= simple_form_for interest do |f| %>
+                <%= simple_form_for interest do |f| %>
                   <%= f.input :seen, as: :hidden, input_html: { value: true } %>
+                  <div class="btn-div">
+                  <span class="btn-label">Vous avez vu ce film ?</span>
                   <%= button_tag type: 'submit', class: "btn btn-primary", id: "register-button" do %>
-                    <i class="fa-solid fa-check" aria-hidden="true"></i>
-                  <% end %>
+                  <i class="fa-solid fa-check" aria-hidden="true"></i>
+                  </div>
                 <% end %>
+              <% end %>
 
                 <%= link_to interest_path(interest), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete #{interest.movie.title} from your Watchlist?"} do %>
                   <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
@@ -73,6 +75,7 @@
               <% if interest.user == current_user %>
                 <%= simple_form_for interest do |f| %>
                   <%= f.input :seen, as: :hidden, input_html: { value: false } %>
+                  <div class="btn"></div>
                   <%= button_tag type: 'submit', class: "btn btn-primary", id: "register-button" do %>
                     <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
                   <% end %>
