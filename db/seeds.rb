@@ -21,10 +21,10 @@ Casting.destroy_all
 
 # Users
 puts "creating users"
-user1 = User.create!(username: "Nabil", email: "test@test.fr", password: '123456')
-user2 = User.create!(username: "Youssef", email: "test1@test.fr", password: '123456')
-user3 = User.create!(username: "Samuel", email: "test2@test.fr", password: '123456')
-user4 = User.create!(username: "Lazare", email: "test3@test.fr", password: '123456')
+user1 = User.create!(username: "Nabil", email: "test@test.fr", password: '123456', avatar: Faker::Avatar.image)
+user2 = User.create!(username: "Youssef", email: "test1@test.fr", password: '123456', avatar: Faker::Avatar.image)
+user3 = User.create!(username: "Samuel", email: "test2@test.fr", password: '123456', avatar: Faker::Avatar.image)
+user4 = User.create!(username: "Lazare", email: "test3@test.fr", password: '123456', avatar: Faker::Avatar.image)
 
 # Follows
 puts "creating follows"
