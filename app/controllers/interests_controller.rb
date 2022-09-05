@@ -19,7 +19,6 @@ class InterestsController < ApplicationController
 
     authorize @interest
 
-    end
 
     if @interest.save
       redirect_to user_interests_path(@interested_user)
@@ -57,3 +56,4 @@ class InterestsController < ApplicationController
     end
     return interest_shows
   end
+end
