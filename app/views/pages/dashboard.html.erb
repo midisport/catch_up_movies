@@ -15,7 +15,7 @@
 
       <div data-tabs-target="watchlist" class="watchlist">
 
-        <%= render "interests/watchlist", user: @user, interests: @interests, interest_shows: @interest_shows %>
+        <%= render "interests/watchlist", user: @user, unseen_interests: @unseen_interests, seen_interests: @seen_interests %>
       </div>
 
       <div  data-tabs-target="follows" class="follows d-none">
@@ -27,7 +27,7 @@
       </div>
 
     </div>
-    
+
 
   </div>
 </div>

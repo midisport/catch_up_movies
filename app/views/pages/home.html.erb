@@ -1,21 +1,17 @@
-<%# <h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p> %>
-<div class="row">
-  <div class="col-10 mx-auto">
-  </div>
-</div>
+
 <div class="banner d-none d-md-block home_info-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), ">
   <div class="container home">
     <h1>Un film à rattraper ?</h1>
     <%= form_with url: movies_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "eg. La soupe aux choux"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
-
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "La soupe aux choux..."
+      %>
+      <%= button_tag(type: "submit", class: "btn") do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
+    <% end %>
   </div>
 </div>
 <div class="video-background">
@@ -25,11 +21,7 @@
 </div>
 
 <div id="vidtop-content">
-<div class="vid-info">
-	  <p>Un classique à rattraper? Une recommandation que tu ne souhaites pas oublier?</p>
-    <p>Ne loupe plus rien en nous rejoignant!</p>
-     <p>Sois averti des (re)sorties et rencontre les cinephiles les plus chauds!</p>
-
+  <div class="vid-info">
+	  <p>Un classique à rattraper? Une recommandation que tu ne souhaites pas oublier?    Ne loupe plus rien en nous rejoignant!    Sois averti des (re)sorties et rencontre les cinephiles les plus chauds!</p>
   </div>
 </div>
-<%= render 'shared/footer' %>

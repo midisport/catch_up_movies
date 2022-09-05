@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
   def index
     @bookings = policy_scope(Booking)
     @user = User.find(params[:user_id])
-    @bookings = Booking.where(user: @user)
+    @bookings = Booking.includes(:movie_shows).where(user: @user)
   end
 
   def create
@@ -11,7 +11,6 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @movie_show = MovieShow.find(params[:movie_show_id])
     @cinema = Cinema.find(@movie_show.cinema.id)
-
 
     authorize @booking
 
