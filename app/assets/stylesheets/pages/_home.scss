@@ -36,25 +36,36 @@
 .vid-info .acronym { display: none; }
 }
 
-.container.home {
-  padding: 10%;
+.banner {
+  padding-top: 195px;
+  padding-bottom: 0;
+}
 
-  .d-flex {
-    padding-top: 15px;
+.container.home {
+  padding: 8%;
+
+  h1 {
+    padding-bottom: 15px;
   }
 
   .form-control {
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
+    background-color: #0E0000;
+    border-right: #0E0000;
+    color: #6c6b6d;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
   }
 
   .btn {
+    background-color: #0E0000;
+    border-left: #0E0000;
+    color: #6c6b6d;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
-    border-bottom-right-radius: 5px;
-    border-top-right-radius: 5px;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
     border-color: #F4F4F4;
   }
 }
