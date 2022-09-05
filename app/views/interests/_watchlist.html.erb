@@ -8,15 +8,31 @@
     <div class="col-10 mx">
       <div class="seen">
         <h4>To See</h4>
-        <% unseen_interests.each do |interest| %>
-          <%= render "interests/interest_card", interest: interest %>
+        <% if unseen_interests.empty? %>
+          <div class="empty_message">
+            <%= link_to movies_path do %>
+              <p>Looks like you watched them all... Add some more films here!</p>
+            <% end %>
+          </div>
+        <% else %>
+          <% unseen_interests.each do |interest| %>
+            <%= render "interests/interest_card", interest: interest %>
+          <% end %>
         <% end %>
       </div>
 
       <div class="unseen">
         <h4>Seen</h4>
-        <% seen_interests.each do |interest| %>
-          <%= render "interests/interest_card", interest: interest %>
+        <% if seen_interests.empty? %>
+          <div class="empty_message">
+            <%= link_to movies_path do %>
+              <p>Looks like you need to go to the cinema. Lets find you a film to watch!</p>
+            <% end %>
+          </div>
+        <% else %>
+          <% seen_interests.each do |interest| %>
+            <%= render "interests/interest_card", interest: interest %>
+          <% end %>
         <% end %>
       </div>
     </div>

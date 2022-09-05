@@ -3,3 +3,18 @@
   background-color: $background-main;
   color: $text-main;
 }
+
+.empty_message {
+  text-decoration: none;
+
+  p {
+    transition: ease 500ms;
+    color: $text-muted;
+  }
+
+  :hover {
+    p {
+      color: $text-main
+    }
+  }
+}
