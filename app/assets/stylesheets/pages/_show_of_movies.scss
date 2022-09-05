@@ -18,12 +18,24 @@
 
   .add-watchlist {
     position: absolute;
-    top: 10px;
+    top: 13px;
     right: 29px;
   }
-  .btn-watchlist {
+  .btn-interest {
     border-style: none;
     box-shadow: none;
+    background-color: #1fe0;
+  }
+  .btn-remove-watchlist {
+    border-style: none;
+    box-shadow: none;
+    background-color: #1fe0;
+  }
+  .btn-watchlist:hover {
+    color: red;
+  }
+  .btn-remove-watchlist:hover {
+    color: red;
   }
 
   .movie-infos {

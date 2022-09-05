@@ -12,7 +12,6 @@ class BookingsController < ApplicationController
     @movie_show = MovieShow.find(params[:movie_show_id])
     @cinema = Cinema.find(@movie_show.cinema.id)
 
-
     authorize @booking
 
     if @booking.save

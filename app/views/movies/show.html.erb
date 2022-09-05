@@ -5,13 +5,21 @@
       <%= image_tag @movie.poster, class: 'w-100' %>
       <div class="row add-watchlist">
         <% if user_signed_in? %>
-          <div class="col-8 mx-auto pl-0">
-            <%= render "interests/form"  %>
-          </div>
+          <% if current_user.movies.include?(@movie) %>
+            <div class="col-8 mx-auto pl-0">
+              <%= link_to interest_path(Interest.find_by(user:current_user, movie:@movie)), data: {turbo_method: :delete}, class: 'btn-rmv' do %>
+                <button class="btn-remove-watchlist"><i class="fa-solid fa-star fa-xl"></i></button>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="col-8 mx-auto pl-0">
+              <%= render "interests/form"  %>
+            </div>
+          <% end %>
         <% else %>
           <div class="col-8 mx-auto pl-0">
             <%= link_to new_user_session_path do %>
-              <span class="btn btn-primary">Ajouter à votre watchlist</span>
+              <i class="fa-regular fa-star btn-watchlist fa-xl"></i>
             <% end %>
           </div>
         <% end %>
