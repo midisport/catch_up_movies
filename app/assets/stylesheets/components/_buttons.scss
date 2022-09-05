@@ -1,20 +1,21 @@
 /* Tabs */
 
 .tab_btn {
- color: $violet-highlight;
+ color: $violet-muted;
  background: $background-main;
  border: solid $background-main 3px;
  height: 100%;
+ font-size: 1.5em;
 }
 
 .tab_btn-active {
+  color: $violet-highlight;
   border-bottom: solid $violet-highlight 3px;
-
 }
 
 .tab_btn:hover {
+  color: $violet-highlight;
   border-bottom: solid $violet-highlight 3px;
-
 }
 
 .tab_edit_btn {
