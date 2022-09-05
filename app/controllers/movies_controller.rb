@@ -26,7 +26,9 @@ class MoviesController < ApplicationController
     @markers = @movie.cinemas.geocoded.map do |cinema|
       {
         lat: cinema.lat,
-        lng: cinema.lng
+        lng: cinema.lng,
+        info_window: render_to_string(partial: "info_window", locals: {cinema: cinema}),
+        image_url: helpers.asset_url("ecran-de-cinema.png")
       }
     end
   end
