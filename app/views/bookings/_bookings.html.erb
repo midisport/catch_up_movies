@@ -1,4 +1,9 @@
-<h2>Vous allez regarder : </h2>
+<% if @user == current_user %>
+  <h2>Vous allez regarder : </h2>
+<% else %>
+  <h2><%= @user.username %> va regarder :</h2>
+<% end %>
+
 <% bookings.each do |booking|  %>
   <div class="card_booking">
     <%= image_tag booking.movie_show.movie.poster, class: "img-fluid" %>

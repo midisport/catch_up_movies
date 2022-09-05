@@ -1,9 +1,13 @@
-<h2>Vous suivez :</h2>
+<% if @user == current_user %>
+  <h2>Vous suivez : </h2>
+<% else %>
+  <h2><%= @user.username %> suis :</h2>
+<% end %>
 <div class="followed_cards_container">
   <% followeds.each do |follow| %>
     <div class="card_followeds">
       <p class="username"><%= follow.followed.username %></p>
-      
+
       <% unless follow.shared_bookings.empty? %>
         <div class="shared_bookings">
           <p>va aussi à : </p>
