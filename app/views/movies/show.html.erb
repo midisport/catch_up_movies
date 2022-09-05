@@ -79,26 +79,18 @@
     <% end %>
   </div>
   </div>
-  <div class="comment p-2">
+  <div class="comment p-2" data-controller="insert-in-list">
     <div class="comment-list">
-      <ul class="list-group list-group-flush p-2">
+      <ul class="list-group list-group-flush p-2" data-insert-in-list-target="items">
         <% @movie.comments.includes([:user]).each do |comment| %>
-          <li class="list-group-item">
-            <div class="d-flex">
-              <span><strong><%= comment.user.username %></strong></span>
-              <p class="ms-2"> : <%= comment.content %></p>
-            </div>
-          </li>
+          <% if comment.content != nil %>
+            <%= render "movies/comment", comment: comment %>
+          <% end %>
         <% end %>
       </ul>
     </div>
     <div class="comment-form">
-      <% if user_signed_in? %>
-        <%= simple_form_for [@movie, @comment] do |f| %>
-          <%= f.input :content, input_html:{class: "infor"} %>
-          <%= f.submit "Poster", class: "btn btn-warning" %>
-        <% end %>
-      <% end %>
+      <%= render "comments/form_com", movie: @movie, comment: @comment %>
     </div>
   </div>
 </div>

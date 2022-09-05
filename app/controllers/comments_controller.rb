@@ -5,10 +5,14 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.movie = @movie
     authorize @comment
-    if @comment.save!
-      redirect_to movie_path(@movie)
-    else
-      render 'movies/show', status: :unprocessable_entity
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to movie_path(@movie) }
+        format.json
+      else
+        format.html { render 'movies/show', status: :unprocessable_entity }
+        format.json
+      end
     end
   end
 
