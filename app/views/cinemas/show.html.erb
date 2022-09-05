@@ -3,39 +3,41 @@
     <h2><%= @cinema.name %></h3>
     <h5><%= @cinema.address %></h5>
   </div>
-  <h3 class="sous-titres-seances">Les prochaines séances :</h5>
-  <div class="seances col">
-    <div class="row">
-      <% @cinema.movie_shows.includes(:movie).each do |movie_show| %>
-        <div class="col">
-          <div class="row card seance-card">
-            <div class="d-flex">
-              <div class="col movie-poster">
-                <%= image_tag movie_show.movie.poster, class: "card-img-top" %>
-              </div>
-              <div class="col d-flex flex-column justify-content-around">
-                <div class="card-body">
-                  <h5 class="card-title text-center"><%= movie_show.movie.title %></h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Le : <%= l movie_show.date, format: '%A %d %B' %></li>
-                  <li class="list-group-item">À : <%= movie_show.start_at.strftime('%H:%M') %></li>
-                  <li class="list-group-item">Langue : <%= movie_show.language %></li>
-                  <li class="list-group-item">Sous-titres :
-                  <% if movie_show.subtitle == "" %>
-                     ❌
-                  <% else %>
-                    <%= movie_show.subtitle %>
-                  <% end %></li>
-                </ul>
-
-                <%= render "bookings/form", movie_show: movie_show, booking: @booking %>
-
-              </div>
-            </div>
+  <h3 class="sous-titres-seances">Upcoming screenings:</h5>
+  <% @cinema.movie_shows.includes(:movie).each do |movie_show| %>
+    <div class="cine-seances">
+      <div class="movie-poster">
+        <%= image_tag movie_show.movie.poster, class: "card-img-top" %>
+      </div>
+      <h5 class="seance-title"><%= movie_show.movie.title %></h5>
+      <div class="seance-booking">
+        <% if current_user.movie_shows.include?(movie_show) %>
+          <div class="rmv-booking">
+            <%= link_to booking_path(Booking.find_by(user:current_user, movie_show:movie_show), source: "cine"), data: {turbo_method: :delete} do %>
+              <button class="btn-remove-booking"><i class="fa-solid fa-bookmark fa-xl"></i></button>
+            <% end %>
           </div>
-        </div>
-      <% end %>
+        <% else %>
+          <div class="cine-booking">
+            <%= simple_form_for [movie_show, @booking] do |f| %>
+              <%= hidden_field_tag :source, "cine" %>
+              <%= button_tag(class: 'btn-booking') do %>
+                <i class="fa-regular fa-bookmark fa-xl btn-book"></i>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="seance-plot">Plot: <%= movie_show.movie.synopsis %></div>
+      <div class="seance-date"><i class="fa-solid fa-calendar-days"></i>  <%= l movie_show.date, format: '%a %d %B' %></div>
+      <div class="seance-time"><%= movie_show.start_at.strftime('%H:%M') %>  <i class="fa-solid fa-clock"></i></div>
+      <div class="seance-lang"><i class="fa-solid fa-ear-listen"></i>  <%= movie_show.language %></div>
+      <div class="seance-sub">
+      <% if movie_show.subtitle == "" %>
+          ❌
+      <% else %>
+        <%= movie_show.subtitle %>
+      <% end %>  <i class="fa-solid fa-closed-captioning"></i></div>
     </div>
-  </div>
+  <% end %>
 </div>
