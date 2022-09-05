@@ -12,12 +12,10 @@ class FollowsController < ApplicationController
     followed = User.find(follow_params[:followed_id])
     @follow.followed = followed
 
-    @unseen_interests = Interest.includes(:user, :movie).where(user: @user, seen: false)
-    @seen_interests = Interest.includes(:user, :movie).where(user: @user, seen: true)
-    params[:user_id].present? ? @user = User.find(params[:user_id]) : @user = User.find(:id)
-   
-
     if @follow.save
+      @unseen_interests = Interest.includes(:user, :movie).where(user: @user, seen: false)
+      @seen_interests = Interest.includes(:user, :movie).where(user: @user, seen: true)
+      params[:user_id].present? ? @user = User.find(params[:user_id]) : @user = User.find(:id)
       redirect_to user_interests_path(followed)
     else
       # make this a render and use ajax, so errors are actually displayed ? (Need to ask if there's a better way)

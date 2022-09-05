@@ -17,7 +17,6 @@ class PagesController < ApplicationController
     @interests = Interest.includes(:user, :movie).where(user: @user)
     @unseen_interests = Interest.includes(:user, :movie).where(user: @user, seen: false)
     @seen_interests = Interest.includes(:user, :movie).where(user: @user, seen: true)
-    @interests = Interest.includes(:movie, :user).where(user: @user)
 
     # Variables for Bookings
     @bookings = policy_scope(Booking)
