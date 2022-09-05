@@ -29,6 +29,17 @@
   border: solid darkgreen;
 }
 
+.unfollow_btn {
+  color: white;
+  border: solid;
+}
+
+.unfollow_btn:hover {
+  color: white;
+  background-color: orangered;
+  border: orangered solid;
+}
+
 .watchlist_btn {
   color: white;
   border: solid;
@@ -39,3 +50,6 @@
   background-color: darkred;
   border: solid darkred;
 }
+
+
+/* Bookings */

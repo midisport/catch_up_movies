@@ -1,8 +1,9 @@
 class FollowsController < ApplicationController
   def index
     @follows = policy_scope(Follow)
-    @followers = Follow.where(followed: current_user)
-    @followeds = Follow.where(follower: current_user)
+    @followers = Follow.where(followed: :user_id)
+    @followeds = Follow.where(follower: :user_id)
+    raise
   end
 
   def create

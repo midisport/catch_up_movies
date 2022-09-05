@@ -11,10 +11,11 @@
 
 
   <div class="row">
-    <div class="col-8 mx-auto">
+    <div class="col-10 mx-auto">
 
       <div data-tabs-target="watchlist" class="watchlist">
-        <%= render "interests/watchlist" %>
+
+        <%= render "interests/watchlist", user: @user, interests: @interests, interest_shows: @interest_shows %>
       </div>
 
       <div  data-tabs-target="follows" class="follows d-none">
@@ -26,5 +27,7 @@
       </div>
 
     </div>
+    
+
   </div>
 </div>
