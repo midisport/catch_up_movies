@@ -18,10 +18,12 @@
 
   <body>
     <div class="row">
-      <div class="col-2">
-        <%= render "shared/sidebar" %>
-      </div>
-      <div class="col-10">
+      <% unless current_page?(root_path) %>
+        <div class="col-2">
+            <%= render "shared/sidebar" %>
+        </div>
+      <% end %>
+      <div class="col-10 mx-auto">
         <%= yield %>
         <%= render "shared/flashes" %>
       </div>

@@ -3,6 +3,7 @@
   color: $text-main;
   height: 100vh;
   padding: 1em;
+  
 
   .sidebar_title {
     display: flex;
@@ -33,7 +34,7 @@
   hr {
     color: $white;
     width: 85%;
-    margin: 0 auto;
+    margin: 0.5em auto;
   }
 
   .sidebar_menu {
@@ -62,7 +63,11 @@
     opacity: 0.7;
   }
 
-  .logout {
+  .bottom {
+    margin: 1em auto;
+  }
+
+  .log {
     list-style: none;
     color: $white;
     font-size: 1.1em;
