@@ -3,6 +3,28 @@ class MoviesController < ApplicationController
 
   def index
     if params[:query].present?
+      require "json"
+      require "open-uri"
+
+      url = "http://www.omdbapi.com/?apikey=9695b4ac&s=#{params[:query]}"
+      response = URI.open(url+query).read
+      results = JSON.parse(response)
+      @movies = results["Search"]
+      @movies.each do |movie|
+        url = "http://www.omdbapi.com/?apikey=9695b4ac&s=#{movie['imdbID']}"
+        answer = URI.open(url+movie['imdbID']).read
+        result = JSON.parse(answer)
+        title = movie["Title"]
+        synopsis = movie["Plot"]
+        duration = movie["Runtime"]
+        poster = movie["Poster"]
+        original_language = movie["Language"]
+        imdb_rating = movie["imdbRating"]
+        release_date = movie["Year"]
+      end
+
+
+
       sql_query = <<~SQL
         movies.title @@ :query
         OR artists.name @@ :query
