@@ -12,6 +12,11 @@ class FollowsController < ApplicationController
     followed = User.find(follow_params[:followed_id])
     @follow.followed = followed
 
+    @unseen_interests = Interest.includes(:user, :movie).where(user: @user, seen: false)
+    @seen_interests = Interest.includes(:user, :movie).where(user: @user, seen: true)
+    params[:user_id].present? ? @user = User.find(params[:user_id]) : @user = User.find(:id)
+   
+
     if @follow.save
       redirect_to user_interests_path(followed)
     else

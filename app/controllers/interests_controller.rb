@@ -7,7 +7,7 @@ class InterestsController < ApplicationController
     @unseen_interests = Interest.includes(:user, :movie).where(user: @user, seen: false)
     @seen_interests = Interest.includes(:user, :movie).where(user: @user, seen: true)
     params[:user_id].present? ? @user = User.find(params[:user_id]) : @user = User.find(:id)
-    @interest_shows = movie_shows_for_movies_in_watchlist(@interests)
+   
     @follow = Follow.new
   end
 
