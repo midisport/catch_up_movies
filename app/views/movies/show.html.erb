@@ -79,15 +79,11 @@
   </div>
   </div>
   <div class="comment p-2" data-controller="insert-in-list">
-    <div class="comment-list" data-insert-in-list-target="items">
-      <ul class="list-group list-group-flush p-2">
+    <div class="comment-list">
+      <ul class="list-group list-group-flush p-2" data-insert-in-list-target="items">
         <% @movie.comments.includes([:user]).each do |comment| %>
           <% if comment.content != nil %>
-            <li class="list-group-item">
-              <div class="d-flex">
-                <%= render "movies/comment", comment: comment %>
-              </div>
-            </li>
+            <%= render "movies/comment", comment: comment %>
           <% end %>
         <% end %>
       </ul>
