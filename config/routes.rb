@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   end
 
   resources :interests, only: :destroy
+  resources :bookings, only: :destroy
   resources :follows, only: %I[index create destroy]
 
   devise_scope :user do

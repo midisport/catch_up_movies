@@ -1,7 +1,6 @@
 <div class="container">
-  <h1>Ma Watchlist</h1>
   <div>
-    <%= render "interests/watchlist" %>
+    <%= render "interests/watchlist", user: @user, interests: @interests, interest_shows: @interest_shows %>
   </div>
 
 
