@@ -15,7 +15,8 @@ class PagesController < ApplicationController
     @interests = policy_scope(Interest)
     @user = User.find(params[:id])
     @interests = Interest.includes(:user, :movie).where(user: @user)
-    @interest_shows = movie_shows_for_movies_in_watchlist(@interests)
+    @unseen_interests = Interest.includes(:user, :movie).where(user: @user, seen: false)
+    @seen_interests = Interest.includes(:user, :movie).where(user: @user, seen: true)
     @interests = Interest.includes(:movie, :user).where(user: @user)
 
     # Variables for Bookings

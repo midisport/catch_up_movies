@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  
+
   resources :users do
     resources :interests, only: :index
     resources :bookings, only: :index
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :bookings, only: :create
   end
 
-  resources :interests, only: :destroy
+  resources :interests, only: [:destroy, :update]
   resources :bookings, only: :destroy
   resources :follows, only: %I[index create destroy]
 
