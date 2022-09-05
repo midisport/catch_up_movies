@@ -15,7 +15,7 @@
 
   .seance {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(11, 1fr);
     grid-template-rows: 1fr;
     grid-column-gap: 5px;
     grid-row-gap: 5px;
@@ -38,6 +38,6 @@
     grid-area: 1 / 9 / 2 / 11;
   }
   .seance-booking {
-    grid-area: 1 / 11 / 2 / 13;
+    grid-area: 1 / 11 / 2 / 12;
   }
 }

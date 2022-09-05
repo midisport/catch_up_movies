@@ -78,9 +78,17 @@
               <%= movie_show.subtitle %>
             <% end %>
           </div>
-          <div class="seance-booking">
-            <%= render "bookings/form", movie_show: movie_show, booking: @booking %>
-          </div>
+          <% if current_user.movie_shows.include?(movie_show) %>
+            <div class="rmv-booking">
+              <%= link_to booking_path(Booking.find_by(user:current_user, movie_show:movie_show)), data: {turbo_method: :delete} do %>
+                <button class="btn-remove-booking"><i class="fa-solid fa-bookmark fa-xl"></i></button>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="seance-booking">
+              <%= render "bookings/form", movie_show: movie_show, booking: @booking %>
+            </div>
+          <% end %>
         </div>
       <% end %>
     <% end %>

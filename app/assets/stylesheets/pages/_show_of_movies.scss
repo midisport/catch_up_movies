@@ -25,17 +25,19 @@
     border-style: none;
     box-shadow: none;
     background-color: #1fe0;
+    color: blue;
   }
   .btn-remove-watchlist {
     border-style: none;
     box-shadow: none;
     background-color: #1fe0;
+    color: blue;
   }
   .btn-watchlist:hover {
-    color: red;
+    color: black;
   }
   .btn-remove-watchlist:hover {
-    color: red;
+    color: black;
   }
 
   .movie-infos {
@@ -97,6 +99,26 @@
   .movie-map {
     width: 25%;
     align-self: center;
+  }
+
+  .btn-booking {
+    border-style: none;
+    box-shadow: none;
+    background-color: #1fe0;
+    color: blue;
+  }
+  .btn-booking:hover {
+    color: black;
+  }
+
+  .btn-remove-booking {
+    border-style: none;
+    box-shadow: none;
+    background-color: #1fe0;
+    color: blue;
+  }
+  .btn-remove-booking:hover {
+    color: black;
   }
 
   .comment {
