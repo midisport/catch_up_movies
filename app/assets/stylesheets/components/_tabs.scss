@@ -4,4 +4,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 2em 0;
+  border-bottom: solid rgba($violet-highlight, .4);
+
+  button {
+    margin-right: 3em;
+  }
+
+  .dashboard_tabs_options {
+    margin-bottom: -0.6em;
+  }
 }

@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-10 mx-auto">
+    <div class="col-10">
       <h2><%= user == current_user ? "Ma Watchlist" : "La Watchlist de #{user.username}" %></h2>
     </div>
   </div>
   <div class="row">
-    <div class="col-10 mx-auto">
+    <div class="col-10 mx">
       <div class="seen">
         <h4>à voir</h4>
         <% unseen_interests.each do |interest| %>
