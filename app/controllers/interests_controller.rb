@@ -7,7 +7,7 @@ class InterestsController < ApplicationController
     @unseen_interests = Interest.includes(:user, :movie).where(user: @user, seen: false)
     @seen_interests = Interest.includes(:user, :movie).where(user: @user, seen: true)
     params[:user_id].present? ? @user = User.find(params[:user_id]) : @user = User.find(:id)
-   
+
     @follow = Follow.new
   end
 
@@ -29,12 +29,13 @@ class InterestsController < ApplicationController
       @markers = @movie.cinemas.geocoded.map do |cinema|
         {
           lat: cinema.lat,
-          lng: cinema.lng
+          lng: cinema.lng,
+          info_window: render_to_string(partial: "movies/info_window", locals: { cinema: cinema },),
+          image_url: helpers.asset_url("ecran-de-cinema.png")
         }
       end
 
       @comment = Comment.new
-
       render "movies/show", status: :unprocessable_entity
     end
   end
