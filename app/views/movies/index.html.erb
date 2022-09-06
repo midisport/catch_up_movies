@@ -5,7 +5,7 @@
   <h1>Movies in theater:</h1>
   <div class="movies-index">
     <% @movies.each do |movie| %>
-      <% if movie.movie_shows.empty? == false %>
+      <%# if movie.movie_shows.empty? == false %>
         <%= link_to movie do %>
           <div class="movies-card">
             <div class="movie-poster">
@@ -22,7 +22,7 @@
             </div>
           </div>
         <% end %>
-      <% end %>
+      <%# end %>
     <% end %>
   </div>
 </div>

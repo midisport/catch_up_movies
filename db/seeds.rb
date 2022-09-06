@@ -10,19 +10,21 @@
 
 # https://www.omdbapi.com/?apikey=9695b4ac&t=
 
-# puts "destroying users"
-# User.destroy_all
 # puts "destroying movies"
 # Movie.destroy_all
-# puts "destroying cinemas"
-# Cinema.destroy_all
 # puts "destroying artists"
 # Artist.destroy_all
 # puts "destroying movie shows"
 # MovieShow.destroy_all
 # puts "destroying castings"
 # Casting.destroy_all
-#
+
+
+puts "destroying users"
+User.destroy_all
+puts "destroying cinemas"
+Cinema.destroy_all
+
 # Users
 puts "creating users"
 user1 = User.create!(username: "Nabil", email: "test@test.fr", password: '123456', avatar: Faker::Avatar.image)
@@ -38,6 +40,556 @@ Follow.create!(follower: user3, followed: user4)
 Follow.create!(follower: user3, followed: user2)
 Follow.create!(follower: user4, followed: user1)
 puts "follows created"
+
+# Cinemas
+puts "create Cinémas"
+cinema1 = Cinema.new(
+  lat: 48.873073,
+  lng: 2.298394,
+  name: "UGC GEORGE V",
+  address: "146 AVENUE DES CHAMPS ELYSEES"
+  )
+cinema1.save!
+cinema2 = Cinema.new(
+  lat: 48.872265,
+  lng: 2.300938,
+  name: "UGC NORMANDIE",
+  address: "116 AVENUE DES CHAMPS ELYSEES"
+  )
+cinema2.save!
+cinema3 = Cinema.new(
+  lat: 48.872431,
+  lng: 2.299525,
+  name: "BALZAC",
+  address: "1 RUE BALZAC"
+  )
+cinema3.save!
+cinema4 = Cinema.new(
+  lat: 48.869654,
+  lng: 2.306873,
+  name: "GAUMONT CHAMPS ELYSEES MARIGNAN",
+  address: "27/33 AVENUE DES CHAMPS ELYSEES"
+  )
+cinema4.save!
+cinema5 = Cinema.new(
+  lat: 48.870512,
+  lng: 2.303157,
+  name: "ELYSEES LINCOLN",
+  address: "14 RUE LINCOLN"
+  )
+cinema5.save!
+cinema6 = Cinema.new(
+  lat: 48.871332,
+  lng: 2.335302,
+  name: " UGC OPERA",
+  address: "32 BD DES ITALIENS"
+  )
+cinema6.save!
+cinema7 = Cinema.new(
+  lat: 48.871363,
+  lng: 2.344886,
+  name: "MAX LINDER",
+  address: "24 BD POISSONNIERE"
+  )
+cinema7.save!
+cinema8 = Cinema.new(
+  lat: 48.86872,
+  lng: 2.347608,
+  name: "GRAND REX",
+  address: "5 BD POISSONNIERE"
+  )
+cinema8.save!
+cinema9 = Cinema.new(
+  lat: 48.870632,
+  lng: 2.334338,
+  name: "PATHE",
+  address: "32 RUE LOUIS LEGRAND"
+  )
+cinema9.save!
+cinema10 = Cinema.new(
+  lat: 48.84351,
+  lng: 2.325646,
+  name: "UGC MONTPARNASSE",
+  address: "83 BD DU MONTPARNASSE"
+  )
+cinema10.save!
+cinema11 = Cinema.new(
+  lat: 48.843074,
+  lng: 2.324424,
+  name: "GAUMONT PARNASSE",
+  address: "3 RUE D'ODESSA"
+  )
+cinema11.save!
+cinema12 = Cinema.new(
+  lat: 48.83393,
+  lng: 2.31652,
+  name: "ENTREPOT",
+  address: "7 ET 9 RUE FRANCIS DE PRESSENSE"
+  )
+cinema12.save!
+cinema13 = Cinema.new(
+  lat: 48.861555,
+  lng: 2.352217,
+  name: "MK2 BEAUBOURG",
+  address: "50 RUE RAMBUTEAU"
+  )
+cinema13.save!
+cinema14 = Cinema.new(
+  lat: 48.878512,
+  lng: 2.282965,
+  name: "UGC MAILLOT",
+  address: "PALAIS CONGRES PL PORTE MAILLOT"
+  )
+cinema14.save!
+cinema15 = Cinema.new(
+  lat: 48.852188,
+  lng: 2.342788,
+  name: "MK2 ODEON COTE SAINT-MICHEL",
+  address: "7 RUE HAUTEFEUILLE"
+  )
+cinema15.save!
+cinema16 = Cinema.new(
+  lat: 48.852437,
+  lng: 2.338266,
+  name: "MK2 ODEON COTE SAINT-GERMAIN",
+  address: "113 BD ST GERMAIN"
+  )
+cinema16.save!
+cinema17 = Cinema.new(
+  lat: 48.851619,
+  lng: 2.347076,
+  name: "STUDIO GALANDE",
+  address: "42 RUE GALANDE"
+  )
+cinema17.save!
+cinema18 = Cinema.new(
+  lat: 48.84824,
+  lng: 2.340797,
+  name: "LUXEMBOURG",
+  address: "67 69 RUE MONSIEUR LE PRINCE"
+  )
+cinema18.save!
+cinema19 = Cinema.new(
+  lat: 48.853361,
+  lng: 2.34211,
+  name: "ST ANDRE DES ARTS",
+  address: "30 RUE ST ANDRE DES ARTS"
+  )
+cinema19.save!
+cinema20 = Cinema.new(
+  lat: 48.842813,
+  lng: 2.330525,
+  name: "MK2 PARNASSE",
+  address: "11 RUE JULES CHAPLAIN"
+  )
+cinema20.save!
+cinema21 = Cinema.new(
+  lat: 48.842318,
+  lng: 2.328975,
+  name: "UGC ROTONDE",
+  address: "103 BD DU MONTPARNASSE"
+  )
+cinema21.save!
+cinema22 = Cinema.new(
+  lat: 48.843752,
+  lng: 2.324925,
+  name: "BRETAGNE",
+  address: "73 BD DU MONTPARNASSE"
+  )
+cinema22.save!
+cinema23 = Cinema.new(
+  lat: 48.844244,
+  lng: 2.330407,
+  name: "LUCERNAIRE FORUM",
+  address: "53 RUE NOTRE DAME DES CHAMPS"
+  )
+cinema23.save!
+cinema24 = Cinema.new(
+  lat: 48.842443,
+  lng: 2.327625,
+  name: "PARNASSIEN",
+  address: "98 BD DU MONTPARNASSE"
+  )
+cinema24.save!
+cinema25 = Cinema.new(
+  lat: 48.872794,
+  lng: 2.296984,
+  name: "PUBLICIS ELYSEES",
+  address: "133 AV DES CHAMPS ELYSEES"
+  )
+cinema25.save!
+cinema26 = Cinema.new(
+  lat: 48.854455,
+  lng: 2.340132,
+  name: "CHRISTINE CINEMA CLUB",
+  address: "4 RUE CHRISTINE"
+  )
+cinema26.save!
+cinema27 = Cinema.new(
+  lat: 48.85467,
+  lng: 2.333052,
+  name: "ST GERMAIN DES PRES",
+  address: "22 RUE GUILLAUME APOLLINAIRE"
+  )
+cinema27.save!
+cinema28 = Cinema.new(
+  lat: 48.870455,
+  lng: 2.35466,
+  name: "L'ARCHIPEL",
+  address: "17 BD DE STRASBOURG"
+  )
+cinema28.save!
+cinema29 = Cinema.new(
+  lat: 48.871771,
+  lng: 2.355398,
+  name: "LE BRADY",
+  address: "39 BOULEVARD DE STRASBOURG"
+  )
+cinema29.save!
+cinema30 = Cinema.new(
+  lat: 48.861424,
+  lng: 2.345829,
+  name: "UGC CINE CITE LES HALLES",
+  address: "101 RUE BERGER"
+  )
+cinema30.save!
+cinema31 = Cinema.new(
+  lat: 48.858689,
+  lng: 2.353591,
+  name: "LUMINOR HOTEL DE VILLE",
+  address: "20 RUE DU TEMPLE"
+  )
+cinema31.save!
+cinema32 = Cinema.new(
+  lat: 48.858204,
+  lng: 2.282104,
+  name: "MAJESTIC PASSY",
+  address: "18 - 20 RUE DE PASSY"
+  )
+cinema32.save!
+cinema33 = Cinema.new(
+  lat: 48.875715,
+  lng: 2.294655,
+  name: "MAC MAHON",
+  address: "5/7 AV MAC MAHON"
+  )
+cinema33.save!
+cinema34 = Cinema.new(
+  lat: 48.87561,
+  lng: 2.32791,
+  name: "CAUMARTIN",
+  address: "101 RUE ST LAZARE"
+  )
+cinema34.save!
+cinema35 = Cinema.new(
+  lat: 48.884303,
+  lng: 2.326888,
+  name: "LE CINEMA DES CINEASTES",
+  address: "7 AVENUE DE CLICHY"
+  )
+cinema35.save!
+cinema36 = Cinema.new(
+  lat: 48.883938,
+  lng: 2.328034,
+  name: "PATHE WEPLER",
+  address: "132 -140 BOULEVARD DE CLICHY"
+  )
+cinema36.save!
+cinema37 = Cinema.new(
+  lat: 48.886142,
+  lng: 2.335342,
+  name: "STUDIO 28",
+  address: "10 RUE THOLOZE"
+  )
+cinema37.save!
+cinema38 = Cinema.new(
+  lat: 48.885073,
+  lng: 2.371493,
+  name: "MK2 QUAI DE SEINE",
+  address: "14 QUAI DE LA SEINE"
+  )
+cinema38.save!
+cinema39 = Cinema.new(
+  lat: 48.864763,
+  lng: 2.399555,
+  name: "MK2 GAMBETTA",
+  address: "6 RUE BELGRAND"
+  )
+cinema39.save!
+cinema40 = Cinema.new(
+  lat: 48.853157,
+  lng: 2.370719,
+  name: "MK2 BASTILLE COTE FAUBOURG SAINT-ANTOINE",
+  address: "5 RUE DU FAUBOURG ST ANTOINE"
+  )
+cinema40.save!
+cinema41 = Cinema.new(
+  lat: 48.860238,
+  lng: 2.37214,
+  name: "MAJESTIC BASTILLE",
+  address: "4 BD RICHARD LENOIR"
+  )
+cinema41.save!
+cinema42 = Cinema.new(
+  lat: 48.854674,
+  lng: 2.369381,
+  name: "MK2 BASTILLE COTE BEAUMARCHAIS",
+  address: "3 BD R LENOIR 4/6 BD BEAUMARCHAI"
+  )
+cinema42.save!
+cinema43 = Cinema.new(
+  lat: 48.848213,
+  lng: 2.39311,
+  name: "MK2 NATION",
+  address: "133 BOULEVARD DIDEROT"
+  )
+cinema43.save!
+cinema44 = Cinema.new(
+  lat: 48.847502,
+  lng: 2.371855,
+  name: "UGC LYON BASTILLE",
+  address: "12 RUE DE LYON"
+  )
+cinema44.save!
+cinema45 = Cinema.new(
+  lat: 48.833595,
+  lng: 2.38604,
+  name: "UGC CINE CITE BERCY",
+  address: "2 COUR SAINT-EMILION"
+  )
+cinema45.save!
+cinema46 = Cinema.new(
+  lat: 48.847502,
+  lng: 2.342301,
+  name: "LE CINEMA DU PANTHEON",
+  address: "13 RUE VICTOR COUSIN"
+  )
+cinema46.save!
+cinema47 = Cinema.new(
+  lat: 48.843204,
+  lng: 2.298558,
+  name: "CHAPLIN SAINT LAMBERT",
+  address: "6 RUE PECLET"
+  )
+cinema47.save!
+cinema48 = Cinema.new(
+  lat: 48.837759,
+  lng: 2.296259,
+  name: "GAUMONT CONVENTION",
+  address: "27 RUE ALAIN CHARTIER"
+  )
+cinema48.save!
+cinema49 = Cinema.new(
+  lat: 48.830408,
+  lng: 2.276322,
+  name: "GAUMONT AQUABOULEVARD",
+  address: "8/16 RUE DU COLONEL PIERRE AVIA"
+  )
+cinema49.save!
+cinema50 = Cinema.new(
+  lat: 48.841914,
+  lng: 2.324596,
+  name: "GAUMONT MONTPARNOS",
+  address: "16 18 RUE D ODESSA"
+  )
+cinema50.save!
+cinema51 = Cinema.new(
+  lat: 48.828166,
+  lng: 2.327463,
+  name: "GAUMONT ALESIA",
+  address: "73 AVENUE DU GENERAL LECLERC"
+  )
+cinema51.save!
+cinema52 = Cinema.new(
+  lat: 48.833879,
+  lng: 2.330976,
+  name: "CHAPLIN DENFERT",
+  address: "24 PLACE DENFERT ROCHEREAU"
+  )
+cinema52.save!
+cinema53 = Cinema.new(
+  lat: 48.851278,
+  lng: 2.330648,
+  name: "L'ARLEQUIN PANORAMA",
+  address: "76 RUE DE RENNES"
+  )
+cinema53.save!
+cinema54 = Cinema.new(
+  lat: 48.852138,
+  lng: 2.338995,
+  name: "UGC DANTON",
+  address: "99 BD ST GERMAIN"
+  )
+cinema54.save!
+cinema55 = Cinema.new(
+  lat: 48.850764,
+  lng: 2.341747,
+  name: "NOUVEL ODEON",
+  address: "6 RUE DE L ECOLE DE MEDECINE"
+  )
+cinema55.save!
+cinema56 = Cinema.new(
+  lat: 48.852353,
+  lng: 2.339834,
+  name: "UGC ODEON",
+  address: "124 BD ST GERMAIN"
+  )
+cinema56.save!
+cinema57 = Cinema.new(
+  lat: 48.853093,
+  lng: 2.344228,
+  name: "ESPACE SAINT MICHEL",
+  address: "7 PLACE ST MICHEL"
+  )
+cinema57.save!
+cinema58 = Cinema.new(
+  lat: 48.848384,
+  lng: 2.348973,
+  name: "ECOLES CINEMA CLUB",
+  address: "23 RUE DES ECOLES"
+  )
+cinema58.save!
+cinema59 = Cinema.new(
+  lat: 48.849983,
+  lng: 2.343211,
+  name: "LE CHAMPO",
+  address: "51 RUE DES ECOLES"
+  )
+cinema59.save!
+cinema60 = Cinema.new(
+  lat: 48.849504,
+  lng: 2.342788,
+  name: "QUARTIER LATIN I",
+  address: "9 RUE CHAMPOLLION"
+  )
+cinema60.save!
+cinema61 = Cinema.new(
+  lat: 48.842733,
+  lng: 2.342044,
+  name: "STUDIO DES URSULINES",
+  address: "10 RUE DES URSULINES"
+  )
+cinema61.save!
+cinema62 = Cinema.new(
+  lat: 48.849591,
+  lng: 2.342836,
+  name: "REFLET MEDICIS 2",
+  address: "7 RUE CHAMPOLLION"
+  )
+cinema62.save!
+cinema63 = Cinema.new(
+  lat: 48.841535,
+  lng: 2.34958,
+  name: "EPEE DE BOIS",
+  address: "100 RUE MOUFFETARD"
+  )
+cinema63.save!
+cinema64 = Cinema.new(
+  lat: 48.847537,
+  lng: 2.352122,
+  name: "LE GRAND ACTION",
+  address: "5 RUE DES ECOLES"
+  )
+cinema64.save!
+cinema65 = Cinema.new(
+  lat: 48.833574,
+  lng: 2.353775,
+  name: "LES FAUVETTES",
+  address: "58 AVENUE DES GOBELINS"
+  )
+cinema65.save!
+cinema66 = Cinema.new(
+  lat: 48.832888,
+  lng: 2.354241,
+  name: "UGC  GOBELINS",
+  address: "66 BIS AV DES GOBELINS"
+  )
+cinema66.save!
+cinema67 = Cinema.new(
+  lat: 48.836817,
+  lng: 2.349632,
+  name: "ESCURIAL",
+  address: "11 BD PORT ROYAL"
+  )
+cinema67.save!
+cinema68 = Cinema.new(
+  lat: 48.8649,
+  lng: 2.314116,
+  name: "MK2 GRAND PALAIS",
+  address: "COURS LA REINE PORTE C"
+  )
+cinema68.save!
+cinema69 = Cinema.new(
+  lat: 48.883487,
+  lng: 2.349853,
+  name: "LE LOUXOR",
+  address: "170 BOULEVARD DE MAGENTA"
+  )
+cinema69.save!
+cinema70 = Cinema.new(
+  lat: 48.833718,
+  lng: 2.373922,
+  name: "MK2 BIBLIOTHEQUE",
+  address: "128 A 162 AVENUE DE FRANCE"
+  )
+cinema70.save!
+cinema71 = Cinema.new(
+  lat: 48.832993,
+  lng: 2.378615,
+  name: "MK2 A&E",
+  address: "15/43 QUAI FRANCOIS MAURIAC"
+  )
+cinema71.save!
+cinema72 = Cinema.new(
+  lat: 48.848895,
+  lng: 2.282585,
+  name: "PATHE BEAUGRENELLE",
+  address: "7 RUE LINOIS"
+  )
+cinema72.save!
+cinema73 = Cinema.new(
+  lat: 48.876113,
+  lng: 2.295345,
+  name: "CLUB DE L'ETOILE",
+  address: "14 RUE TROYON"
+  )
+cinema73.save!
+cinema74 = Cinema.new(
+  lat: 48.893315,
+  lng: 2.311503,
+  name: "LES 7 BATIGNOLLES CINEMOVIDA",
+  address: "ALLEE COLETTE HEILBRONNER"
+  )
+cinema74.save!
+cinema75 = Cinema.new(
+  lat: 48.885067,
+  lng: 2.374123,
+  name: "MK2 QUAI DE LOIRE",
+  address: "5/19 QUAI DE LA LOIRE"
+  )
+cinema75.save!
+cinema76 = Cinema.new(
+  lat: 48.898991,
+  lng: 2.376757,
+  name: "UGC CINE CITE PARIS 19",
+  address: "166 BOULEVARD MAC DONALD"
+  )
+cinema76.save!
+cinema77 = Cinema.new(
+  lat: 48.897016,
+  lng: 2.385181,
+  name: "PATHE",
+  address: "30 AVENUE CORENTIN CARIOU"
+  )
+cinema77.save!
+cinema78 = Cinema.new(
+  lat: 48.852605,
+  lng: 2.406733,
+  name: "CGR PARIS LILAS",
+  address: "PLACE DU MAQUIS DU VERCORS"
+  )
+cinema78.save!
+
 
 #
 # # Movies
