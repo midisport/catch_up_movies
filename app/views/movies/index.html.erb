@@ -5,24 +5,9 @@
   <h1>Movies in theater:</h1>
   <div class="movies-index">
     <% @movies.each do |movie| %>
-      <% if movie.movie_shows.empty? == false %>
-        <%= link_to movie do %>
-          <div class="movies-card">
-            <div class="movie-poster">
-              <%= image_tag movie.poster, class: 'img-fluid' %>
-            </div>
-            <h5 class="movie-title"><%= movie.title %> (<%= movie.release_date %>) </h5>
-            <div class="movie-plot text-ellipsis--3"><strong>Plot:</strong> <%= movie.synopsis %></div>
-            <div class="movie-runtime"><i class="fa-solid fa-clock"></i>  <%= movie.duration %> min</div>
-            <div class="movie-rate">
-              <% stars(movie.imdb_rating / 2).each do |star| %>
-                <span><i class="star_icon"><%= image_tag "#{star}" %></i></span>
-              <% end %>
-              <i class="fa-brands fa-imdb fa-lg"></i>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
+      <%# if movie.movie_shows.empty? == false %>
+        <%= render 'shared/movie_card', movie: movie %>
+      <%# end %>
     <% end %>
   </div>
 </div>
