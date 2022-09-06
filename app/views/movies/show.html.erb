@@ -1,6 +1,6 @@
 <div class="container show-of-movies">
   <h1><%= @movie.title %></h1>
-  <div class="row row1">
+  <div class="row row1 mx-0">
     <div class="col-md-3 movie-poster">
       <% unless @movie.poster.nil?  %>
         <% if @movie.poster.match?(/http/) %>
@@ -50,7 +50,7 @@
 
     <div class="col-md-3">
       <% unless @movie_show.empty? %>
-        <div style="width: 50%; min-width: 30vw; height: 300px;"
+        <div style="max-width: 100vw; height: 25vw;"
           data-controller="map"
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">

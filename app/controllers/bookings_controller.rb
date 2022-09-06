@@ -17,6 +17,8 @@ class BookingsController < ApplicationController
     if @booking.save
       if params[:source] == "movie"
         redirect_to movie_path(@booking.movie_show.movie), status: :see_other
+      elsif params[:source] == "cine"
+        redirect_to cinema_path(@booking.movie_show.cinema), status: :see_other
       else
         redirect_to "/dashboard/#{current_user.id}"
       end
@@ -30,6 +32,8 @@ class BookingsController < ApplicationController
     @booking.destroy
     if params[:source] == "movie"
       redirect_to movie_path(@booking.movie_show.movie), status: :see_other
+    elsif params[:source] == "cine"
+      redirect_to cinema_path(@booking.movie_show.cinema), status: :see_other
     else
       redirect_to "/dashboard/#{current_user.id}", status: :see_other
     end

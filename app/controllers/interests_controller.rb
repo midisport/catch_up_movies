@@ -34,12 +34,13 @@ class InterestsController < ApplicationController
       @markers = @movie.cinemas.geocoded.map do |cinema|
         {
           lat: cinema.lat,
-          lng: cinema.lng
+          lng: cinema.lng,
+          info_window: render_to_string(partial: "movies/info_window", locals: { cinema: cinema },),
+          image_url: helpers.asset_url("tickets-de-films.png")
         }
       end
 
       @comment = Comment.new
-
       render "movies/show", status: :unprocessable_entity
     end
   end
