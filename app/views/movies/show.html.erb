@@ -2,7 +2,13 @@
   <h1><%= @movie.title %></h1>
   <div class="row row1">
     <div class="col-md-3 movie-poster">
-      <%= image_tag @movie.poster, class: 'w-100' %>
+      <% unless @movie.poster.nil?  %>
+        <% if @movie.poster.match?(/http/) %>
+        <img src="<%= @movie.poster %>" alt="" class='w-100'>
+        <% else %>
+          <%= image_tag @movie.poster, class: 'w-100' %>
+        <% end %>
+      <% end %>
       <div class="row add-watchlist">
         <% if user_signed_in? %>
           <% if current_user.movies.include?(@movie) %>
@@ -31,13 +37,7 @@
       </div>
     </div>
     <div class="col-md-6 movie-infos">
-      <p class="movie-director">Réalisé par :
-        <% unless @directors.nil? %>
-          <% @directors.each do |director| %>
-            <%= link_to director.artist.name, artist_path(director.artist) %>
-          <% end %>
-        <% end %>
-      </p>
+      <p class="movie-director">Réalisé par : <%= @movie.director %></p>
       <p class="movie-plot">Synopsis : <%= @movie.synopsis %></p>
       <p class="movie-runtime">Durée : <%= @movie.duration %> min</p>
       <p class="movie-year">Sortie : <%= @movie.release_date %></p>
@@ -45,13 +45,7 @@
       <p class="movie-country">Pays : <%= @movie.country %></p>
       <p class="movie-genre">Genre : <%= @movie.genre %></p>
       <p class="movie-rate">Note IMDB : <%= @movie.imdb_rating %>/10</p>
-      <p class="movie-actors">Casting :
-        <% unless @actors.nil? %>
-          <% @actors.each do |actor| %>
-            <%= link_to actor.artist.name, artist_path(actor.artist) %>
-          <% end %>
-        <% end %>
-      </p>
+      <p class="movie-actors">Casting : <%= @movie.actors %></p>
     </div>
 
     <div class="col-md-3">
