@@ -1,13 +1,56 @@
-<div class="container page-movie-index">
-  <div class="search-bar">
-    <%= render 'shared/search_bar' %>
-  </div>
-  <h1>Movies in theater:</h1>
-  <div class="movies-index">
-    <% @movies.each do |movie| %>
-      <%# if movie.movie_shows.empty? == false %>
-        <%= render 'shared/movie_card', movie: movie %>
-      <%# end %>
-    <% end %>
+<div class=container>
+  <div class="movie-index">
+    <div class="search-bar">
+      <%= render 'shared/search_bar' %>
+    </div>
+    <div class="row mx-0 mt-4">
+      <div class="col-8">
+        <h1>Movies in theater:</h1>
+        <div class="movies-index">
+          <% @movies.each do |movie| %>
+            <%# if movie.movie_shows.empty? == false %>
+              <%= link_to movie do %>
+                <div class="movies-card">
+                  <div class="movie-poster">
+                    <%= image_tag movie.poster, class: 'img-fluid' %>
+                  </div>
+                  <h5 class="movie-title"><%= movie.title %> (<%= movie.release_date %>) </h5>
+                  <div class="movie-plot text-ellipsis--3"><strong>Plot:</strong> <%= movie.synopsis %></div>
+                  <div class="movie-runtime"><i class="fa-solid fa-clock"></i>  <%= movie.duration %> min</div>
+                  <div class="movie-rate">
+                    <% stars(movie.imdb_rating / 2).each do |star| %>
+                      <span><i class="star_icon"><%= image_tag "#{star}" %></i></span>
+                    <% end %>
+                    <i class="fa-brands fa-imdb fa-lg"></i>
+                  </div>
+                </div>
+              <% end %>
+            <%# end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-4">
+
+     <%# unless @movie_show.empty? %>
+          <div
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+            id="map">
+
+          </div>
+        <%# end  %>
+      </div>
+    </div>
   </div>
 </div>
+<style>
+
+#map {
+    max-width: 100vw;
+    height: 32vh;
+    position: sticky;
+    top: 3vh;
+    margin-top: 10vh;
+    }
+    </style>
