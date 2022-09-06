@@ -17,7 +17,6 @@
       <%= image_tag interest.movie.poster %>
     <% end %>
 
-
     <div class="card_interest_info">
       <div class="top-line">
         <div class="card_interest-title">
@@ -38,9 +37,9 @@
         <p ><%= interest.movie.synopsis %></p>
       </div>
 
-    <div class="film-details">
-    <p><%= pluralize(interest.movie.duration, "min") %> | <%= interest.movie.release_date %></p>
-    </div>
+      <div class="film-details">
+        <p><%= pluralize(interest.movie.duration, "min") %> | <%= interest.movie.release_date %></p>
+      </div>
     </div>
 
   </div>

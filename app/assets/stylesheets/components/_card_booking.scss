@@ -1,0 +1,38 @@
+/* Bookings Card */
+
+.card_booking {
+  display: flex;
+  height: $card-height;
+  margin-bottom: 2em;
+  color: $text-main;
+
+  img {
+    border-radius: $border-radius;
+    height: $card-height;
+  }
+
+  .card_booking_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 1em;
+
+
+    .top-line {
+      line-height: 0.5em;;
+
+      .content_showing_details {
+        color: $text-muted;
+      }
+    }
+
+    .bottom-line {
+      line-height: 0.5em;
+      font-size: 1em;
+
+      i {
+        margin-right: 1em;
+      }
+    }
+  }
+}
