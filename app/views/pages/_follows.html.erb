@@ -1,8 +1,26 @@
 <div class="row">
   <div class="col-6">
-    <%= render "follows/followers", followers: @followers %>
+    <% if @user == current_user %>
+      <h2>Your followers :</h2>
+    <% else %>
+      <h2><%= @user.username %>'s followers :</h2>
+    <% end %>
+
+    <% @followers.each do |follow| %>
+      <%= render "follows/follow_card", follow: follow, follow_user: follow.follower %>
+    <% end %>
+
   </div>
   <div class="col-6">
-    <%= render "follows/followeds", followeds: @followeds %>
+    <% if @user == current_user %>
+      <h2>You're following </h2>
+    <% else %>
+     <h2><%= @user.username %> follows:</h2>
+    <% end %>
+
+    <% @followeds.each do |follow| %>
+      <%= render "follows/follow_card", follow: follow, follow_user: follow.followed %>
+    <% end %>
+
   </div>
 </div>

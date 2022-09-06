@@ -1,96 +1,38 @@
 <div class="container">
   <div class="row">
-    <div class="col-10 mx-auto">
-      <h2><%= user == current_user ? "Ma Watchlist" : "La Watchlist de #{user.username}" %></h2>
+    <div class="col-10">
+      <h2><%= user == current_user ? "My Watchlist" : "#{user.username}'s Watchlist" %></h2>
     </div>
   </div>
   <div class="row">
-    <div class="col-10 mx-auto">
+    <div class="col-10 mx">
       <div class="seen">
-        <h4>à voir</h4>
-        <% unseen_interests.each do |interest| %>
-          <div class="card_interest">
-            <div class="d-flex">
-              <%= link_to movie_path(interest.movie) do %>
-                <%= image_tag interest.movie.poster %>
-              <% end %>
-              <div class="info">
-                <h2><%= interest.movie.title %></h2>
-                <p><i class="fa-brands fa-imdb"></i> <%= interest.movie.imdb_rating %>/10</p>
-                <p>
-                  <i class="fa-solid fa-film"></i>
-                  <% if interest.movie.movie_shows.empty? %>
-                    <span>Pas de séances prévu</span>
-                  <% else %>
-                    <%= link_to "Voir des séances !", movie_path(interest.movie) %>
-                  <% end %>
-
-                </p>
-                <p class="date-added">Ajouté il y a <%= time_ago_in_words(interest.movie.created_at) %></p>
-              </div>
-            </div>
-
-            <div class="options">
-              <% if interest.user == current_user %>
-                <%= simple_form_for interest do |f| %>
-                  <%= f.input :seen, as: :hidden, input_html: { value: true } %>
-                  <div class="btn-div">
-                  <span class="btn-label">Vous avez vu ce film ?</span>
-                  <%= button_tag type: 'submit', class: "btn btn-primary", id: "register-button" do %>
-                  <i class="fa-solid fa-check" aria-hidden="true"></i>
-                  </div>
-                <% end %>
-              <% end %>
-
-                <%= link_to interest_path(interest), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete #{interest.movie.title} from your Watchlist?"} do %>
-                  <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-                <% end %>
-              <% end %>
-            </div>
+        <h4>To See</h4>
+        <% if unseen_interests.empty? %>
+          <div class="empty_message">
+            <%= link_to movies_path do %>
+              <p>Looks like you watched them all... Add some more films here!</p>
+            <% end %>
           </div>
+        <% else %>
+          <% unseen_interests.each do |interest| %>
+            <%= render "interests/interest_card", interest: interest %>
+          <% end %>
         <% end %>
       </div>
 
       <div class="unseen">
-        <h4>Vu</h4>
-        <% seen_interests.each do |interest| %>
-          <div class="card_interest">
-            <div class="d-flex">
-              <%= link_to movie_path(interest.movie) do %>
-                <%= image_tag interest.movie.poster %>
-              <% end %>
-              <div class="info">
-                <h2><%= interest.movie.title %></h2>
-                <p><i class="fa-brands fa-imdb"></i> <%= interest.movie.imdb_rating %>/10</p>
-                <p>
-                  <i class="fa-solid fa-film"></i>
-                  <% if interest.movie.movie_shows.empty? %>
-                    <span>Pas de séances prévu</span>
-                  <% else %>
-                    <%= link_to "Voir des séances !", movie_path(interest.movie) %>
-                  <% end %>
-
-                </p>
-                <p class="date-added">Ajouté il y a <%= time_ago_in_words(interest.movie.created_at) %></p>
-              </div>
-            </div>
-
-            <div class="options">
-              <% if interest.user == current_user %>
-                <%= simple_form_for interest do |f| %>
-                  <%= f.input :seen, as: :hidden, input_html: { value: false } %>
-                  <div class="btn"></div>
-                  <%= button_tag type: 'submit', class: "btn btn-primary", id: "register-button" do %>
-                    <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
-                  <% end %>
-                <% end %>
-
-                <%= link_to interest_path(interest), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete #{interest.movie.title} from your Watchlist?"} do %>
-                  <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-                <% end %>
-              <% end %>
-            </div>
+        <h4>Seen</h4>
+        <% if seen_interests.empty? %>
+          <div class="empty_message">
+            <%= link_to movies_path do %>
+              <p>Looks like you need to go to the cinema. Lets find you a film to watch!</p>
+            <% end %>
           </div>
+        <% else %>
+          <% seen_interests.each do |interest| %>
+            <%= render "interests/interest_card", interest: interest %>
+          <% end %>
         <% end %>
       </div>
     </div>

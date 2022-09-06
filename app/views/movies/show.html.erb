@@ -113,6 +113,7 @@
     </div>
   </div>
   <div class="comment p-2" data-controller="insert-in-list">
+    <h5>Chat</h5>
     <div class="comment-list">
       <ul class="list-group list-group-flush p-2" data-insert-in-list-target="items">
         <% @movie.comments.includes([:user]).each do |comment| %>

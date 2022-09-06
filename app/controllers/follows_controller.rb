@@ -11,7 +11,6 @@ class FollowsController < ApplicationController
     @follow.follower = current_user
     followed = User.find(follow_params[:followed_id])
     @follow.followed = followed
-
     if @follow.save
       @unseen_interests = Interest.includes(:user, :movie).where(user: @user, seen: false)
       @seen_interests = Interest.includes(:user, :movie).where(user: @user, seen: true)
