@@ -1,11 +1,11 @@
 <div class="container show-of-movies">
-  <h1><%= @movie.title %></h1>
+  <h1><%= @movie.title %> (<%= @movie.release_date %>)</h1>
   <div class="row row1 mx-0">
     <div class="col-md-3 movie-poster">
-      <% if movie.poster.nil?  %>
-        <%= image_tag "bobine100.png", class: 'img-fluid' %>
+      <% if @movie.poster.nil?  %>
+        <%= image_tag "bobine512show.png", class: 'nil-img' %>
       <% else %>
-       <img src="<%= movie.poster %>" alt="" class='img-fluid'>
+       <img src="<%= @movie.poster %>" alt="" class='img-fluid'>
       <% end %>
       <div class="row add-watchlist">
         <% if user_signed_in? %>
@@ -35,20 +35,19 @@
       </div>
     </div>
     <div class="col-md-6 movie-infos">
-      <p class="movie-director">Directed by: <%= link_to "#{@movie.director}", artists_path(query: @movie.director) %>
-      <p class="movie-plot text-ellipsis--3">Plot: <%= @movie.synopsis %></p>
-      <p class="movie-runtime">Runtime: <%= @movie.duration %> min</p>
-      <p class="movie-year">Release: <%= @movie.release_date %></p>
-      <p class="movie-langage">Language: <%= @movie.original_language %></p>
-      <p class="movie-country">Country: <%= @movie.country %></p>
-      <p class="movie-genre">Genre: <%= @movie.genre %></p>
+      <p class="movie-director"><i class="fa-solid fa-clapperboard fa-lg"></i>  <%= link_to "#{@movie.director}", artists_path(query: @movie.director) %>
       <p class="movie-rate">
         <% stars(@movie.imdb_rating / 2).each do |star| %>
           <span><i class="star_icon"><%= image_tag "#{star}" %></i></span>
         <% end %>
         <i class="fa-brands fa-imdb fa-xl"></i>
       </p>
-      <p class="movie-actors">Casting: <%= @movie.actors %></p>
+      <p class="movie-plot"><%= @movie.synopsis %></p>
+      <p class="movie-runtime"><i class="fa-regular fa-clock fa-lg"></i>  <%= @movie.duration %> min</p>
+      <p class="movie-genre"><%= @movie.genre %>  <i class="fa-solid fa-masks-theater fa-lg"></i></p>
+      <p class="movie-country"><i class="fa-solid fa-earth-americas fa-lg"></i>  <%= @movie.country %></p>
+      <p class="movie-langage"><%= @movie.original_language %>  <i class="fa-solid fa-ear-listen fa-lg"></i></p>
+      <p class="movie-actors"><i class="fa-solid fa-user-group fa-lg"></i>  <%= @movie.actors %></p>
     </div>
 
     <div class="col-md-3">

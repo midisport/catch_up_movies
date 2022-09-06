@@ -58,6 +58,7 @@
     border-top-left-radius: 50px;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
+    border-right: black;
   }
 
   .btn {
@@ -70,4 +71,14 @@
     border-top-right-radius: 50px;
     border-color: #F4F4F4;
   }
+
+}
+
+input:focus {
+  outline: none !important ;
+}
+
+.form-control:focus{
+  border: 1px solid white !important ;
+  box-shadow: none !important;
 }

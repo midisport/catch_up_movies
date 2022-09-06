@@ -1,0 +1,81 @@
+
+.interest_row {
+  display: flex;
+  margin-bottom: 2em;
+
+  .container_edit-btn {
+    color: $violet;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 1.6em;
+    padding-right: 1em;
+
+    i {
+      margin: auto 0;
+    }
+
+    :hover {
+      color: $violet-highlight;
+    }
+  }
+}
+
+.card_interest {
+  background-color: $background-card;
+  border-radius: $border-radius;
+  display: flex;
+  height: $card_height;
+  transition: all ease-in-out 500ms;
+
+  img {
+    border-radius: $border-radius 0 0 $border-radius;
+    object-fit: cover;
+    height: $card_height;
+  }
+
+  .card_interest_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 1em;
+
+    .top-line {
+      display: flex;
+      justify-content: space-between;
+    }
+    .card_interest-title {
+      text-overflow: ellipsis;
+    }
+
+      .card_interest-rating {
+        .filled-star {
+          color: $violet-highlight
+        }
+
+      .unfilled-star {
+        color: rgba($violet-highlight, 0.5);
+      }
+
+      span {
+        color: $text-muted
+      }
+    }
+
+    .plot {
+      color: $text-muted;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .film-details {
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

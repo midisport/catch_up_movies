@@ -4,4 +4,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 2em 0;
+
+  button {
+    margin-right: 3em;
+    padding-right: 0.6em;
+  }
+
+  i {
+    margin: 0 0.6em;
+  }
+
+  .dashboard_tabs_options {
+    margin-bottom: -0.6em;
+  }
 }

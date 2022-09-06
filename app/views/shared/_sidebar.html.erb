@@ -22,24 +22,26 @@
   <hr>
 
   <ul class="sidebar_menu">
-    <li class="sidebar_menu_item"><i class="fa-solid fa-clapperboard"></i><%= link_to "Movies In Theater", movies_path %></li>
+      <li class="sidebar_menu_item"><i class="fa-solid fa-clapperboard"></i><%= link_to "Films out now!", movies_path %></li>
     <% if user_signed_in? %>
       <li class="sidebar_menu_item"><i class="fa-solid fa-list-ul"></i><%= link_to "Dashboard", "/dashboard/#{current_user.id}" %></li>
-      <li class="sidebar_menu_item"><i class="fa-solid fa-bookmark"></i><%= link_to "Watchlist", user_interests_path(current_user) %></li>
-  </ul>
+      <li class="sidebar_menu_item"><i class="fa-regular fa-bookmark"></i><%= link_to "Watchlist", user_interests_path(current_user) %></li>
+    </ul>
 
+    <hr class="bottom">
+    <ul class="sidebar_menu">
+      <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
+        <li class="log sidebar_menu_item">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out
+        </li>
+      <% end %>
+    </ul>
 
-    <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
-      <li class="log sidebar_menu_item">
-      <hr class="bottom">
-      <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
-      </li>
-    <% end %>
   <% else %>
     <li class="sidebar_menu_item log">
     <hr class="bottom">
     <i class="fa-solid fa-arrow-right-from-bracket"></i>
-    <%= link_to "Log In", new_user_session_path %>
+    <%= link_to "Sign In", new_user_session_path %>
     </li>
 
   <% end %>

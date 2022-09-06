@@ -1,0 +1,57 @@
+.card_follow {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $background-card;
+  border-radius: $border-radius;
+  padding: 1em;
+  margin-bottom: 2em;
+
+  :hover {
+    .follow_btn {
+      color: $violet-highlight;
+    }
+  }
+
+  .user_profile {
+    display: flex;
+    justify-content: space-between;
+
+    .user_info {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 5vw;
+        height: 5vw;
+      }
+
+      .info_text {
+        margin-left: 1em;
+
+        i {
+          margin-right: 0.5em;
+        }
+      }
+    }
+  }
+
+  .shared_films {
+    font-weight: 100;
+    p {
+      margin-bottom: 0;
+
+      .film_list {
+        color: $text-muted;
+      }
+
+      .film_list_overflow {
+        color: $violet
+      }
+
+      .push_right {
+        float: right;
+      }
+    }
+  }
+}

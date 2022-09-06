@@ -1,43 +1,58 @@
 /* Tabs */
 
+.disappear {
+  opacity: 0;
+}
+
+.undo-btn {
+  background: none;
+  border: none;
+}
+
 .tab_btn {
-  color: black;
-  background-color: white;
-  border-radius: $border-radius $border-radius 0 0;
-  font-size: 1.25em;
+ color: $violet-muted;
+ background: $background-main;
+ border: solid $background-main 3px;
+ height: 100%;
+ font-size: 1.3em;
 }
 
 .tab_btn-active {
-  color:darkred;
-  background-color: black;
+  color: $violet-highlight;
+  border-bottom: solid $violet-highlight 3px;
 }
 
 .tab_btn:hover {
-  color:darkred;
-  background-color: black;
+  color: $violet-highlight;
+  border-bottom: solid $violet-highlight 3px;
+}
+
+.tab_edit_btn {
+  background-color: $background-card;
+  border-radius: 30px;
+  border: $violet-highlight 1px;
+  color: $violet-highlight;
+  margin-bottom: 0.5em;
+  padding: 0.3em 2em !important;
+  transition: ease-in 200ms;
+}
+
+.mark-read {
+  color: $violet
 }
 
 
 /* follower card */
-.follow_back_btn {
-  color: white;
-  border: solid;
-}
+.follow_btn {
+  border: none;
+  background: none;
+  color: $violet-muted;
+  padding: 0.3em 0.4em;
+  transition: ease 300ms;
 
-.follow_back_btn:hover {
-  background-color: darkgreen;
-  border: solid darkgreen;
-}
-
-.unfollow_btn {
-  color: white;
-  border: solid;
-}
-
-.unfollow_btn:hover {
-  color: white;
-  background-color: orangered;
-  border: orangered solid;
+  .fa-circle {
+    font-size: 1.7em;
+  }
 }
 
 .watchlist_btn {
