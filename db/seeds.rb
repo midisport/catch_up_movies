@@ -38,6 +38,7 @@ Follow.create!(follower: user3, followed: user4)
 Follow.create!(follower: user3, followed: user2)
 Follow.create!(follower: user4, followed: user1)
 puts "follows created"
+
 #
 # # Movies
 # puts "creating movies"

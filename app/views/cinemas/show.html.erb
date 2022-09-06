@@ -7,28 +7,38 @@
   <% @cinema.movie_shows.includes(:movie).each do |movie_show| %>
     <div class="cine-seances">
       <div class="movie-poster">
-        <%= image_tag movie_show.movie.poster, class: "card-img-top" %>
+        <%= link_to movie_path(movie_show.movie) do %>
+          <%= image_tag movie_show.movie.poster, class: "card-img-top" %>
+        <% end %>
       </div>
       <h5 class="seance-title"><%= movie_show.movie.title %></h5>
       <div class="seance-booking">
-        <% if current_user.movie_shows.include?(movie_show) %>
-          <div class="rmv-booking">
-            <%= link_to booking_path(Booking.find_by(user:current_user, movie_show:movie_show), source: "cine"), data: {turbo_method: :delete} do %>
-              <button class="btn-remove-booking"><i class="fa-solid fa-bookmark fa-xl"></i></button>
-            <% end %>
-          </div>
-        <% else %>
-          <div class="cine-booking">
-            <%= simple_form_for [movie_show, @booking] do |f| %>
-              <%= hidden_field_tag :source, "cine" %>
-              <%= button_tag(class: 'btn-booking') do %>
-                <i class="fa-regular fa-bookmark fa-xl btn-book"></i>
+        <% if user_signed_in? %>
+          <% if current_user.movie_shows.include?(movie_show) %>
+            <div class="rmv-booking">
+              <%= link_to booking_path(Booking.find_by(user:current_user, movie_show:movie_show), source: "cine"), data: {turbo_method: :delete} do %>
+                <button class="btn-remove-booking"><i class="fa-solid fa-bookmark fa-xl"></i></button>
               <% end %>
+            </div>
+          <% else %>
+            <div class="cine-booking">
+              <%= simple_form_for [movie_show, @booking] do |f| %>
+                <%= hidden_field_tag :source, "cine" %>
+                <%= button_tag(class: 'btn-booking') do %>
+                  <i class="fa-regular fa-bookmark fa-xl btn-book"></i>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="col-8 mx-auto pl-0">
+            <%= link_to new_user_session_path do %>
+              <i class="fa-regular fa-bookmark btn-booking fa-xl"></i>
             <% end %>
           </div>
         <% end %>
       </div>
-      <div class="seance-plot">Plot: <%= movie_show.movie.synopsis %></div>
+      <div class="seance-plot text-ellipsis--3">Plot: <%= movie_show.movie.synopsis %></div>
       <div class="seance-date"><i class="fa-solid fa-calendar-days"></i>  <%= l movie_show.date, format: '%a %d %B' %></div>
       <div class="seance-time"><%= movie_show.start_at.strftime('%H:%M') %>  <i class="fa-solid fa-clock"></i></div>
       <div class="seance-lang"><i class="fa-solid fa-ear-listen"></i>  <%= movie_show.language %></div>
