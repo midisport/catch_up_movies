@@ -57,6 +57,15 @@
     grid-area: 2 / 1 / 4 / 6;
     margin: 0;
   }
+  .movie-plot.text-ellipsis--3{
+    text-overflow:ellipsis;
+    overflow:hidden;
+    // Addition lines for 2 line or multiline ellipsis
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  }
   .movie-runtime {
     grid-area: 4 / 1 / 5 / 3;
     margin: 0;
