@@ -28,8 +28,8 @@ class InterestsController < ApplicationController
         redirect_to user_interests_path(@interested_user)
       end
     else
-      @directors = @movie.castings.where(role: "Réalisateur")
-      @actors = @movie.castings.where(role: "Acteur")
+      @directors = @movie.director
+      @actors = @movie.actors
       @movie_shows = MovieShow.where(movie_id: params[:id])
       @markers = @movie.cinemas.geocoded.map do |cinema|
         {
