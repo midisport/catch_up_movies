@@ -1,32 +1,41 @@
-<div class="card_interest">
-  <%= link_to movie_path(interest.movie) do %>
-    <%= image_tag interest.movie.poster %>
-  <% end %>
+<div class="interest_row">
+  <div class="container_edit-btn">
+      <i class="fa-regular fa-circle-check"></i>
+      <i class="fa-regular fa-circle-xmark"></i>
+  </div>
+
+  <div class="card_interest">
+
+    <%= link_to movie_path(interest.movie) do %>
+      <%= image_tag interest.movie.poster %>
+    <% end %>
 
 
-  <div class="card_interest_info">
-    <div class="top-line">
-      <div class="card_interest-title">
-        <h5><%= interest.movie.title %></h5>
-      </div>
-        <div class="card_interest-rating">
-          <% (interest.movie.imdb_rating.div(2)).times do %>
-            <i class="fa-solid fa-star filled-star"></i>
-          <% end %>
-          <% (5 - (interest.movie.imdb_rating.div(2))).times do %>
-            <i class="fa-solid fa-star unfilled-star"></i>
-          <% end %>
-          <span>(<%= (interest.movie.imdb_rating).div(2) %>)</span>
+    <div class="card_interest_info">
+      <div class="top-line">
+        <div class="card_interest-title">
+          <h5><%= interest.movie.title %></h5>
         </div>
+          <div class="card_interest-rating">
+            <% (interest.movie.imdb_rating.div(2)).times do %>
+              <i class="fa-solid fa-star filled-star"></i>
+            <% end %>
+            <% (5 - (interest.movie.imdb_rating.div(2))).times do %>
+              <i class="fa-solid fa-star unfilled-star"></i>
+            <% end %>
+            <span>(<%= (interest.movie.imdb_rating).div(2) %>)</span>
+          </div>
+        </div>
+
+      <div class="plot">
+        <p ><%= interest.movie.synopsis %></p>
       </div>
 
-    <div class="plot">
-      <p ><%= interest.movie.synopsis %></p>
+    <div class="film-details">
+    <p><%= pluralize(interest.movie.duration, "min") %> | <%= interest.movie.release_date %></p>
+    </div>
     </div>
 
-  <div class="film-details">
-  <p><%= pluralize(interest.movie.duration, "min") %> | <%= interest.movie.release_date %></p>
-  </div>
   </div>
 
 </div>

@@ -1,11 +1,32 @@
 $card_height: 25vh;
 
+.interest_row {
+  display: flex;
+  margin-bottom: 2em;
+
+  .container_edit-btn {
+    color: $violet;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 1.6em;
+    padding-right: 1em;
+
+    i {
+      margin: auto 0;
+    }
+
+    :hover {
+      color: $violet-highlight;
+    }
+  }
+}
+
 .card_interest {
   background-color: $background-card;
   border-radius: $border-radius;
   display: flex;
   height: $card_height;
-  margin-bottom: 2em;
 
   img {
     border-radius: $border-radius 0 0 $border-radius;
