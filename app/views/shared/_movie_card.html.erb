@@ -3,12 +3,10 @@
     <%= link_to movie do %>
       <div class="d-flex">
         <div class="col-md-5 movie-poster">
-          <% unless movie.poster.nil?  %>
-            <% if movie.poster.match?(/http/) %>
+          <% if movie.poster.nil?  %>
+            <%= image_tag "bobine512.png", class: 'img-fluid pt-4' %>
+          <% else %>
             <img src="<%= movie.poster %>" alt="" class='img-fluid'>
-            <% else %>
-              <%= image_tag movie.poster, class: 'img-fluid' %>
-            <% end %>
           <% end %>
         </div>
         <div class="col-md-7">
