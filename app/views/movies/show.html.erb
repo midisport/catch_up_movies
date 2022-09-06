@@ -1,9 +1,9 @@
 <div class="container show-of-movies">
   <h1><%= @movie.title %></h1>
-  <div class="row row1">
+  <div class="row row1 mx-0">
     <div class="col-md-3 movie-poster">
       <%= image_tag @movie.poster, class: 'w-100' %>
-      <div class="row add-watchlist">
+      <div class="row add-watchlist mx-0">
         <% if user_signed_in? %>
           <% if current_user.movies.include?(@movie) %>
             <div class="col-8 mx-auto pl-0">
@@ -56,7 +56,7 @@
 
     <div class="col-md-3">
       <% unless @movie_show.empty? %>
-        <div style="width: 50%; min-width: 30vw; height: 300px;"
+        <div style="max-width: 100vw; height: 25vw;"
           data-controller="map"
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
