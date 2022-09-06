@@ -134,7 +134,7 @@ cinema1 = Cinema.new(
   lat: 48.85462324446117,
   lng: 2.369382443779865,
   name: "Mk2 - Bastille",
-  address: "4 Bd Beaumarchais",
+  address: "4 Bd Beaumarchais, 75004 Paris",
 )
 cinema1.save!
 cinema2 = Cinema.new(
