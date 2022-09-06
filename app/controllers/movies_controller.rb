@@ -8,6 +8,10 @@ class MoviesController < ApplicationController
       omdb_search_and_create_movies(params[:query])
       sql_query = "movies.title @@ :query"
       @movies = policy_scope(Movie).where(sql_query, query: "%#{params[:query]}%")
+      if @movies.empty?
+        @movies = policy_scope(Movie)
+        flash[:notice] = "This movie is not in the list! Please try again"
+      end
     else
       @movies = policy_scope(Movie)
     end
@@ -38,25 +42,27 @@ class MoviesController < ApplicationController
     response = URI.open(url).read
     results = JSON.parse(response)
     movies = results["Search"]
-    movies.each do |movie|
-      if  Movie.where(imdbid: movie["imdbID"]).empty?
-        url = "http://www.omdbapi.com/?apikey=9695b4ac&i=#{movie['imdbID']}"
-        answer = URI.open(url).read
-        film = JSON.parse(answer)
-        Movie.create(
-          title: film["Title"],
-          synopsis: film["Plot"],
-          duration: film["Runtime"],
-          poster: (film["Poster"] == "N/A" || film["Poster"] == "") ? nil : film["Poster"],
-          original_language: film["Language"],
-          country: film["Country"],
-          genre: film["Genre"],
-          imdb_rating: film["imdbRating"],
-          release_date: film["Year"],
-          director: film["Director"],
-          actors: film["Actors"],
-          imdbid: film["imdbID"]
-        )
+    unless movies.nil?
+      movies.each do |movie|
+        if  Movie.where(imdbid: movie["imdbID"]).empty?
+          url = "http://www.omdbapi.com/?apikey=9695b4ac&i=#{movie['imdbID']}"
+          answer = URI.open(url).read
+          film = JSON.parse(answer)
+          Movie.create(
+            title: film["Title"],
+            synopsis: film["Plot"],
+            duration: film["Runtime"],
+            poster: (film["Poster"] == "N/A" || film["Poster"] == "") ? nil : film["Poster"],
+            original_language: film["Language"],
+            country: film["Country"],
+            genre: film["Genre"],
+            imdb_rating: film["imdbRating"],
+            release_date: film["Year"],
+            director: film["Director"],
+            actors: film["Actors"],
+            imdbid: film["imdbID"]
+          )
+        end
       end
     end
   end

@@ -2,12 +2,10 @@
   <h1><%= @movie.title %></h1>
   <div class="row row1 mx-0">
     <div class="col-md-3 movie-poster">
-      <% unless @movie.poster.nil?  %>
-        <% if @movie.poster.match?(/http/) %>
-        <img src="<%= @movie.poster %>" alt="" class='w-100'>
-        <% else %>
-          <%= image_tag @movie.poster, class: 'w-100' %>
-        <% end %>
+      <% if movie.poster.nil?  %>
+        <%= image_tag "bobine100.png", class: 'img-fluid' %>
+      <% else %>
+       <img src="<%= movie.poster %>" alt="" class='img-fluid'>
       <% end %>
       <div class="row add-watchlist">
         <% if user_signed_in? %>
@@ -113,7 +111,7 @@
     </div>
   </div>
   <div class="comment p-2" data-controller="insert-in-list">
-    <h5>Chat</h5>
+    <h5>Chat :</h5>
     <div class="comment-list">
       <ul class="list-group list-group-flush p-2" data-insert-in-list-target="items">
         <% @movie.comments.includes([:user]).each do |comment| %>
