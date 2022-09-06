@@ -27,6 +27,7 @@ $card_height: 25vh;
   border-radius: $border-radius;
   display: flex;
   height: $card_height;
+  transition: all ease-in-out 500ms;
 
   img {
     border-radius: $border-radius 0 0 $border-radius;

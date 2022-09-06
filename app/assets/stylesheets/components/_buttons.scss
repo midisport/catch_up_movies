@@ -1,5 +1,14 @@
 /* Tabs */
 
+.disappear {
+  opacity: 0;
+}
+
+.undo-btn {
+  background: none;
+  border: none;
+}
+
 .tab_btn {
  color: $violet-muted;
  background: $background-main;
@@ -24,7 +33,12 @@
   border: $violet-highlight 1px;
   color: $violet-highlight;
   margin-bottom: 0.5em;
-  padding: 0.3em 0.6em;
+  padding: 0.3em 2em !important;
+  transition: ease-in 200ms;
+}
+
+.mark-read {
+  color: $violet
 }
 
 

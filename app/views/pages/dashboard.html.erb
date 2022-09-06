@@ -7,7 +7,9 @@
           <button id="bookings-btn" class="tab_btn" data-action="click->tabs#reveal" data-tabs-target="btn"><i class="fa-solid fa-ticket"></i>Showings</button>
           <button  id="follows-btn" class="tab_btn" data-action="click->tabs#reveal" data-tabs-target="btn"><i class="fa-solid fa-address-book"></i>Friends</button>
         </div>
-        <button class="tab_edit_btn" >Edit my watchlist</button>
+        <% if @user == current_user %>
+          <button class="tab_edit_btn" data-action="click->tabs#edit" data-tabs-target="editBtn" >Edit Watchlist</button>
+        <% end %>
       </div>
     </div>
   </div>

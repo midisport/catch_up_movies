@@ -1,7 +1,14 @@
 <div class="interest_row">
-  <div class="container_edit-btn">
-      <i class="fa-regular fa-circle-check"></i>
-      <i class="fa-regular fa-circle-xmark"></i>
+  <div class="container_edit-btn d-none" data-tabs-target="editDiv">
+      <%= simple_form_for interest do |f| %>
+        <%= f.input :seen, as: :hidden, input_html: { value: true } %>
+        <%= button_tag type: 'submit', class: "undo-btn mark-read", id: "register-button" do %>
+          <i class="fa-regular fa-circle-check" aria-hidden="true"></i>
+        <% end %>
+      <% end %>
+      <%= link_to interest_path(interest), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete #{interest.movie.title} from your Watchlist?"} do %>
+        <button class="undo-btn mark-read"><i class="fa-regular fa-circle-xmark"></i></button>
+      <% end %>
   </div>
 
   <div class="card_interest">
