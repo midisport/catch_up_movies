@@ -43,25 +43,16 @@
 
 
 /* follower card */
-.follow_back_btn {
-  color: white;
-  border: solid;
-}
+.follow_btn {
+  border: none;
+  background: none;
+  color: $violet-muted;
+  padding: 0.3em 0.4em;
+  transition: ease 300ms;
 
-.follow_back_btn:hover {
-  background-color: darkgreen;
-  border: solid darkgreen;
-}
-
-.unfollow_btn {
-  color: white;
-  border: solid;
-}
-
-.unfollow_btn:hover {
-  color: white;
-  background-color: orangered;
-  border: orangered solid;
+  .fa-circle {
+    font-size: 1.7em;
+  }
 }
 
 .watchlist_btn {

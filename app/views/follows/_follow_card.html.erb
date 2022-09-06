@@ -1,0 +1,52 @@
+<div class="card_follow">
+  <div class="user_profile">
+
+    <div class="user_info">
+      <%= image_tag follow_user.avatar, class: "avatar" %>
+
+      <div class="info_text">
+        <h6><%= follow_user.username %></h6>
+        <%= link_to user_interests_path(follow_user) do %>
+          <p><i class="fa-regular fa-bookmark"></i> Watchlist</p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="follow_btn_container">
+      <% if follow.follower == current_user %>
+        <%# I can delete (stop following) %>
+        <%= link_to follow_path(follow), class:"", data: {turbo_method: :delete, turbo_confirm: "Do you really want to stop following #{follow.followed.username}?"} do %>
+          <button class="follow_btn">
+             <span class="fa-stack fa-1x">
+              <i class="fa-solid fa-minus fa-stack-1x" aria-hidden="true"></i>
+              <i class="fa-regular fa-circle fa-stack-1x"></i>
+            </span>
+          </button>
+        <% end %>
+      <% elsif follow.followed == current_user && follow.followed?(current_user) == false %>
+        <%# I can follow back %>
+        <%= simple_form_for @follow do |f| %>
+          <%= f.error :follower, class: "text-danger" %>
+          <%= f.input :followed_id, as: :hidden , input_html: { value: follow.follower.id } %>
+          <%= button_tag type: 'submit', class: "follow_btn", id: "register-button" do %>
+            <span class="fa-stack fa-1x">
+              <i class="fa-solid fa-plus fa-stack-1x" aria-hidden="true"></i>
+              <i class="fa-regular fa-circle fa-stack-1x"></i>
+            </span>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+  </div>
+  <hr>
+  <div class="shared_films">
+    <p>
+      <span>You both want to watch :</span>
+      <span class="film_list"><%= follow.shared_films.first.title %></span>
+      <% if follow.shared_films.size > 1 %>
+        <span class="push_right"> <span class="film_list_overflow"> + <%= (follow.shared_films.size - 1) %> more</span></span>
+      <% end %>
+    </p>
+  </div>
+</div>

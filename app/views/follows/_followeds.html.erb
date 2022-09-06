@@ -1,8 +1,4 @@
-<% if @user == current_user %>
-  <h2>Vous suivez : </h2>
-<% else %>
-  <h2><%= @user.username %> suis :</h2>
-<% end %>
+
 <div class="followed_cards_container">
   <% followeds.each do |follow| %>
     <div class="card_followeds">
