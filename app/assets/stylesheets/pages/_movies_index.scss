@@ -1,0 +1,84 @@
+.page-movie-index {
+
+  .search-bar {
+    margin: 2rem auto 1rem;
+    width: 60vw;
+  }
+  .form-control {
+    background-color: #0E0000;
+    border-right: #0E0000;
+    color: #6c6b6d;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .btn {
+    background-color: #0E0000;
+    border-left: #0E0000;
+    color: #6c6b6d;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+    border-color: #F4F4F4;
+  }
+}
+
+.movies-card {
+  margin: 15px 0;
+  height: 200px;
+  width: 50vw;
+  background-color: $grey-light;
+  border-radius: 5px;
+  padding-right: 8px;;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+  .movie-poster {
+    grid-area: 1 / 1 / 5 / 2;
+    margin-right: 8px;
+    img {
+      object-fit: cover;
+      object-position: center;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .movie-title {
+    grid-area: 1 / 2 / 2 / 6;
+    align-self: center;
+  }
+  .movie-plot {
+    grid-area: 2 / 2 / 4 / 6;
+    align-self: center;
+  }
+  .movie-plot.text-ellipsis--3 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    // Addition lines for 2 line or multiline ellipsis
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  }
+  .movie-runtime {
+    grid-area: 4 / 2 / 5 / 3;
+    align-self: center;
+  }
+  .movie-rate {
+    grid-area: 4 / 5 / 5 / 6;
+    align-self: center;
+    justify-self: end;
+    img {
+      height: 15px;
+      width: 15px;
+      margin-right: 3px;
+      margin-bottom: 6px;
+    }
+  }
+}
