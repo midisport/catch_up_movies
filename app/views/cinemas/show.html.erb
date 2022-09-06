@@ -7,7 +7,9 @@
   <% @cinema.movie_shows.includes(:movie).each do |movie_show| %>
     <div class="cine-seances">
       <div class="movie-poster">
-        <%= image_tag movie_show.movie.poster, class: "card-img-top" %>
+        <%= link_to movie_path(movie_show.movie) do %>
+          <%= image_tag movie_show.movie.poster, class: "card-img-top" %>
+        <% end %>
       </div>
       <h5 class="seance-title"><%= movie_show.movie.title %></h5>
       <div class="seance-booking">

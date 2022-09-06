@@ -44,7 +44,12 @@
       <p class="movie-langage">Language: <%= @movie.original_language %></p>
       <p class="movie-country">Country: <%= @movie.country %></p>
       <p class="movie-genre">Genre: <%= @movie.genre %></p>
-      <p class="movie-rate">IMDB rating: <%= @movie.imdb_rating %>/10</p>
+      <p class="movie-rate">
+        <% stars(@movie.imdb_rating / 2).each do |star| %>
+          <span><i class="star_icon"><%= image_tag "#{star}" %></i></span>
+        <% end %>
+        <i class="fa-brands fa-imdb"></i>
+      </p>
       <p class="movie-actors">Casting:
         <% unless @actors.nil? %>
           <% @actors.each do |actor| %>
