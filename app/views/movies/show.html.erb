@@ -1,8 +1,14 @@
 <div class="container show-of-movies">
   <h1><%= @movie.title %></h1>
-  <div class="row row1">
+  <div class="row row1 mx-0">
     <div class="col-md-3 movie-poster">
-      <%= image_tag @movie.poster, class: 'w-100' %>
+      <% unless @movie.poster.nil?  %>
+        <% if @movie.poster.match?(/http/) %>
+        <img src="<%= @movie.poster %>" alt="" class='w-100'>
+        <% else %>
+          <%= image_tag @movie.poster, class: 'w-100' %>
+        <% end %>
+      <% end %>
       <div class="row add-watchlist">
         <% if user_signed_in? %>
           <% if current_user.movies.include?(@movie) %>
@@ -31,13 +37,7 @@
       </div>
     </div>
     <div class="col-md-6 movie-infos">
-      <p class="movie-director">Directed by:
-        <% unless @directors.nil? %>
-          <% @directors.each do |director| %>
-            <%= link_to director.artist.name, artist_path(director.artist) %>
-          <% end %>
-        <% end %>
-      </p>
+      <p class="movie-director">Directed by: <%= link_to "#{@movie.director}", artists_path(query: @movie.director) %>
       <p class="movie-plot text-ellipsis--3">Plot: <%= @movie.synopsis %></p>
       <p class="movie-runtime">Runtime: <%= @movie.duration %> min</p>
       <p class="movie-year">Release: <%= @movie.release_date %></p>
@@ -50,18 +50,12 @@
         <% end %>
         <i class="fa-brands fa-imdb fa-xl"></i>
       </p>
-      <p class="movie-actors">Casting:
-        <% unless @actors.nil? %>
-          <% @actors.each do |actor| %>
-            <%= link_to actor.artist.name, artist_path(actor.artist) %>
-          <% end %>
-        <% end %>
-      </p>
+      <p class="movie-actors">Casting: <%= @movie.actors %></p>
     </div>
 
     <div class="col-md-3">
       <% unless @movie_show.empty? %>
-        <div style="width: 50%; min-width: 30vw; height: 300px;"
+        <div style="max-width: 100vw; height: 25vw;"
           data-controller="map"
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
