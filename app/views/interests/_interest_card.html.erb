@@ -1,0 +1,47 @@
+<div class="interest_row">
+  <div class="container_edit-btn d-none" data-tabs-target="editDiv">
+      <%= simple_form_for interest do |f| %>
+        <%= f.input :seen, as: :hidden, input_html: { value: true } %>
+        <%= button_tag type: 'submit', class: "undo-btn mark-read", id: "register-button" do %>
+          <i class="fa-regular fa-circle-check" aria-hidden="true"></i>
+        <% end %>
+      <% end %>
+      <%= link_to interest_path(interest), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete #{interest.movie.title} from your Watchlist?"} do %>
+        <button class="undo-btn mark-read"><i class="fa-regular fa-circle-xmark"></i></button>
+      <% end %>
+  </div>
+
+  <div class="card_interest">
+
+    <%= link_to movie_path(interest.movie) do %>
+      <%= image_tag interest.movie.poster %>
+    <% end %>
+
+    <div class="card_interest_info">
+      <div class="top-line">
+        <div class="card_interest-title">
+          <h5><%= interest.movie.title %></h5>
+        </div>
+          <div class="card_interest-rating">
+            <% (interest.movie.imdb_rating.div(2)).times do %>
+              <i class="fa-solid fa-star filled-star"></i>
+            <% end %>
+            <% (5 - (interest.movie.imdb_rating.div(2))).times do %>
+              <i class="fa-solid fa-star unfilled-star"></i>
+            <% end %>
+            <span>(<%= (interest.movie.imdb_rating).div(2) %>)</span>
+          </div>
+        </div>
+
+      <div class="plot">
+        <p ><%= interest.movie.synopsis %></p>
+      </div>
+
+      <div class="film-details">
+        <p><%= pluralize(interest.movie.duration, "min") %> | <%= interest.movie.release_date %></p>
+      </div>
+    </div>
+
+  </div>
+
+</div>

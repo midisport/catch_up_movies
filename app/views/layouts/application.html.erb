@@ -34,7 +34,9 @@
           <%= yield %>
         </div>
         <%= render "shared/flashes" %>
-        <%= render 'shared/footer' %>
+        <% unless current_page?(root_path) %>
+          <%= render 'shared/footer' %>
+        <% end %>
       </div>
     </div>
   </body>
