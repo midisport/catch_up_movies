@@ -37,7 +37,7 @@
       </div>
     </div>
     <div class="col-md-6 movie-infos">
-      <p class="movie-director">Réalisé par : <%= @movie.director %></p>
+      <p class="movie-director">Réalisé par : <%= link_to "#{@movie.director}", artists_path(query: @movie.director) %></p>
       <p class="movie-plot">Synopsis : <%= @movie.synopsis %></p>
       <p class="movie-runtime">Durée : <%= @movie.duration %> min</p>
       <p class="movie-year">Sortie : <%= @movie.release_date %></p>
