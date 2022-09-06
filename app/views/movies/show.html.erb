@@ -1,8 +1,14 @@
 <div class="container show-of-movies">
   <h1><%= @movie.title %></h1>
-  <div class="row row1">
+  <div class="row row1 mx-0">
     <div class="col-md-3 movie-poster">
-      <%= image_tag @movie.poster, class: 'w-100' %>
+      <% unless @movie.poster.nil?  %>
+        <% if @movie.poster.match?(/http/) %>
+        <img src="<%= @movie.poster %>" alt="" class='w-100'>
+        <% else %>
+          <%= image_tag @movie.poster, class: 'w-100' %>
+        <% end %>
+      <% end %>
       <div class="row add-watchlist">
         <% if user_signed_in? %>
           <% if current_user.movies.include?(@movie) %>
@@ -31,32 +37,25 @@
       </div>
     </div>
     <div class="col-md-6 movie-infos">
-      <p class="movie-director">Réalisé par :
-        <% unless @directors.nil? %>
-          <% @directors.each do |director| %>
-            <%= link_to director.artist.name, artist_path(director.artist) %>
-          <% end %>
+      <p class="movie-director">Directed by: <%= link_to "#{@movie.director}", artists_path(query: @movie.director) %>
+      <p class="movie-plot text-ellipsis--3">Plot: <%= @movie.synopsis %></p>
+      <p class="movie-runtime">Runtime: <%= @movie.duration %> min</p>
+      <p class="movie-year">Release: <%= @movie.release_date %></p>
+      <p class="movie-langage">Language: <%= @movie.original_language %></p>
+      <p class="movie-country">Country: <%= @movie.country %></p>
+      <p class="movie-genre">Genre: <%= @movie.genre %></p>
+      <p class="movie-rate">
+        <% stars(@movie.imdb_rating / 2).each do |star| %>
+          <span><i class="star_icon"><%= image_tag "#{star}" %></i></span>
         <% end %>
+        <i class="fa-brands fa-imdb fa-xl"></i>
       </p>
-      <p class="movie-plot">Synopsis : <%= @movie.synopsis %></p>
-      <p class="movie-runtime">Durée : <%= @movie.duration %> min</p>
-      <p class="movie-year">Sortie : <%= @movie.release_date %></p>
-      <p class="movie-langage">Langue d'origine : <%= @movie.original_language %></p>
-      <p class="movie-country">Pays : <%= @movie.country %></p>
-      <p class="movie-genre">Genre : <%= @movie.genre %></p>
-      <p class="movie-rate">Note IMDB : <%= @movie.imdb_rating %>/10</p>
-      <p class="movie-actors">Casting :
-        <% unless @actors.nil? %>
-          <% @actors.each do |actor| %>
-            <%= link_to actor.artist.name, artist_path(actor.artist) %>
-          <% end %>
-        <% end %>
-      </p>
+      <p class="movie-actors">Casting: <%= @movie.actors %></p>
     </div>
 
     <div class="col-md-3">
       <% unless @movie_show.empty? %>
-        <div style="width: 50%; min-width: 30vw; height: 300px;"
+        <div style="max-width: 100vw; height: 25vw;"
           data-controller="map"
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
@@ -66,37 +65,45 @@
   </div>
 
   <div class="seance-container">
-    <h4>Où voir ce film au cinéma :</h4>
+    <h4>Where to see this movie:</h4>
     <div class="seances">
       <% if @movie_shows.empty? %>
-        <div>Aucune séance n'est prévue pour ce film</p>
+        <div>No showing available</p>
       <% else %>
         <% @movie_shows.each do |movie_show| %>
           <div class="seance">
             <div class="cine-name"><strong><%= link_to movie_show.cinema.name, cinema_path(movie_show.cinema) %> :</strong></div>
-            <div class="seance-date"><%= l movie_show.date, format: '%a %d %B' %></div>
-            <div class="seance-time"><%= movie_show.start_at.strftime('%H:%M') %></div>
-            <div class="seance-lang">Langue : <%= movie_show.language %></div>
-            <div class="seance-sub">Sous-titres :
+            <div class="seance-date"><i class="fa-solid fa-calendar-days"></i>  <%= l movie_show.date, format: '%a %d %B' %></div>
+            <div class="seance-time"><i class="fa-solid fa-clock"></i>  <%= movie_show.start_at.strftime('%H:%M') %></div>
+            <div class="seance-lang"><i class="fa-solid fa-ear-listen"></i>  <%= movie_show.language %></div>
+            <div class="seance-sub"><i class="fa-solid fa-closed-captioning"></i>
               <% if movie_show.subtitle == "" %>
                   ❌
               <% else %>
                 <%= movie_show.subtitle %>
               <% end %>
             </div>
-            <% if current_user.movie_shows.include?(movie_show) %>
-              <div class="rmv-booking">
-                <%= link_to booking_path(Booking.find_by(user:current_user, movie_show:movie_show), source: "movie"), data: {turbo_method: :delete} do %>
-                  <button class="btn-remove-booking"><i class="fa-solid fa-bookmark fa-xl"></i></button>
-                <% end %>
-              </div>
-            <% else %>
-              <div class="seance-booking">
-                <%= simple_form_for [movie_show, @booking] do |f| %>
-                  <%= hidden_field_tag :source, "movie" %>
-                  <%= button_tag(class: 'btn-booking') do %>
-                    <i class="fa-regular fa-bookmark fa-xl btn-book"></i>
+            <% if user_signed_in? %>
+              <% if current_user.movie_shows.include?(movie_show) %>
+                <div class="rmv-booking">
+                  <%= link_to booking_path(Booking.find_by(user:current_user, movie_show:movie_show), source: "movie"), data: {turbo_method: :delete} do %>
+                    <button class="btn-remove-booking"><i class="fa-solid fa-bookmark fa-xl"></i></button>
                   <% end %>
+                </div>
+              <% else %>
+                <div class="seance-booking">
+                  <%= simple_form_for [movie_show, @booking] do |f| %>
+                    <%= hidden_field_tag :source, "movie" %>
+                    <%= button_tag(class: 'btn-booking') do %>
+                      <i class="fa-regular fa-bookmark fa-xl btn-book"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="col-8 mx-auto pl-0">
+                <%= link_to new_user_session_path do %>
+                  <i class="fa-regular fa-bookmark btn-booking fa-xl"></i>
                 <% end %>
               </div>
             <% end %>
@@ -106,6 +113,7 @@
     </div>
   </div>
   <div class="comment p-2" data-controller="insert-in-list">
+    <h5>Chat</h5>
     <div class="comment-list">
       <ul class="list-group list-group-flush p-2" data-insert-in-list-target="items">
         <% @movie.comments.includes([:user]).each do |comment| %>

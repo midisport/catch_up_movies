@@ -2,16 +2,7 @@
 <div class="banner d-none d-md-block home_info-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), ">
   <div class="container home">
     <h1>Un film à rattraper ?</h1>
-    <%= form_with url: movies_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "La soupe aux choux..."
-      %>
-      <%= button_tag(type: "submit", class: "btn") do %>
-        <i class="fa-solid fa-magnifying-glass"></i>
-      <% end %>
-    <% end %>
+    <%= render 'shared/search_bar' %>
   </div>
 </div>
 <div class="video-background">

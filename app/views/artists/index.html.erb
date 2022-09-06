@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row align-items-center artist-info">
     <div class="col-md-2">
-      <%= image_tag @artist.photo, class: 'img-fluid artist-avatar' %>
+      <%#= image_tag @artist.photo, class: 'img-fluid artist-avatar' %>
     </div>
-    <h3 class="col-md-4"><%= @artist.name %></h3>
+    <h3 class="col-md-4"><%#= @artist.name %> <%= @movies&.first&.director %></h3>
     <div class="col-md-auto"></div>
   </div>
   <h4 class="ms-3">Filmographie :</h4>

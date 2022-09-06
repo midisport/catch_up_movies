@@ -1,8 +1,13 @@
-<div class="container">
-  <h1>Films</h1>
-  <div class="movies_card">
+<div class="container page-movie-index">
+  <div class="search-bar">
+    <%= render 'shared/search_bar' %>
+  </div>
+  <h1>Movies in theater:</h1>
+  <div class="movies-index">
     <% @movies.each do |movie| %>
-       <%= render "shared/movie_card", movie: movie %>
+      <%# if movie.movie_shows.empty? == false %>
+        <%= render 'shared/movie_card', movie: movie %>
+      <%# end %>
     <% end %>
   </div>
 </div>

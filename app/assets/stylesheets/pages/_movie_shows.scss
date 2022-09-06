@@ -38,6 +38,15 @@
     align-self: center;
     justify-self: start;
   }
+  .seance-plot.text-ellipsis--3{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    // Addition lines for 2 line or multiline ellipsis
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  }
   .seance-date {
     grid-area: 4 / 2 / 5 / 3;
     align-self: center;
@@ -59,6 +68,7 @@
     align-self: center;
     justify-self: end;
     margin-right: 8px;
+    color: $white;
   }
 
   img {
@@ -99,6 +109,8 @@
     box-shadow: none;
     background-color: #1fe0;
     color: $violet;
+    margin-left: 10vw;
+
   }
   .btn-remove-booking:hover {
     color: $violet-muted;

@@ -28,7 +28,6 @@
       <li class="sidebar_menu_item"><i class="fa-regular fa-bookmark"></i><%= link_to "Watchlist", user_interests_path(current_user) %></li>
     </ul>
 
-
     <hr class="bottom">
     <ul class="sidebar_menu">
       <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
@@ -37,6 +36,7 @@
         </li>
       <% end %>
     </ul>
+
   <% else %>
     <li class="sidebar_menu_item log">
     <hr class="bottom">
