@@ -11,23 +11,24 @@ class MoviesController < ApplicationController
       results = JSON.parse(response)
       @movies = results["Search"]
       @movies.each do |movie|
-        url = "http://www.omdbapi.com/?apikey=9695b4ac&s=#{movie['imdbID']}"
+        url = "http://www.omdbapi.com/?apikey=9695b4ac&i=#{movie['imdbID']}"
         answer = URI.open(url+movie['imdbID']).read
-        result = JSON.parse(answer)
-        title = movie["Title"]
-        synopsis = movie["Plot"]
-        duration = movie["Runtime"]
-        poster = movie["Poster"]
-        original_language = movie["Language"]
-        imdb_rating = movie["imdbRating"]
-        release_date = movie["Year"]
+        film = JSON.parse(answer)
+        title = film["Title"]
+        synopsis = film["Plot"]
+        duration = film["Runtime"]
+        poster = film["Poster"]
+        original_language = film["Language"]
+        imdb_rating = film["imdbRating"]
+        release_date = film["Year"]
+        director = film["Director"]
+        actors = film["Actors"]
       end
 
 
 
       sql_query = <<~SQL
         movies.title @@ :query
-        OR artists.name @@ :query
       SQL
       @movies = policy_scope(Movie).joins(:artists).where(sql_query, query: "%#{params[:query]}%")
     else

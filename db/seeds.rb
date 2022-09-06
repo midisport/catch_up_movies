@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
-
+# https://www.omdbapi.com/?apikey=9695b4ac&t=
 
 # puts "destroying users"
 # User.destroy_all
