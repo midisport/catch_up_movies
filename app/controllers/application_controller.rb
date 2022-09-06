@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  add_flash_types :info, :error, :info
   before_action :authenticate_user!
   include Pundit::Authorization
 
