@@ -48,7 +48,7 @@
         <% stars(@movie.imdb_rating / 2).each do |star| %>
           <span><i class="star_icon"><%= image_tag "#{star}" %></i></span>
         <% end %>
-        <i class="fa-brands fa-imdb"></i>
+        <i class="fa-brands fa-imdb fa-xl"></i>
       </p>
       <p class="movie-actors">Casting:
         <% unless @actors.nil? %>
