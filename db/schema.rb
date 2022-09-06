@@ -107,7 +107,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_092325) do
     t.integer "release_date"
     t.string "director"
     t.string "actors"
-    t.integer "imdbid"
+    t.string "imdbid"
   end
 
   create_table "users", force: :cascade do |t|
