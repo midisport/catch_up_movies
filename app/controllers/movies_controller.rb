@@ -28,7 +28,7 @@ class MoviesController < ApplicationController
         lat: cinema.lat,
         lng: cinema.lng,
         info_window: render_to_string(partial: "info_window", locals: { cinema: cinema },),
-        image_url: helpers.asset_url("ecran-de-cinema.png")
+        image_url: helpers.asset_url("tickets-de-films.png")
       }
     end
   end
