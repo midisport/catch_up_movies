@@ -13,12 +13,16 @@
   .movie-poster {
     width: 25%;
     position: relative;
+    img {
+      border-radius: 5px;
+    }
   }
   .nil-img {
     height: 100%;
     width: 100%;
     object-fit: cover;
     object-position: center;
+    border-radius: 5px;
   }
   .add-watchlist {
     position: absolute;
