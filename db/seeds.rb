@@ -31,10 +31,14 @@ Booking.destroy_all
 
 # Users
 puts "creating users"
-user1 = User.create!(username: "Nabil", email: "test@test.fr", password: '123456', avatar: Faker::Avatar.image)
-user2 = User.create!(username: "Youssef", email: "test1@test.fr", password: '123456', avatar: Faker::Avatar.image)
-user3 = User.create!(username: "Samuel", email: "test2@test.fr", password: '123456', avatar: Faker::Avatar.image)
-user4 = User.create!(username: "Lazare", email: "test3@test.fr", password: '123456', avatar: Faker::Avatar.image)
+user1 = User.create!(username: "Nabil", email: "test@test.fr", password: '123456', avatar: "https://avatars.githubusercontent.com/u/103263066?v=4")
+user2 = User.create!(username: "Youssef", email: "test1@test.fr", password: '123456', avatar: "https://avatars.githubusercontent.com/u/107563983?v=4")
+user3 = User.create!(username: "Samuel", email: "test2@test.fr", password: '123456', avatar: "https://avatars.githubusercontent.com/u/66734463?v=4")
+user4 = User.create!(username: "Lazare", email: "test3@test.fr", password: '123456', avatar: "https://avatars.githubusercontent.com/u/106976689?v=4")
+
+20.times do
+  User.create(username: Faker::Internet.unique.username, email: Faker::Internet.unique.email, password: '123456', avatar: "https://i.pravatar.cc/150?img=#{rand 1..70}")
+end
 
 # Follows
 puts "creating follows"
@@ -44,6 +48,11 @@ Follow.create!(follower: user3, followed: user4)
 Follow.create!(follower: user3, followed: user2)
 Follow.create!(follower: user4, followed: user1)
 puts "follows created"
+
+15.times do
+  # Not with ! on purpose, as this autogeneration will likely attempt to recreate follows that exist already
+  Follow.create(follower: User.all.sample, followed: User.all.sample)
+end
 
 # Cinemas
 puts "create Cinémas"
@@ -1026,8 +1035,18 @@ Booking.create!(user: user1, movie_show: movie_show7)
 Booking.create!(user: user2, movie_show: movie_show8)
 Booking.create!(user: user2, movie_show: movie_show9)
 Booking.create!(user: user4, movie_show: movie_show10)
+
+30.times do
+  Booking.create(user: User.all.sample, movie_show: MovieShow.all.sample)
+end
+
 puts "Bookings created"
 
+puts "Generating Interests"
+  30.times do
+    Interest.create(user: User.all.sample, movie: Movie.all.sample)
+  end
+puts "Interests created"
 
 # # Interests
 # puts "creating interests"
