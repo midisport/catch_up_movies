@@ -128,7 +128,27 @@
 
 
   // Movie_shows (seances)
+  .no-showing {
+    padding-left: 26vw;
 
+    h5 {
+      padding-left: 8px;
+      margin-bottom: 8px;
+    }
+    .btn-notif-interest {
+      background-color: $violet;
+      border-radius: 30px;
+      border: $violet 1px;
+      color: $white;
+      margin-bottom: 0.5em;
+      padding: 0.3em 1.5em !important;
+      transition: ease-in 200ms;
+    }
+    .btn-notif-interest:hover {
+      color: $white-muted;
+      background-color: $violet-muted;
+    }
+  }
   .map-seance {
     padding-left: 23px;
     align-items: flex-start;
