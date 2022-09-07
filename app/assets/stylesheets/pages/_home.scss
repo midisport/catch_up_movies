@@ -52,24 +52,24 @@
 
   .form-control {
     background-color: #0E0000;
-    border-right: #0E0000;
     color: #6c6b6d;
-    border-bottom-left-radius: 50px;
-    border-top-left-radius: 50px;
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-    border-right: black;
+    border-radius: 50px;
+    height: 42px;
+  }
+
+  .searchbar {
+    position: relative;
+    align-items: center;
   }
 
   .btn {
-    background-color: #0E0000;
-    border-left: #0E0000;
-    color: #6c6b6d;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-    border-bottom-right-radius: 50px;
-    border-top-right-radius: 50px;
-    border-color: #F4F4F4;
+    background-color: #5B27ED;
+    color: #0E0000;
+    border-radius: 50px;
+    border-color: transparent;
+    position: absolute;
+    right: 1px;
+    height: 40px;
   }
 
 }
