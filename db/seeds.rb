@@ -630,7 +630,7 @@ movie3 = Movie.new(
   title: "Lock, Stock and Two Smoking Barrels",
   synopsis: "Eddy persuades his three pals to pool money for a vital poker game against a powerful local mobster, Hatchet Harry. Eddy loses, after which Harry gives him a week to pay back 500,000 pounds.",
   duration: 107,
-  poster: "lock_stock_barrel.jpg",
+  poster: "lock_stock.jpg",
   original_language: "English",
   country: "United Kingdom",
   genre: "Action, Comedy, Crime",
