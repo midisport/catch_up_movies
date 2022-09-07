@@ -11,10 +11,10 @@ end
 def index
   @cinemas = Cinema.all
   # The `geocoded` scope filters only flats with coordinates
-  @markers = @cinemas.geocoded.map do |flat|
+  @markers = @cinemas.geocoded.map do |cinema|
     {
-      lat: flat.latitude,
-      lng: flat.longitude
+      lat: cinema.latitude,
+      lng: cinema.longitude
     }
   end
 end

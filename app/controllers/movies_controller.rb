@@ -14,6 +14,14 @@ class MoviesController < ApplicationController
       end
     else
       @movies = policy_scope(Movie)
+      @markers = Cinema.next_days_shows.near('paris', 2).map do |cinema|
+        {
+          lat: cinema.latitude,
+          lng: cinema.longitude,
+          info_window: render_to_string(partial: "movies/info_window", locals: { cinema: cinema },),
+          image_url: helpers.asset_url("tickets-de-films.png")
+        }
+      end
     end
   end
 
@@ -44,7 +52,7 @@ class MoviesController < ApplicationController
     movies = results["Search"]
     unless movies.nil?
       movies.each do |movie|
-        if Movie.where(imdbid: movie["imdbID"]).empty?
+        if  Movie.where(imdbid: movie["imdbID"]).empty?
           url = "http://www.omdbapi.com/?apikey=9695b4ac&i=#{movie['imdbID']}"
           answer = URI.open(url).read
           film = JSON.parse(answer)
