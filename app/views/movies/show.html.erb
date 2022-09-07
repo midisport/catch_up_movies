@@ -66,7 +66,7 @@
             </div>
           </div>
         <% else %>
-          <h4>Upcoming showings:</h4>
+          <h4>Upcoming showings :</h4>
           <% @movie_shows.each do |movie_show| %>
             <div class="seance">
               <div class="cine-name"><strong><%= link_to movie_show.cinema.name, cinema_path(movie_show.cinema) %></strong></div>
@@ -117,8 +117,8 @@
       <% end  %>
     </div>
   </div>
-  <div class="comment p-2" data-controller="insert-in-list">
-    <h5>Leave a comment:</h5>
+  <div class="comment-container p-2" data-controller="insert-in-list">
+    <h5>Organize a showing with other people :</h5>
     <div class="comment-list">
       <ul class="list-group list-group-flush p-2" data-insert-in-list-target="items">
         <% @movie.comments.includes([:user]).each do |comment| %>

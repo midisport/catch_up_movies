@@ -1,6 +1,11 @@
 <li class="list-group-item">
-  <div class="d-flex">
-    <span><strong><%= comment.user.username %></strong></span>
-    <p class="ms-2"> : <%= comment.content %></p>
+  <div class="d-flex comment-box">
+    <%= link_to comment.user do %>
+      <div class="d-flex">
+        <span class="comment-avatar"><%= image_tag comment.user.avatar %></span>
+        <span class="user-comment"><strong><%= comment.user.username %></strong></span>
+      </div>
+    <% end %>
+    <p class="ms-2 comment"> : <%= comment.content %></p>
   </div>
 </li>
