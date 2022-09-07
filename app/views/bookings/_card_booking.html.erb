@@ -1,22 +1,26 @@
+<% if past_film == true %>
+  <div class="card_booking past_film">
+<% else %>
   <div class="card_booking">
-    <%= link_to movie_path(booking.movie_show.movie) do %>
-      <%= image_tag booking.movie_show.movie.poster %>
-    <% end %>
+<% end %>
+  <%= link_to movie_path(booking.movie_show.movie) do %>
+    <%= image_tag booking.movie_show.movie.poster %>
+  <% end %>
 
-    <div class="card_booking_content">
-      <div class="top-line">
-        <h5><%= booking.movie_show.movie.title %></h5>
-        <p class="content_showing_details">
-          <%= pluralize(booking.movie_show.movie.duration, "min") %> |
-          <%= booking.movie_show.movie.release_date %> |
-          <%= booking.movie_show.language %> |
-          <%= booking.movie_show.subtitle %>
-        </p>
-      </div>
+  <div class="card_booking_content">
+    <div class="top-line">
+      <h5><%= booking.movie_show.movie.title %></h5>
+      <p class="content_showing_details">
+        <%= pluralize(booking.movie_show.movie.duration, "min") %> |
+        <%= booking.movie_show.movie.release_date %> |
+        <%= booking.movie_show.language %> |
+        <%= booking.movie_show.subtitle %>
+      </p>
+    </div>
 
-      <div class="bottom-line">
-        <p><i class="fa-solid fa-map-location-dot"></i> <%= booking.movie_show.cinema.name %>, <%= booking.movie_show.cinema.address %></p>
-        <p><i class="fa-regular fa-clock"></i> <%= l(booking.movie_show.date, format: '%a %e %B') %> à <%= l(booking.movie_show.start_at, :format => '%H:%M') %></p>
-      </div>
+    <div class="bottom-line">
+      <p><i class="fa-solid fa-map-location-dot"></i> <%= booking.movie_show.cinema.name %>, <%= booking.movie_show.cinema.address %></p>
+      <p><i class="fa-regular fa-clock"></i> <%= l(booking.movie_show.date, format: '%a %e %B') %> à <%= l(booking.movie_show.start_at, :format => '%H:%M') %></p>
     </div>
   </div>
+</div>

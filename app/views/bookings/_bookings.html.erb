@@ -1,9 +1,20 @@
 <h2>On Today</h2>
+<div class="today_films">
   <% bookings_today.each do |booking|  %>
-    <%= render "bookings/card_booking", booking: booking %>
+    <%= render "bookings/card_booking", booking: booking, past_film: false %>
   <% end %>
+</div>
 
 <h2>Upcoming</h2>
-  <% bookings.each do |booking|  %>
-    <%= render "bookings/card_booking", booking: booking %>
+<div class="upcoming_films">
+  <% bookings_upcoming.each do |booking|  %>
+    <%= render "bookings/card_booking", booking: booking, past_film: false %>
   <% end %>
+</div>
+
+<h2>Past</h2>
+<div class="past_films">
+  <% bookings_past.each do |booking|  %>
+    <%= render "bookings/card_booking", booking: booking, past_film: true %>
+  <% end %>
+</div>
