@@ -10,12 +10,8 @@
 
 # https://www.omdbapi.com/?apikey=9695b4ac&t=
 
-# puts "destroying movies"
-# Movie.destroy_all
 # puts "destroying artists"
 # Artist.destroy_all
-# puts "destroying movie shows"
-# MovieShow.destroy_all
 # puts "destroying castings"
 # Casting.destroy_all
 
@@ -24,8 +20,12 @@ puts "destroying users"
 User.destroy_all
 puts "destroying cinemas"
 Cinema.destroy_all
+puts "destroying movies"
+Movie.destroy_all
 puts "destroying follows"
 Follow.destroy_all
+puts "destroying movie shows"
+MovieShow.destroy_all
 
 # Users
 puts "creating users"
@@ -593,83 +593,440 @@ cinema78 = Cinema.new(
 cinema78.save!
 
 
-#
-# # Movies
-# puts "creating movies"
-# movie1 = Movie.new(
-#   title: "RRR",
-#   synopsis: "Une histoire fictive sur deux révolutionnaires légendaires et leur voyage loin de chez eux avant qu'ils ne commencent à se battre pour leur pays dans les années 1920.",
-#   duration: 187,
-#   poster: "rrr_poster.jpg",
-#   original_language: "Indien",
-#   country: "Inde",
-#   genre: "Action",
-#   release_date: 2022,
-#   imdb_rating: 8.0
-# )
-# movie1.save!
-# movie2 = Movie.new(
-#   title: "L'étrange Noël de monsieur Jack",
-#   synopsis: "Jack Skellington, roi de la ville d'Halloween, fait la découverte de la ville de Noël, mais ses tentatives de ramener Noël chez lui deviennent source de confusion.",
-#   duration: 76,
-#   poster: "mr_jack_poster.jpg",
-#   original_language: "Anglais",
-#   country: "Etats-Unis",
-#   genre: "Animation",
-#   release_date: 1993,
-#   imdb_rating: 7.9
-# )
-# movie2.save!
-# movie3 = Movie.new(
-#   title: "Arnaques, crimes et botanique",
-#   synopsis: "Un jeu de cartes bâclé à Londres incite quatre amis, des voyous, des cultivateurs de mauvaise herbe, des gangsters, des usuriers et des créanciers à se faire entrer en collision dans une série d'événements inattendus, le tout dans un souci d'argent, de cannabis et de deux anciens fusils.",
-#   duration: 107,
-#   poster: "lock_stock_barrel_poster.jpg",
-#   original_language: "Anglais",
-#   country: "Angleterre",
-#   genre: "Comédie",
-#   release_date: 1998,
-#   imdb_rating: 8.2
-# )
-# movie3.save!
-# movie4 = Movie.new(
-#   title: "Enter the Void",
-#   synopsis: "Un trafiquant de drogue français vivant à Tokyo est trahi par son meilleur ami et tué dans une affaire de drogue. Son âme, observant les répercussions de sa mort, cherche la résurrection.",
-#   duration: 161,
-#   poster: "enter_the_void_poster.jpg",
-#   original_language: "Anglais",
-#   country: "France",
-#   genre: "Drame",
-#   release_date: 2009,
-#   imdb_rating: 7.2
-# )
-# movie4.save!
-# movie5 = Movie.new(
-#   title: "La Ligne Rouge",
-#   synopsis: "Adaptation du roman autobiographique de James Jones datant de 1962, axé sur le conflit de Guadalcanal pendant la seconde guerre mondiale.",
-#   duration: 170,
-#   poster: "ligne_rouge_poster.jpg",
-#   original_language: "Anglais",
-#   country: "Etats-Unis",
-#   genre: "Guerre",
-#   release_date: 1998,
-#   imdb_rating: 7.6
-# )
-# movie5.save!
-# movie6 = Movie.new(
-#   title: "Pulp Fiction",
-#   synopsis: "Les vies de deux hommes de main, d'un boxeur, de la femme d'un gangster et de deux braqueurs s'entremêlent dans quatre histoires de violence et de rédemption.",
-#   duration: 154,
-#   poster: "pulp_fiction_poster.jpg",
-#   original_language: "Anglais",
-#   country: "Etats-Unis",
-#   genre: "Drame",
-#   release_date: 1994,
-#   imdb_rating: 8.9
-# )
-# movie6.save!
-# puts "movies created"
-#
+
+# Movies
+puts "creating movies"
+movie1 = Movie.new(
+  title: "RRR",
+  synopsis: "A fictitious story about two legendary revolutionaries and their journey away from home before they started fighting for their country in 1920s.",
+  duration: 187,
+  poster: "rrr.jpg",
+  original_language: "Telugu, English",
+  country: "India",
+  genre: "Action",
+  release_date: 2022,
+  imdb_rating: 8,
+  director: "S.S. Rajamouli",
+  actors: "N.T. Rama Rao Jr., Ram Charan Teja, Ajay Devgn"
+)
+movie1.save!
+movie2 = Movie.new(
+  title: "The Nightmare Before Christmas",
+  synopsis: "Jack Skellington, king of Halloween Town, discovers Christmas Town, but his attempts to bring Christmas to his home causes confusion.",
+  duration: 76,
+  poster: "mr_jack.jpg",
+  original_language: "English",
+  country: "United States",
+  genre: "Animation, Family, Fantasy",
+  release_date: 1993,
+  imdb_rating: 8,
+  director: "Henry Selick",
+  actors: "Danny Elfman, Chris Sarandon, Catherine O'Hara"
+)
+movie2.save!
+movie3 = Movie.new(
+  title: "Lock, Stock and Two Smoking Barrels",
+  synopsis: "Eddy persuades his three pals to pool money for a vital poker game against a powerful local mobster, Hatchet Harry. Eddy loses, after which Harry gives him a week to pay back 500,000 pounds.",
+  duration: 107,
+  poster: "lock_stock_barrel.jpg",
+  original_language: "English",
+  country: "United Kingdom",
+  genre: "Action, Comedy, Crime",
+  release_date: 1998,
+  imdb_rating: 8,
+  director: "Guy Ritchie",
+  actors: "Jason Flemyng, Dexter Fletcher, Nick Moran"
+)
+movie3.save!
+movie4 = Movie.new(
+  title: "Enter the Void",
+  synopsis: "An American drug dealer living in Tokyo is betrayed by his best friend and killed in a drug deal. His soul, observing the repercussions of his death, seeks resurrection.",
+  duration: 161,
+  poster: "enter_the_void.jpg",
+  original_language: "English, Japanese",
+  country: "France, Germany, Italy, Canada, Japan",
+  genre: "Drama, Fantasy",
+  release_date: 2009,
+  imdb_rating: 7,
+  director: "Gaspar Noé",
+  actors: "Nathaniel Brown, Paz de la Huerta, Cyril Roy"
+)
+movie4.save!
+movie5 = Movie.new(
+  title: "The Thin Red Line",
+  synopsis: "Adaptation of James Jones' autobiographical 1962 novel, focusing on the conflict at Guadalcanal during the second World War.",
+  duration: 170,
+  poster: "ligne_rouge.jpg",
+  original_language: "English, Tok Pisin, Japanese, Greek",
+  country: "United States",
+  genre: "Drama, History, War",
+  release_date: 1998,
+  imdb_rating: 8,
+  director: "Terrence Malick",
+  actors: "Jim Caviezel, Sean Penn, Nick Nolte"
+)
+movie5.save!
+movie6 = Movie.new(
+  title: "Pulp Fiction",
+  synopsis: "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+  duration: 154,
+  poster: "pulp_fiction.jpg",
+  original_language: "English, Spanish, French",
+  country: "United States",
+  genre: "Crime, Drama",
+  release_date: 1994,
+  imdb_rating: 9,
+  director: "Quentin Tarantino",
+  actors: "John Travolta, Uma Thurman, Samuel L. Jackson"
+)
+movie6.save!
+puts "movies created"
+
+# Movie shows
+puts "creating movie shows"
+movie_show1 = MovieShow.new(
+  start_at: Time.parse("20:10"),
+  date: Date.parse("2022-09-10"),
+  language: "Telugu",
+  subtitle: "French"
+)
+movie_show1.movie = movie1
+movie_show1.cinema = cinema2
+movie_show1.save!
+movie_show2 = MovieShow.new(
+  start_at: Time.parse("15:30"),
+  date: Date.parse("2022-09-10"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show2.movie = movie2
+movie_show2.cinema = cinema1
+movie_show2.save!
+movie_show3 = MovieShow.new(
+  start_at: Time.parse("19:45"),
+  date: Date.parse("2022-09-11"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show3.movie = movie3
+movie_show3.cinema = cinema1
+movie_show3.save!
+movie_show4 = MovieShow.new(
+  start_at: Time.parse("20:30"),
+  date: Date.parse("2022-09-10"),
+  language: "French",
+  subtitle: ""
+)
+movie_show4.movie = movie4
+movie_show4.cinema = cinema3
+movie_show4.save!
+movie_show5 = MovieShow.new(
+  start_at: Time.parse("18:00"),
+  date: Date.parse("2022-09-11"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show5.movie = movie4
+movie_show5.cinema = cinema3
+movie_show5.save!
+movie_show6 = MovieShow.new(
+  start_at: Time.parse("21:00"),
+  date: Date.parse("2022-09-10"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show6.movie = movie4
+movie_show6.cinema = cinema3
+movie_show6.save!
+movie_show7 = MovieShow.new(
+  start_at: Time.parse("18:00"),
+  date: Date.parse("2022-09-10"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show7.movie = movie5
+movie_show7.cinema = cinema2
+movie_show7.save!
+movie_show8 = MovieShow.new(
+  start_at: Time.parse("21:00"),
+  date: Date.parse("2022-09-11"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show8.movie = movie5
+movie_show8.cinema = cinema2
+movie_show8.save!
+movie_show9 = MovieShow.new(
+  start_at: Time.parse("15:30"),
+  date: Date.parse("2022-09-11"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show9.movie = movie3
+movie_show9.cinema = cinema3
+movie_show9.save!
+movie_show10 = MovieShow.new(
+  start_at: Time.parse("20:15"),
+  date: Date.parse("2022-09-11"),
+  language: "French",
+  subtitle: ""
+)
+movie_show10.movie = movie2
+movie_show10.cinema = cinema12
+movie_show10.save!
+movie_show11 = MovieShow.new(
+  start_at: Time.parse("15:30"),
+  date: Date.parse("2022-09-11"),
+  language: "Telugu",
+  subtitle: "French"
+)
+movie_show11.movie = movie1
+movie_show11.cinema = cinema23
+movie_show11.save!
+movie_show12 = MovieShow.new(
+  start_at: Time.parse("18:30"),
+  date: Date.parse("2022-09-11"),
+  language: "Telugu",
+  subtitle: "French"
+)
+movie_show12.movie = movie1
+movie_show12.cinema = cinema32
+movie_show12.save!
+movie_show13 = MovieShow.new(
+  start_at: Time.parse("20:30"),
+  date: Date.parse("2022-09-11"),
+  language: "Telugu",
+  subtitle: "French"
+)
+movie_show13.movie = movie1
+movie_show13.cinema = cinema13
+movie_show13.save!
+movie_show14 = MovieShow.new(
+  start_at: Time.parse("18:30"),
+  date: Date.parse("2022-09-12"),
+  language: "Telugu",
+  subtitle: "French"
+)
+movie_show14.movie = movie1
+movie_show14.cinema = cinema13
+movie_show14.save!
+movie_show15 = MovieShow.new(
+  start_at: Time.parse("21:30"),
+  date: Date.parse("2022-09-12"),
+  language: "Telugu",
+  subtitle: "French"
+)
+movie_show15.movie = movie1
+movie_show15.cinema = cinema10
+movie_show15.save!
+movie_show16 = MovieShow.new(
+  start_at: Time.parse("17:15"),
+  date: Date.parse("2022-09-13"),
+  language: "French",
+  subtitle: ""
+)
+movie_show16.movie = movie1
+movie_show16.cinema = cinema17
+movie_show16.save!
+movie_show17 = MovieShow.new(
+  start_at: Time.parse("20:30"),
+  date: Date.parse("2022-09-13"),
+  language: "French",
+  subtitle: ""
+)
+movie_show17.movie = movie1
+movie_show17.cinema = cinema17
+movie_show17.save!
+movie_show18 = MovieShow.new(
+  start_at: Time.parse("19:30"),
+  date: Date.parse("2022-09-14"),
+  language: "French",
+  subtitle: ""
+)
+movie_show18.movie = movie2
+movie_show18.cinema = cinema28
+movie_show18.save!
+movie_show19 = MovieShow.new(
+  start_at: Time.parse("17:30"),
+  date: Date.parse("2022-09-12"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show19.movie = movie2
+movie_show19.cinema = cinema31
+movie_show19.save!
+movie_show20 = MovieShow.new(
+  start_at: Time.parse("19:30"),
+  date: Date.parse("2022-09-12"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show20.movie = movie2
+movie_show20.cinema = cinema34
+movie_show20.save!
+movie_show21 = MovieShow.new(
+  start_at: Time.parse("21:30"),
+  date: Date.parse("2022-09-13"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show21.movie = movie2
+movie_show21.cinema = cinema34
+movie_show21.save!
+movie_show22 = MovieShow.new(
+  start_at: Time.parse("19:30"),
+  date: Date.parse("2022-09-12"),
+  language: "French",
+  subtitle: ""
+)
+movie_show22.movie = movie2
+movie_show22.cinema = cinema30
+movie_show22.save!
+movie_show23 = MovieShow.new(
+  start_at: Time.parse("18:00"),
+  date: Date.parse("2022-09-13"),
+  language: "French",
+  subtitle: ""
+)
+movie_show23.movie = movie3
+movie_show23.cinema = cinema31
+movie_show23.save!
+movie_show24 = MovieShow.new(
+  start_at: Time.parse("18:30"),
+  date: Date.parse("2022-09-12"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show24.movie = movie3
+movie_show24.cinema = cinema54
+movie_show24.save!
+movie_show25 = MovieShow.new(
+  start_at: Time.parse("20:30"),
+  date: Date.parse("2022-09-12"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show25.movie = movie3
+movie_show25.cinema = cinema39
+movie_show25.save!
+movie_show26 = MovieShow.new(
+  start_at: Time.parse("17:30"),
+  date: Date.parse("2022-09-13"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show26.movie = movie3
+movie_show26.cinema = cinema53
+movie_show26.save!
+movie_show27 = MovieShow.new(
+  start_at: Time.parse("19:00"),
+  date: Date.parse("2022-09-13"),
+  language: "French",
+  subtitle: ""
+)
+movie_show27.movie = movie3
+movie_show27.cinema = cinema43
+movie_show27.save!
+movie_show28 = MovieShow.new(
+  start_at: Time.parse("20:30"),
+  date: Date.parse("2022-09-13"),
+  language: "French",
+  subtitle: ""
+)
+movie_show28.movie = movie4
+movie_show28.cinema = cinema63
+movie_show28.save!
+movie_show29 = MovieShow.new(
+  start_at: Time.parse("20:30"),
+  date: Date.parse("2022-09-11"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show29.movie = movie4
+movie_show29.cinema = cinema31
+movie_show29.save!
+movie_show30 = MovieShow.new(
+  start_at: Time.parse("19:30"),
+  date: Date.parse("2022-09-12"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show30.movie = movie4
+movie_show30.cinema = cinema33
+movie_show30.save!
+movie_show31 = MovieShow.new(
+  start_at: Time.parse("22:30"),
+  date: Date.parse("2022-09-13"),
+  language: "French",
+  subtitle: ""
+)
+movie_show31.movie = movie4
+movie_show31.cinema = cinema35
+movie_show31.save!
+movie_show32 = MovieShow.new(
+  start_at: Time.parse("21:30"),
+  date: Date.parse("2022-09-11"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show32.movie = movie5
+movie_show32.cinema = cinema35
+movie_show32.save!
+movie_show33 = MovieShow.new(
+  start_at: Time.parse("20:30"),
+  date: Date.parse("2022-09-12"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show33.movie = movie5
+movie_show33.cinema = cinema45
+movie_show33.save!
+movie_show34 = MovieShow.new(
+  start_at: Time.parse("22:30"),
+  date: Date.parse("2022-09-12"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show34.movie = movie5
+movie_show34.cinema = cinema39
+movie_show34.save!
+movie_show35 = MovieShow.new(
+  start_at: Time.parse("20:30"),
+  date: Date.parse("2022-09-13"),
+  language: "French",
+  subtitle: ""
+)
+movie_show35.movie = movie5
+movie_show35.cinema = cinema39
+movie_show35.save!
+movie_show36 = MovieShow.new(
+  start_at: Time.parse("22:30"),
+  date: Date.parse("2022-09-13"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show36.movie = movie5
+movie_show36.cinema = cinema45
+movie_show36.save!
+
+puts "Movie_shows created"
+
+# Bookings
+puts "Creating bookings"
+
+Booking.create!(user: user3, movie_show: movie_show1)
+Booking.create!(user: user3, movie_show: movie_show2)
+Booking.create!(user: user3, movie_show: movie_show3)
+Booking.create!(user: user3, movie_show: movie_show4)
+Booking.create!(user: user3, movie_show: movie_show5)
+Booking.create!(user: user1, movie_show: movie_show6)
+Booking.create!(user: user1, movie_show: movie_show7)
+Booking.create!(user: user2, movie_show: movie_show8)
+Booking.create!(user: user2, movie_show: movie_show9)
+Booking.create!(user: user4, movie_show: movie_show10)
+puts "Bookings created"
+
+
 # # Interests
 # puts "creating interests"
 # Interest.create!(user: user3, movie: movie6)
@@ -687,29 +1044,6 @@ cinema78.save!
 #
 # puts "interests created"
 #
-# # Cinemas
-# puts "creating cinémas"
-# cinema1 = Cinema.new(
-#   lat: 48.85462324446117,
-#   lng: 2.369382443779865,
-#   name: "Mk2 - Bastille",
-#   address: "4 Bd Beaumarchais",
-# )
-# cinema1.save!
-# cinema2 = Cinema.new(
-#   lat: 48.84994515786409,
-#   lng: 2.3432563614260578,
-#   name: "Le Champo - Espace Jacques Tati",
-#   address: "51 Rue des Écoles, 75005 Paris"
-# )
-# cinema2.save!
-# cinema3 = Cinema.new(
-#   lat: 48.837275464447245,
-#   lng: 2.3824665121839663,
-#   name: "La Cinemathèque française",
-#   address: "51 Rue de Bercy, 75012 Paris"
-# )
-# cinema3.save!
 #
 # # Artists
 # puts "creating artists"
@@ -739,114 +1073,6 @@ cinema78.save!
 # )
 # artist5.save!
 #
-# # Movie shows
-# puts "creating movie shows"
-# movie_show1 = MovieShow.new(
-#   start_at: Time.parse("20:10"),
-#   date: Date.parse("2022-09-10"),
-#   language: "Indien",
-#   subtitle: "Français"
-# )
-# movie_show1.movie = movie1
-# movie_show1.cinema = cinema2
-# movie_show1.save!
-# movie_show2 = MovieShow.new(
-#   start_at: Time.parse("15:30"),
-#   date: Date.parse("2022-09-10"),
-#   language: "Anglais",
-#   subtitle: "Français"
-# )
-# movie_show2.movie = movie2
-# movie_show2.cinema = cinema1
-# movie_show2.save!
-# movie_show3 = MovieShow.new(
-#   start_at: Time.parse("19:45"),
-#   date: Date.parse("2022-09-11"),
-#   language: "Anglais",
-#   subtitle: "Français"
-# )
-# movie_show3.movie = movie3
-# movie_show3.cinema = cinema1
-# movie_show3.save!
-# movie_show4 = MovieShow.new(
-#   start_at: Time.parse("20:30"),
-#   date: Date.parse("2022-09-10"),
-#   language: "Français",
-#   subtitle: ""
-# )
-# movie_show4.movie = movie4
-# movie_show4.cinema = cinema3
-# movie_show4.save!
-# movie_show5 = MovieShow.new(
-#   start_at: Time.parse("18:00"),
-#   date: Date.parse("2022-09-11"),
-#   language: "Anglais",
-#   subtitle: "Français"
-# )
-# movie_show5.movie = movie4
-# movie_show5.cinema = cinema3
-# movie_show5.save!
-# movie_show6 = MovieShow.new(
-#   start_at: Time.parse("21:00"),
-#   date: Date.parse("2022-09-10"),
-#   language: "Anglais",
-#   subtitle: "Français"
-# )
-# movie_show6.movie = movie4
-# movie_show6.cinema = cinema3
-# movie_show6.save!
-# movie_show7 = MovieShow.new(
-#   start_at: Time.parse("18:00"),
-#   date: Date.parse("2022-09-10"),
-#   language: "Anglais",
-#   subtitle: "Français"
-# )
-# movie_show7.movie = movie5
-# movie_show7.cinema = cinema2
-# movie_show7.save!
-# movie_show8 = MovieShow.new(
-#   start_at: Time.parse("21:00"),
-#   date: Date.parse("2022-09-11"),
-#   language: "Anglais",
-#   subtitle: "Français"
-# )
-# movie_show8.movie = movie5
-# movie_show8.cinema = cinema2
-# movie_show8.save!
-# movie_show9 = MovieShow.new(
-#   start_at: Time.parse("15:30"),
-#   date: Date.parse("2022-09-11"),
-#   language: "Anglais",
-#   subtitle: "Français"
-# )
-# movie_show9.movie = movie3
-# movie_show9.cinema = cinema3
-# movie_show9.save!
-# movie_show10 = MovieShow.new(
-#   start_at: Time.parse("20:15"),
-#   date: Date.parse("2022-09-11"),
-#   language: "Français",
-#   subtitle: ""
-# )
-# movie_show10.movie = movie2
-# movie_show10.cinema = cinema1
-# movie_show10.save!
-#
-# puts "Movie_shows created"
-#
-# # Bookings
-# puts "Creating bookings"
-#
-# Booking.create!(user: user3, movie_show: movie_show1)
-# Booking.create!(user: user3, movie_show: movie_show2)
-# Booking.create!(user: user3, movie_show: movie_show3)
-# Booking.create!(user: user3, movie_show: movie_show4)
-# Booking.create!(user: user3, movie_show: movie_show5)
-# Booking.create!(user: user1, movie_show: movie_show6)
-# Booking.create!(user: user1, movie_show: movie_show7)
-# Booking.create!(user: user2, movie_show: movie_show8)
-# Booking.create!(user: user2, movie_show: movie_show9)
-# Booking.create!(user: user4, movie_show: movie_show10)
 #
 # # Casting
 # puts "creating castings"
