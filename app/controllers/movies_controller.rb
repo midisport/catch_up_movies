@@ -44,7 +44,7 @@ class MoviesController < ApplicationController
     movies = results["Search"]
     unless movies.nil?
       movies.each do |movie|
-        if  Movie.where(imdbid: movie["imdbID"]).empty?
+        if Movie.where(imdbid: movie["imdbID"]).empty?
           url = "http://www.omdbapi.com/?apikey=9695b4ac&i=#{movie['imdbID']}"
           answer = URI.open(url).read
           film = JSON.parse(answer)
