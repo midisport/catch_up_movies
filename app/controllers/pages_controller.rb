@@ -21,6 +21,7 @@ class PagesController < ApplicationController
     # Variables for Bookings
     @bookings = policy_scope(Booking)
     @bookings = Booking.includes(:user, movie_show: [:movie, :cinema]).where(user: @user)
+    @bookings_today = @bookings.select { |booking| booking.movie_show.date == Date.today }
   end
 
   private

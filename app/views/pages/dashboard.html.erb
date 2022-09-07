@@ -29,7 +29,7 @@
       </div>
 
       <div data-tabs-target="bookings" class="bookings d-none">
-        <%= render "bookings/bookings", bookings: @bookings %>
+        <%= render "bookings/bookings", bookings: @bookings, bookings_today: @bookings_today%>
       </div>
 
     </div>
