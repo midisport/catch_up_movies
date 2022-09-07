@@ -46,28 +46,29 @@
       <p class="movie-runtime"><i class="fa-regular fa-clock fa-lg"></i>  <%= pluralize(@movie.duration, 'min') %></p>
       <p class="movie-genre"><%= @movie.genre %>  <i class="fa-solid fa-masks-theater fa-lg"></i></p>
       <p class="movie-country"><i class="fa-solid fa-earth-americas fa-lg"></i>  <%= @movie.country %></p>
-      <p class="movie-langage"><%= @movie.original_language %>  <i class="fa-solid fa-ear-listen fa-lg"></i></p>
+      <p class="movie-langage"><%= @movie.original_language %>  <i class="fa-regular fa-comment-dots fa-lg"></i></p>
       <p class="movie-actors"><i class="fa-solid fa-user-group fa-lg"></i>  <%= @movie.actors %></p>
     </div>
   </div>
   <div class="map-seance row">
     <div class="seance-container">
-      <h4>Upcoming showings:</h4>
       <div class="seances">
         <% if @movie_shows.empty? %>
-          <div>No showings available yet...</p>
+          <div class="no-showing">
+            <h4>Upcoming showings:</h4>
+            <p>No showings available yet...</p>
+          </div>
         <% else %>
+          <h4>Upcoming showings:</h4>
           <% @movie_shows.each do |movie_show| %>
             <div class="seance">
               <div class="cine-name"><strong><%= link_to movie_show.cinema.name, cinema_path(movie_show.cinema) %> :</strong></div>
               <div class="seance-date"><i class="fa-solid fa-calendar-days"></i>  <%= movie_show.date.strftime('%a %d %B') %></div>
               <div class="seance-time"><i class="fa-solid fa-clock"></i>  <%= movie_show.start_at.strftime('%H:%M') %></div>
-              <div class="seance-lang"><i class="fa-solid fa-ear-listen"></i>  <%= movie_show.language %></div>
-              <div class="seance-sub"><i class="fa-solid fa-closed-captioning"></i>
-                <% if movie_show.subtitle == "" %>
-                    <i class="fa-solid fa-xmark" style="color: #5B27ED"></i>
-                <% else %>
-                  <%= movie_show.subtitle %>
+              <div class="seance-lang"><i class="fa-regular fa-comment-dots fa-flip-horizontal"></i>  <%= movie_show.language %></div>
+              <div class="seance-sub">
+                <% if movie_show.subtitle != "" %>
+                  <i class="fa-solid fa-closed-captioning"></i>  <%= movie_show.subtitle %>
                 <% end %>
               </div>
               <% if user_signed_in? %>

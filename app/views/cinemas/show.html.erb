@@ -38,16 +38,14 @@
           </div>
         <% end %>
       </div>
-      <div class="seance-plot text-ellipsis--3">Plot: <%= movie_show.movie.synopsis %></div>
+      <div class="seance-plot text-ellipsis--3"><em><%= movie_show.movie.synopsis %></em></div>
       <div class="seance-date"><i class="fa-solid fa-calendar-days"></i>  <%= l movie_show.date, format: '%a %d %B' %></div>
       <div class="seance-time"><%= movie_show.start_at.strftime('%H:%M') %>  <i class="fa-solid fa-clock"></i></div>
-      <div class="seance-lang"><i class="fa-solid fa-ear-listen"></i>  <%= movie_show.language %></div>
+      <div class="seance-lang"><i class="fa-regular fa-comment-dots fa-flip-horizontal"></i>    <%= movie_show.language %></div>
       <div class="seance-sub">
-      <% if movie_show.subtitle == "" %>
-          ❌
-      <% else %>
-        <%= movie_show.subtitle %>
-      <% end %>  <i class="fa-solid fa-closed-captioning"></i></div>
+      <% if movie_show.subtitle != "" %>
+        <%= movie_show.subtitle %>  <i class="fa-solid fa-closed-captioning"></i>
+      <% end %></div>
     </div>
   <% end %>
 </div>
