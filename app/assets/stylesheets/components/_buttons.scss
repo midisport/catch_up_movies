@@ -10,7 +10,7 @@
 }
 
 .tab_btn {
- color: $violet-muted;
+ color: $violet;
  background: $background-main;
  border: solid $background-main 3px;
  height: 100%;
@@ -30,11 +30,21 @@
 .tab_edit_btn {
   background-color: $background-card;
   border-radius: 30px;
-  border: $violet-highlight 1px;
-  color: $violet-highlight;
+  border: solid transparent 3px;
+  color: $violet;
   margin-bottom: 0.5em;
-  padding: 0.3em 2em !important;
+  padding: 0.3em 1.5em !important;
+  font-weight: 600;
+  letter-spacing: .05em;
   transition: ease-in 200ms;
+}
+
+.tab_edit_btn:hover {
+  border: solid $violet-highlight 3px;
+}
+
+.tab_edit_btn:active {
+  border: solid $violet-highlight 3px;
 }
 
 .mark-read {
