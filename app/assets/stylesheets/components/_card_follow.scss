@@ -32,12 +32,25 @@
         i {
           margin-right: 0.5em;
         }
+
+
+        :hover {
+          p {
+            color: $violet-highlight;
+          }
+        }
+
       }
     }
   }
 
   .shared_films {
     font-weight: 100;
+    
+    .muted {
+      color: $text-muted;
+    }
+
     p {
       margin-bottom: 0;
 

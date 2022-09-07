@@ -44,10 +44,20 @@
     color: $violet;
   }
   .btn-watchlist:hover {
-    color: $violet-muted;
+    color: $violet;
+
+
+  }
+
+  .fa-heart:before {
+    content: "\f004" !important;
+
+    :hover {
+      content: "/f00"
+    }
   }
   .btn-remove-watchlist:hover {
-    color: $violet-muted;
+    color: $violet;
   }
 
   .movie-infos {
