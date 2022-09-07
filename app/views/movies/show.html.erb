@@ -12,7 +12,7 @@
           <% if current_user.movies.include?(@movie) %>
             <div class="col-8 mx-auto pl-0">
               <%= link_to interest_path(Interest.find_by(user:current_user, movie:@movie), source: "movie"), data: {turbo_method: :delete}, class: 'btn-rmv' do %>
-                <button class="btn-remove-watchlist"><i class="fa-solid fa-star fa-xl"></i></button>
+                <button class="btn-remove-watchlist"><i class="fa-solid fa-heart fa-xl"></i></button>
               <% end %>
             </div>
           <% else %>
@@ -20,7 +20,7 @@
               <%= simple_form_for [@movie, @interest] do |f| %>
                 <%= hidden_field_tag :source, "movie" %>
                 <%= button_tag(class: 'btn-interest') do %>
-                  <i class="fa-regular fa-star btn-watchlist fa-xl"></i>
+                  <i class="fa-regular fa-heart btn-watchlist fa-xl"></i>
                 <% end %>
               <% end %>
             </div>
@@ -43,7 +43,7 @@
         <i class="fa-brands fa-imdb fa-xl"></i>
       </p>
       <p class="movie-plot"><em><%= @movie.synopsis %></em></p>
-      <p class="movie-runtime"><i class="fa-regular fa-clock fa-lg"></i>  <%= @movie.duration %> min</p>
+      <p class="movie-runtime"><i class="fa-regular fa-clock fa-lg"></i>  <%= pluralize(@movie.duration, 'min') %></p>
       <p class="movie-genre"><%= @movie.genre %>  <i class="fa-solid fa-masks-theater fa-lg"></i></p>
       <p class="movie-country"><i class="fa-solid fa-earth-americas fa-lg"></i>  <%= @movie.country %></p>
       <p class="movie-langage"><%= @movie.original_language %>  <i class="fa-solid fa-ear-listen fa-lg"></i></p>
@@ -62,10 +62,10 @@
   </div>
 
   <div class="seance-container">
-    <h4>Where to see this movie:</h4>
+    <h4>Upcoming showings:</h4>
     <div class="seances">
       <% if @movie_shows.empty? %>
-        <div>No showing available</p>
+        <div>No showings available yet...</p>
       <% else %>
         <% @movie_shows.each do |movie_show| %>
           <div class="seance">
@@ -75,7 +75,7 @@
             <div class="seance-lang"><i class="fa-solid fa-ear-listen"></i>  <%= movie_show.language %></div>
             <div class="seance-sub"><i class="fa-solid fa-closed-captioning"></i>
               <% if movie_show.subtitle == "" %>
-                  ❌
+                  <i class="fa-solid fa-xmark" style="color: #5B27ED"></i>
               <% else %>
                 <%= movie_show.subtitle %>
               <% end %>
@@ -110,7 +110,7 @@
     </div>
   </div>
   <div class="comment p-2" data-controller="insert-in-list">
-    <h5>Chat :</h5>
+    <h5>Leave a comment:</h5>
     <div class="comment-list">
       <ul class="list-group list-group-flush p-2" data-insert-in-list-target="items">
         <% @movie.comments.includes([:user]).each do |comment| %>
