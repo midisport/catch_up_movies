@@ -84,6 +84,15 @@
   }
 }
 
+#map {
+  max-width: 100vw;
+  height: 32vh;
+  position: sticky;
+  top: 30vh;
+  margin-top: 30vh;
+  }
+
+
 
 // Searchbar styles - need to be added to movie index to have same searchbar everywhere
 // BUT - classes used are also impacting comments box
@@ -118,3 +127,4 @@
 //   border: 1px solid white !important ;
 //   box-shadow: none !important;
 // }
+

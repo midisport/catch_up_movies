@@ -42,7 +42,7 @@
         <% end %>
         <i class="fa-brands fa-imdb fa-xl"></i>
       </p>
-      <p class="movie-plot"><%= @movie.synopsis %></p>
+      <p class="movie-plot"><em><%= @movie.synopsis %></em></p>
       <p class="movie-runtime"><i class="fa-regular fa-clock fa-lg"></i>  <%= pluralize(@movie.duration, 'min') %></p>
       <p class="movie-genre"><%= @movie.genre %>  <i class="fa-solid fa-masks-theater fa-lg"></i></p>
       <p class="movie-country"><i class="fa-solid fa-earth-americas fa-lg"></i>  <%= @movie.country %></p>
@@ -70,7 +70,7 @@
         <% @movie_shows.each do |movie_show| %>
           <div class="seance">
             <div class="cine-name"><strong><%= link_to movie_show.cinema.name, cinema_path(movie_show.cinema) %> :</strong></div>
-            <div class="seance-date"><i class="fa-solid fa-calendar-days"></i>  <%= l movie_show.date, format: '%a %d %B' %></div>
+            <div class="seance-date"><i class="fa-solid fa-calendar-days"></i>  <%= movie_show.date.strftime('%a %d %B') %></div>
             <div class="seance-time"><i class="fa-solid fa-clock"></i>  <%= movie_show.start_at.strftime('%H:%M') %></div>
             <div class="seance-lang"><i class="fa-solid fa-ear-listen"></i>  <%= movie_show.language %></div>
             <div class="seance-sub"><i class="fa-solid fa-closed-captioning"></i>
