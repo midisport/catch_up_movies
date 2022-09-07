@@ -56,6 +56,7 @@
   .movie-plot {
     grid-area: 2 / 2 / 4 / 6;
     align-self: center;
+    color: $text-muted
   }
   .movie-plot.text-ellipsis--3 {
     text-overflow: ellipsis;
@@ -82,3 +83,48 @@
     }
   }
 }
+
+#map {
+  max-width: 100vw;
+  height: 32vh;
+  position: sticky;
+  top: 30vh;
+  margin-top: 30vh;
+  }
+
+
+
+// Searchbar styles - need to be added to movie index to have same searchbar everywhere
+// BUT - classes used are also impacting comments box
+
+// .form-control {
+//   background-color: #0E0000;
+//   border-right: #0E0000;
+//   color: #6c6b6d;
+//   border-bottom-left-radius: 50px;
+//   border-top-left-radius: 50px;
+//   border-bottom-right-radius: 0;
+//   border-top-right-radius: 0;
+//   border-right: black;
+// }
+
+// .btn {
+//   background-color: #0E0000;
+//   border-left: #0E0000;
+//   color: #6c6b6d;
+//   border-bottom-left-radius: 0;
+//   border-top-left-radius: 0;
+//   border-bottom-right-radius: 50px;
+//   border-top-right-radius: 50px;
+//   border-color: #F4F4F4;
+// }
+
+// input:focus {
+//   outline: none !important ;
+// }
+
+// .form-control:focus{
+//   border: 1px solid white !important ;
+//   box-shadow: none !important;
+// }
+

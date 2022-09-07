@@ -6,7 +6,7 @@
     <h3 class="col-md-4"><%#= @artist.name %> <%= @movies&.first&.director %></h3>
     <div class="col-md-auto"></div>
   </div>
-  <h4 class="ms-3">Filmographie :</h4>
+  <h4 class="ms-3">Filmography:</h4>
   <div class="movies_card">
     <% @movies.each do |movie| %>
       <%= render 'shared/movie_card', movie: movie %>

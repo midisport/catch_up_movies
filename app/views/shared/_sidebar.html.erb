@@ -22,7 +22,7 @@
   <hr>
 
   <ul class="sidebar_menu">
-      <li class="sidebar_menu_item"><i class="fa-solid fa-clapperboard"></i><%= link_to "Films out now!", movies_path %></li>
+      <li class="sidebar_menu_item"><i class="fa-solid fa-clapperboard"></i><%= link_to "Browse Films", movies_path %></li>
     <% if user_signed_in? %>
       <li class="sidebar_menu_item"><i class="fa-solid fa-list-ul"></i><%= link_to "Dashboard", "/dashboard/#{current_user.id}" %></li>
       <li class="sidebar_menu_item"><i class="fa-regular fa-bookmark"></i><%= link_to "Watchlist", user_interests_path(current_user) %></li>
