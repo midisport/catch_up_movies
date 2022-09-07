@@ -62,10 +62,10 @@
   </div>
 
   <div class="seance-container">
-    <h4>Where to see this movie:</h4>
+    <h4>Upcoming showings:</h4>
     <div class="seances">
       <% if @movie_shows.empty? %>
-        <div>No showing available</p>
+        <div>No showings available yet...</p>
       <% else %>
         <% @movie_shows.each do |movie_show| %>
           <div class="seance">
@@ -75,7 +75,7 @@
             <div class="seance-lang"><i class="fa-solid fa-ear-listen"></i>  <%= movie_show.language %></div>
             <div class="seance-sub"><i class="fa-solid fa-closed-captioning"></i>
               <% if movie_show.subtitle == "" %>
-                  ❌
+                  <i class="fa-solid fa-xmark" style="color: #5B27ED"></i>
               <% else %>
                 <%= movie_show.subtitle %>
               <% end %>
@@ -110,7 +110,7 @@
     </div>
   </div>
   <div class="comment p-2" data-controller="insert-in-list">
-    <h5>Chat :</h5>
+    <h5>Leave a comment:</h5>
     <div class="comment-list">
       <ul class="list-group list-group-flush p-2" data-insert-in-list-target="items">
         <% @movie.comments.includes([:user]).each do |comment| %>
