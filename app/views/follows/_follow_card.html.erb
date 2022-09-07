@@ -41,11 +41,16 @@
   </div>
   <hr>
   <div class="shared_films">
+
     <p>
-      <span>You both want to watch :</span>
-      <span class="film_list"><%= follow.shared_films.first.title %></span>
-      <% if follow.shared_films.size > 1 %>
-        <span class="push_right"> <span class="film_list_overflow"> + <%= (follow.shared_films.size - 1) %> more</span></span>
+      <% if follow.shared_films.empty? %>
+        <p class="film_list">You don't have any films in common yet...</p>
+      <% else %>
+        <span>You both want to watch :</span>
+        <span class="film_list"><%= follow.shared_films.first.title %></span>
+        <% if follow.shared_films.size > 1 %>
+          <span class="push_right"> <span class="film_list_overflow"> + <%= (follow.shared_films.size - 1) %> more</span></span>
+        <% end %>
       <% end %>
     </p>
   </div>
