@@ -8,8 +8,8 @@
       <% end %>
     </div>
     <h5 class="movie-title"><%= movie.title %> (<%= movie.release_date %>) </h5>
-    <div class="movie-plot text-ellipsis--3"><strong>Plot:</strong> <%= movie.synopsis %></div>
-    <div class="movie-runtime"><i class="fa-solid fa-clock"></i>  <%= movie.duration %> min</div>
+    <div class="movie-plot text-ellipsis--3"><%= movie.synopsis %></div>
+    <div class="movie-runtime"><i class="fa-solid fa-clock"></i>  <%= pluralize(movie.duration, 'min') %></div>
     <div class="movie-rate">
       <% stars(movie.imdb_rating / 2).each do |star| %>
         <span><i class="star_icon"><%= image_tag "#{star}" %></i></span>

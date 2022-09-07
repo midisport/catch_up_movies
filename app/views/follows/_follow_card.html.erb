@@ -44,7 +44,7 @@
 
     <p>
       <% if follow.shared_films.empty? %>
-        <p class="film_list">You don't have any films in common yet...</p>
+        <p class="film_list muted">You don't have any films in common yet...</p>
       <% else %>
         <span>You both want to watch :</span>
         <span class="film_list"><%= follow.shared_films.first.title %></span>
