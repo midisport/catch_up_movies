@@ -86,10 +86,12 @@
 
 #map {
   max-width: 100vw;
-  height: 32vh;
+  height: 90vh;
   position: sticky;
-  top: 30vh;
-  margin-top: 30vh;
+  top: 3vh;
+  margin: 7vh 0 1.5vh 0;
+  //margin-bottom: 1.5vh;
+  //margin-top: 30vh;
   }
 
 
@@ -127,4 +129,3 @@
 //   border: 1px solid white !important ;
 //   box-shadow: none !important;
 // }
-
