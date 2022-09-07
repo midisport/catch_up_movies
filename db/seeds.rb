@@ -49,7 +49,7 @@ Follow.create!(follower: user3, followed: user2)
 Follow.create!(follower: user4, followed: user1)
 puts "follows created"
 
-15.times do
+30.times do
   # Not with ! on purpose, as this autogeneration will likely attempt to recreate follows that exist already
   Follow.create(follower: User.all.sample, followed: User.all.sample)
 end
@@ -618,7 +618,8 @@ movie1 = Movie.new(
   release_date: 2022,
   imdb_rating: 8,
   director: "S.S. Rajamouli",
-  actors: "N.T. Rama Rao Jr., Ram Charan Teja, Ajay Devgn"
+  actors: "N.T. Rama Rao Jr., Ram Charan Teja, Ajay Devgn",
+  imdbid: "tt8178634"
 )
 movie1.save!
 movie2 = Movie.new(
@@ -632,7 +633,8 @@ movie2 = Movie.new(
   release_date: 1993,
   imdb_rating: 8,
   director: "Henry Selick",
-  actors: "Danny Elfman, Chris Sarandon, Catherine O'Hara"
+  actors: "Danny Elfman, Chris Sarandon, Catherine O'Hara",
+  imdbid: "tt0107688"
 )
 movie2.save!
 movie3 = Movie.new(
@@ -646,7 +648,8 @@ movie3 = Movie.new(
   release_date: 1998,
   imdb_rating: 8,
   director: "Guy Ritchie",
-  actors: "Jason Flemyng, Dexter Fletcher, Nick Moran"
+  actors: "Jason Flemyng, Dexter Fletcher, Nick Moran",
+  imdbid: "tt0120735"
 )
 movie3.save!
 movie4 = Movie.new(
@@ -660,7 +663,8 @@ movie4 = Movie.new(
   release_date: 2009,
   imdb_rating: 7,
   director: "Gaspar Noé",
-  actors: "Nathaniel Brown, Paz de la Huerta, Cyril Roy"
+  actors: "Nathaniel Brown, Paz de la Huerta, Cyril Roy",
+  imdbid: "tt1191111"
 )
 movie4.save!
 movie5 = Movie.new(
@@ -674,7 +678,8 @@ movie5 = Movie.new(
   release_date: 1998,
   imdb_rating: 8,
   director: "Terrence Malick",
-  actors: "Jim Caviezel, Sean Penn, Nick Nolte"
+  actors: "Jim Caviezel, Sean Penn, Nick Nolte",
+  imdbid: "tt0120863"
 )
 movie5.save!
 movie6 = Movie.new(
@@ -688,7 +693,8 @@ movie6 = Movie.new(
   release_date: 1994,
   imdb_rating: 9,
   director: "Quentin Tarantino",
-  actors: "John Travolta, Uma Thurman, Samuel L. Jackson"
+  actors: "John Travolta, Uma Thurman, Samuel L. Jackson",
+  imdbid: "tt0110912"
 )
 movie6.save!
 puts "movies created"
@@ -1029,7 +1035,7 @@ Booking.create!(user: user3, movie_show: movie_show1)
 Booking.create!(user: user3, movie_show: movie_show2)
 Booking.create!(user: user3, movie_show: movie_show3)
 Booking.create!(user: user3, movie_show: movie_show4)
-Booking.create!(user: user3, movie_show: movie_show5)
+Booking.create!(user: user4, movie_show: movie_show5)
 Booking.create!(user: user1, movie_show: movie_show6)
 Booking.create!(user: user1, movie_show: movie_show7)
 Booking.create!(user: user2, movie_show: movie_show8)
@@ -1058,7 +1064,7 @@ Interest.create!(user: user4, movie: movie6)
 Interest.create!(user: user4, movie: movie3)
 
 
-30.times do
+50.times do
   Interest.create(user: User.all.sample, movie: Movie.all.sample)
 end
 
