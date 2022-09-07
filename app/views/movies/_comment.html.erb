@@ -1,6 +1,6 @@
 <li class="list-group-item">
   <div class="d-flex comment-box">
-    <%= link_to comment.user do %>
+    <%= link_to user_interests_path(comment.user) do %>
       <div class="d-flex">
         <span class="comment-avatar"><%= image_tag comment.user.avatar %></span>
         <span class="user-comment"><strong><%= comment.user.username %></strong></span>

@@ -160,6 +160,7 @@
   }
   h4 {
     color: $white;
+    padding-bottom: 8px;
   }
   .cine-name {
     color: $white;
@@ -193,6 +194,10 @@
     margin: 30px 0 16px 0;
     padding: 0 8px;
     width: 100%;
+
+    h5 {
+      margin-top: 8px;
+    }
 
     .comment-list {
       .list-group {

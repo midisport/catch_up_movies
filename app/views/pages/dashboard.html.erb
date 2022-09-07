@@ -5,7 +5,7 @@
         <div class="dashboard_tabs_options">
           <button id="watchlist-btn" class="tab_btn tab_btn-active" data-action="click->tabs#reveal" data-tabs-target="btn"><i class="fa-regular fa-bookmark"></i> Watchlist</button>
           <button id="bookings-btn" class="tab_btn" data-action="click->tabs#reveal" data-tabs-target="btn"><i class="fa-solid fa-ticket"></i>Showings</button>
-          <button  id="follows-btn" class="tab_btn" data-action="click->tabs#reveal" data-tabs-target="btn"><i class="fa-solid fa-address-book"></i>Friends</button>
+          <button id="follows-btn" class="tab_btn" data-action="click->tabs#reveal" data-tabs-target="btn"><i class="fa-solid fa-address-book"></i>Friends</button>
         </div>
         <% if @user == current_user %>
           <button class="tab_edit_btn" data-action="click->tabs#edit" data-tabs-target="editBtn" >Edit Watchlist</button>
