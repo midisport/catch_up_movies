@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
       @movies = policy_scope(Movie).where(sql_query, query: "%#{params[:query]}%")
       if @movies.empty?
         @movies = policy_scope(Movie)
-        flash[:notice] = "This movie is not in the list! Please try again"
+        flash[:alert] = "This movie is not in the list! Please try again"
       end
     else
       @movies = policy_scope(Movie)
