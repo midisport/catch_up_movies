@@ -4,7 +4,7 @@
       <% if movie.poster.nil?  %>
         <%= image_tag "bobine100.png", class: 'img-fluid' %>
       <% else %>
-       <img src="<%= movie.poster %>" alt="" class='img-fluid'>
+        <%= image_tag movie.poster, class: 'img-fluid' %>
       <% end %>
     </div>
     <h5 class="movie-title"><%= movie.title %> (<%= movie.release_date %>) </h5>

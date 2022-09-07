@@ -1,13 +1,7 @@
 .seance-container {
-  background-color: $white-muted;
-  border-color: $white-muted;
-  border-radius: 5px;
-  border-style: solid;
-  border-width: thin;
-  // box-shadow: rgba(91, 39, 237, 0.51) 1.95px 1.95px 2.6px;
   margin-top: 30px;
   padding: 0 8px;
-  width: 100%;
+  width: 70%;
 
   h4 {
     margin-top: 5px;
@@ -15,10 +9,10 @@
 
   .seance {
     display: grid;
-    grid-template-columns: repeat(11, 1fr);
+    grid-template-columns: repeat(9, 1fr);
     grid-template-rows: 1fr;
-    grid-column-gap: 5px;
-    grid-row-gap: 5px;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
     margin-bottom: 8px;
     align-items: center;
   }
@@ -32,12 +26,12 @@
     grid-area: 1 / 6 / 2 / 7;
   }
   .seance-lang {
-    grid-area: 1 / 7 / 2 / 9;
+    grid-area: 1 / 7 / 2 / 8;
   }
   .seance-sub {
-    grid-area: 1 / 9 / 2 / 11;
+    grid-area: 1 / 8 / 2 / 9;
   }
   .seance-booking {
-    grid-area: 1 / 11 / 2 / 12;
+    grid-area: 1 / 9 / 2 / 10;
   }
 }
