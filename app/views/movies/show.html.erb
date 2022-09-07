@@ -49,64 +49,64 @@
       <p class="movie-langage"><%= @movie.original_language %>  <i class="fa-solid fa-ear-listen fa-lg"></i></p>
       <p class="movie-actors"><i class="fa-solid fa-user-group fa-lg"></i>  <%= @movie.actors %></p>
     </div>
-
-    <div class="col-md-3">
+  </div>
+  <div class="map-seance row">
+    <div class="seance-container">
+      <h4>Upcoming showings:</h4>
+      <div class="seances">
+        <% if @movie_shows.empty? %>
+          <div>No showings available yet...</p>
+        <% else %>
+          <% @movie_shows.each do |movie_show| %>
+            <div class="seance">
+              <div class="cine-name"><strong><%= link_to movie_show.cinema.name, cinema_path(movie_show.cinema) %> :</strong></div>
+              <div class="seance-date"><i class="fa-solid fa-calendar-days"></i>  <%= movie_show.date.strftime('%a %d %B') %></div>
+              <div class="seance-time"><i class="fa-solid fa-clock"></i>  <%= movie_show.start_at.strftime('%H:%M') %></div>
+              <div class="seance-lang"><i class="fa-solid fa-ear-listen"></i>  <%= movie_show.language %></div>
+              <div class="seance-sub"><i class="fa-solid fa-closed-captioning"></i>
+                <% if movie_show.subtitle == "" %>
+                    <i class="fa-solid fa-xmark" style="color: #5B27ED"></i>
+                <% else %>
+                  <%= movie_show.subtitle %>
+                <% end %>
+              </div>
+              <% if user_signed_in? %>
+                <% if current_user.movie_shows.include?(movie_show) %>
+                  <div class="rmv-booking">
+                    <%= link_to booking_path(Booking.find_by(user:current_user, movie_show:movie_show), source: "movie"), data: {turbo_method: :delete} do %>
+                      <button class="btn-remove-booking"><i class="fa-solid fa-bookmark fa-xl"></i></button>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <div class="seance-booking">
+                    <%= simple_form_for [movie_show, @booking] do |f| %>
+                      <%= hidden_field_tag :source, "movie" %>
+                      <%= button_tag(class: 'btn-booking') do %>
+                        <i class="fa-regular fa-bookmark fa-xl btn-book"></i>
+                      <% end %>
+                    <% end %>
+                  </div>
+                <% end %>
+              <% else %>
+                <div class="col-8 mx-auto pl-0">
+                  <%= link_to new_user_session_path do %>
+                    <i class="fa-regular fa-bookmark btn-booking fa-xl"></i>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-3" style="width: 29%">
       <% unless @movie_show.empty? %>
-        <div style="max-width: 100vw; height: 25vw;"
+        <div style="max-width: 100vw; height: 25vw; width: 100%;"
           data-controller="map"
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
       <% end  %>
-    </div>
-  </div>
-
-  <div class="seance-container">
-    <h4>Upcoming showings:</h4>
-    <div class="seances">
-      <% if @movie_shows.empty? %>
-        <div>No showings available yet...</p>
-      <% else %>
-        <% @movie_shows.each do |movie_show| %>
-          <div class="seance">
-            <div class="cine-name"><strong><%= link_to movie_show.cinema.name, cinema_path(movie_show.cinema) %> :</strong></div>
-            <div class="seance-date"><i class="fa-solid fa-calendar-days"></i>  <%= movie_show.date.strftime('%a %d %B') %></div>
-            <div class="seance-time"><i class="fa-solid fa-clock"></i>  <%= movie_show.start_at.strftime('%H:%M') %></div>
-            <div class="seance-lang"><i class="fa-solid fa-ear-listen"></i>  <%= movie_show.language %></div>
-            <div class="seance-sub"><i class="fa-solid fa-closed-captioning"></i>
-              <% if movie_show.subtitle == "" %>
-                  <i class="fa-solid fa-xmark" style="color: #5B27ED"></i>
-              <% else %>
-                <%= movie_show.subtitle %>
-              <% end %>
-            </div>
-            <% if user_signed_in? %>
-              <% if current_user.movie_shows.include?(movie_show) %>
-                <div class="rmv-booking">
-                  <%= link_to booking_path(Booking.find_by(user:current_user, movie_show:movie_show), source: "movie"), data: {turbo_method: :delete} do %>
-                    <button class="btn-remove-booking"><i class="fa-solid fa-bookmark fa-xl"></i></button>
-                  <% end %>
-                </div>
-              <% else %>
-                <div class="seance-booking">
-                  <%= simple_form_for [movie_show, @booking] do |f| %>
-                    <%= hidden_field_tag :source, "movie" %>
-                    <%= button_tag(class: 'btn-booking') do %>
-                      <i class="fa-regular fa-bookmark fa-xl btn-book"></i>
-                    <% end %>
-                  <% end %>
-                </div>
-              <% end %>
-            <% else %>
-              <div class="col-8 mx-auto pl-0">
-                <%= link_to new_user_session_path do %>
-                  <i class="fa-regular fa-bookmark btn-booking fa-xl"></i>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-      <% end %>
     </div>
   </div>
   <div class="comment p-2" data-controller="insert-in-list">
