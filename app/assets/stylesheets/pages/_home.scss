@@ -56,28 +56,28 @@
 
    // search-bar
 
-  .form-control {
-    background-color: #0E0000;
-    color: #6c6b6d;
-    border-radius: 50px;
-    height: 42px;
-  }
 
-  .searchbar {
+  .d-flex {
     position: relative;
     align-items: center;
-  }
 
-  .btn {
-    background-color: #5B27ED;
-    color: #0E0000;
-    border-radius: 50px;
-    border-color: transparent;
-    position: absolute;
-    right: 1px;
-    height: 40px;
+    .form-control {
+      background-color: #0E0000;
+      color: #6c6b6d;
+      border-radius: 50px;
+      height: 42px;
+    }
+    
+    .btn {
+      background-color: #5B27ED;
+      color: #0E0000;
+      border-radius: 50px;
+      border-color: transparent;
+      position: absolute;
+      right: 1px;
+      height: 40px;
+    }
   }
-
 }
 
 input:focus {
