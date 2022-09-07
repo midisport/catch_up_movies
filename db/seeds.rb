@@ -1043,29 +1043,28 @@ end
 puts "Bookings created"
 
 puts "Generating Interests"
-  30.times do
-    Interest.create(user: User.all.sample, movie: Movie.all.sample)
-  end
+
+Interest.create!(user: user3, movie: movie6)
+Interest.create!(user: user3, movie: movie5)
+Interest.create!(user: user3, movie: movie4)
+Interest.create!(user: user1, movie: movie1)
+Interest.create!(user: user1, movie: movie2)
+Interest.create!(user: user1, movie: movie6)
+Interest.create!(user: user2, movie: movie6)
+Interest.create!(user: user2, movie: movie3)
+Interest.create!(user: user2, movie: movie4)
+Interest.create!(user: user4, movie: movie1)
+Interest.create!(user: user4, movie: movie6)
+Interest.create!(user: user4, movie: movie3)
+
+
+30.times do
+  Interest.create(user: User.all.sample, movie: Movie.all.sample)
+end
+
 puts "Interests created"
 
-# # Interests
-# puts "creating interests"
-# Interest.create!(user: user3, movie: movie6)
-# Interest.create!(user: user3, movie: movie5)
-# Interest.create!(user: user3, movie: movie4)
-# Interest.create!(user: user1, movie: movie1)
-# Interest.create!(user: user1, movie: movie2)
-# Interest.create!(user: user1, movie: movie6)
-# Interest.create!(user: user2, movie: movie6)
-# Interest.create!(user: user2, movie: movie3)
-# Interest.create!(user: user2, movie: movie4)
-# Interest.create!(user: user4, movie: movie1)
-# Interest.create!(user: user4, movie: movie6)
-# Interest.create!(user: user4, movie: movie3)
-#
-# puts "interests created"
-#
-#
+
 # # Artists
 # puts "creating artists"
 # artist1 = Artist.new(

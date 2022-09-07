@@ -18,3 +18,22 @@
     }
   }
 }
+
+.gutter_line {
+  border-right: Solid $violet-muted 1px;
+}
+
+.bookings {
+
+  .upcoming_films, .today_films {
+    padding-top: 1em;
+    border-bottom: solid 1px $violet-muted;
+    margin-bottom: 1em;
+  }
+
+  .past_film {
+    padding-top: 1em;
+    filter: opacity(50%);
+  }
+
+}

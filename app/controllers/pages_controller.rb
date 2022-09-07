@@ -20,7 +20,10 @@ class PagesController < ApplicationController
 
     # Variables for Bookings
     @bookings = policy_scope(Booking)
-    @bookings = Booking.includes(:user, movie_show: [:movie, :cinema]).where(user: @user)
+    @bookings = Booking.includes(:user, movie_show: [:movie, :cinema]).where(user: @user).order("movie_shows.date, movie_shows.start_at")
+    @bookings_today = @bookings.select { |booking| booking.movie_show.date == Date.today }
+    @bookings_upcoming = @bookings.select { |booking| booking.movie_show.date > Date.today }
+    @bookings_past = @bookings.select { |booking| booking.movie_show.date < Date.today }
   end
 
   private

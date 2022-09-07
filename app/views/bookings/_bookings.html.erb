@@ -1,26 +1,20 @@
-<% bookings.each do |booking|  %>
+<h2>On Today</h2>
+<div class="today_films">
+  <% bookings_today.each do |booking|  %>
+    <%= render "bookings/card_booking", booking: booking, past_film: false %>
+  <% end %>
+</div>
 
-  <div class="card_booking">
-    <%= link_to movie_path(booking.movie_show.movie) do %>
-      <%= image_tag booking.movie_show.movie.poster %>
-    <% end %>
+<h2>Upcoming</h2>
+<div class="upcoming_films">
+  <% bookings_upcoming.each do |booking|  %>
+    <%= render "bookings/card_booking", booking: booking, past_film: false %>
+  <% end %>
+</div>
 
-    <div class="card_booking_content">
-      <div class="top-line">
-        <h5><%= booking.movie_show.movie.title %></h5>
-        <p class="content_showing_details">
-          <%= pluralize(booking.movie_show.movie.duration, "min") %> |
-          <%= booking.movie_show.movie.release_date %> |
-          <%= booking.movie_show.language %> |
-          <%= booking.movie_show.subtitle %>
-        </p>
-      </div>
-
-      <div class="bottom-line">
-        <p><i class="fa-solid fa-map-location-dot"></i> <%= booking.movie_show.cinema.name %>, <%= booking.movie_show.cinema.address %></p>
-        <p><i class="fa-regular fa-clock"></i> <%= l(booking.movie_show.date, format: '%a %e %B') %> à <%= l(booking.movie_show.start_at, :format => '%H:%M') %></p>
-      </div>
-    </div>
-  </div>
-
-<% end %>
+<h2>Past</h2>
+<div class="past_films">
+  <% bookings_past.each do |booking|  %>
+    <%= render "bookings/card_booking", booking: booking, past_film: true %>
+  <% end %>
+</div>
