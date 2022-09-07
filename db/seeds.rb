@@ -29,10 +29,10 @@ MovieShow.destroy_all
 
 # Users
 puts "creating users"
-user1 = User.create!(username: "Nabil", email: "test@test.fr", password: '123456', avatar: "https://i.pravatar.cc/150?img=#{rand 1..70}")
-user2 = User.create!(username: "Youssef", email: "test1@test.fr", password: '123456', avatar: "https://i.pravatar.cc/150?img=#{rand 1..70}")
-user3 = User.create!(username: "Samuel", email: "test2@test.fr", password: '123456', avatar: "https://i.pravatar.cc/150?img=#{rand 1..70}")
-user4 = User.create!(username: "Lazare", email: "test3@test.fr", password: '123456', avatar: "https://i.pravatar.cc/150?img=#{rand 1..70}")
+user1 = User.create!(username: "Nabil", email: "test@test.fr", password: '123456', avatar: "https://avatars.githubusercontent.com/u/103263066?v=4")
+user2 = User.create!(username: "Youssef", email: "test1@test.fr", password: '123456', avatar: "https://avatars.githubusercontent.com/u/107563983?v=4")
+user3 = User.create!(username: "Samuel", email: "test2@test.fr", password: '123456', avatar: "https://avatars.githubusercontent.com/u/66734463?v=4")
+user4 = User.create!(username: "Lazare", email: "test3@test.fr", password: '123456', avatar: "https://avatars.githubusercontent.com/u/106976689?v=4")
 
 20.times do
   User.create(username: Faker::Internet.unique.username, email: Faker::Internet.unique.email, password: '123456', avatar: "https://i.pravatar.cc/150?img=#{rand 1..70}")
