@@ -52,11 +52,14 @@
   </div>
   <div class="map-seance row">
     <div class="seance-container">
-      <h4>Upcoming showings:</h4>
       <div class="seances">
         <% if @movie_shows.empty? %>
-          <div>No showings available yet...</p>
+          <div class="no-showing">
+            <h4>Upcoming showings:</h4>
+            <p>No showings available yet...</p>
+          </div>
         <% else %>
+          <h4>Upcoming showings:</h4>
           <% @movie_shows.each do |movie_show| %>
             <div class="seance">
               <div class="cine-name"><strong><%= link_to movie_show.cinema.name, cinema_path(movie_show.cinema) %> :</strong></div>
