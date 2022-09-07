@@ -1,13 +1,13 @@
 <div class="sidebar_container">
   <div class="row">
-    <div class="sidebar_title">
-      <div class="logo">
-        <%= link_to root_path do %>
-          <%= image_tag 'logo-purple.png' %>
-        <% end %>
+    <%= link_to root_path do %>
+      <div class="sidebar_title">
+        <div class="logo">
+            <%= image_tag 'logo-purple.png' %>
+        </div>
+        <h3>Catch Up</h3>
       </div>
-      <h6>Catch Up</h6>
-    </div>
+    <% end %>
   </div>
 
   <div class="row">
@@ -25,7 +25,7 @@
       <li class="sidebar_menu_item"><i class="fa-solid fa-clapperboard"></i><%= link_to "Browse Films", movies_path %></li>
     <% if user_signed_in? %>
       <li class="sidebar_menu_item"><i class="fa-solid fa-list-ul"></i><%= link_to "Dashboard", "/dashboard/#{current_user.id}" %></li>
-      <li class="sidebar_menu_item"><i class="fa-regular fa-bookmark"></i><%= link_to "Watchlist", user_interests_path(current_user) %></li>
+      <li class="sidebar_menu_item"><i class="fa-regular fa-bookmark item"></i><%= link_to "Watchlist", user_interests_path(current_user) %></li>
     </ul>
 
     <hr class="bottom">

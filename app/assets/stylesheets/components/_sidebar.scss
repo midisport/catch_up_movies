@@ -11,8 +11,8 @@
     justify-content: space-evenly;
     align-items: center;
 
-    h6 {
-      font-size: 1.5em;
+    .logo {
+      padding-bottom: 2vh;
     }
 
     img {
@@ -57,6 +57,10 @@
 
       a {
         color: $text-main
+      }
+
+      .item {
+        padding-left: 2%;
       }
     }
   }

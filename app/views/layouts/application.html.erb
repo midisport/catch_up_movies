@@ -29,8 +29,8 @@
       <div class="col-10 mx-auto p-0">
         <div class="custom_container">
           <%= yield %>
+          <%= render "shared/flashes" %>
         </div>
-        <%= render "shared/flashes" %>
         <% unless current_page?(root_path) %>
           <%= render 'shared/footer' %>
         <% end %>
