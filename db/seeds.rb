@@ -24,6 +24,8 @@ puts "destroying users"
 User.destroy_all
 puts "destroying cinemas"
 Cinema.destroy_all
+puts "destroying follows"
+Follow.destroy_all
 
 # Users
 puts "creating users"
