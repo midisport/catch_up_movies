@@ -45,8 +45,6 @@
   }
   .btn-watchlist:hover {
     color: $violet;
-
-
   }
 
   .fa-heart:before {
@@ -127,12 +125,16 @@
     align-self: center;
   }
 
-  .movie-map {
-    width: 25%;
-    align-self: center;
-  }
 
   // Movie_shows (seances)
+  .map-seance {
+    padding-left: 23px;
+    align-items: flex-start;
+  }
+  .movie-map {
+    width: 29%;
+    align-self: center;
+  }
   h4 {
     color: $white;
   }
