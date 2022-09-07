@@ -3,8 +3,8 @@
     <h2><%= @cinema.name %></h3>
     <h5><%= @cinema.address %></h5>
   </div>
-  <h3 class="sous-titres-seances">Upcoming screenings:</h5>
-  <% @cinema.movie_shows.includes(:movie).each do |movie_show| %>
+  <h3 class="sous-titres-seances">Upcoming screenings :</h5>
+  <% @cinema.movie_shows.includes(:movie).order(:date, :start_at).each do |movie_show| %>
     <div class="cine-seances">
       <div class="movie-poster">
         <%= link_to movie_path(movie_show.movie) do %>

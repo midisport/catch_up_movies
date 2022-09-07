@@ -55,14 +55,21 @@
       <div class="seances">
         <% if @movie_shows.empty? %>
           <div class="no-showing">
-            <h4>Upcoming showings:</h4>
-            <p>No showings available yet...</p>
+            <h5>No showings available yet...</h5>
+            <div class="notif-btn">
+              <%= simple_form_for [@movie, @interest] do |f| %>
+                <%= hidden_field_tag :source, "movie" %>
+                <%= button_tag(class: 'btn-notif-interest') do %>
+                  <%= "Be notified when a show is available" %>
+                <% end %>
+              <% end %>
+            </div>
           </div>
         <% else %>
-          <h4>Upcoming showings:</h4>
-          <% @movie_shows.each do |movie_show| %>
+          <h4>Upcoming showings :</h4>
+          <% @movie_shows.order(:date, :start_at).each do |movie_show| %>
             <div class="seance">
-              <div class="cine-name"><strong><%= link_to movie_show.cinema.name, cinema_path(movie_show.cinema) %> :</strong></div>
+              <div class="cine-name"><strong><%= link_to movie_show.cinema.name, cinema_path(movie_show.cinema) %></strong></div>
               <div class="seance-date"><i class="fa-solid fa-calendar-days"></i>  <%= movie_show.date.strftime('%a %d %B') %></div>
               <div class="seance-time"><i class="fa-solid fa-clock"></i>  <%= movie_show.start_at.strftime('%H:%M') %></div>
               <div class="seance-lang"><i class="fa-regular fa-comment-dots fa-flip-horizontal"></i>  <%= movie_show.language %></div>
@@ -110,8 +117,8 @@
       <% end  %>
     </div>
   </div>
-  <div class="comment p-2" data-controller="insert-in-list">
-    <h5>Leave a comment:</h5>
+  <div class="comment-container p-2" data-controller="insert-in-list">
+    <h5>Organize a showing with other people :</h5>
     <div class="comment-list">
       <ul class="list-group list-group-flush p-2" data-insert-in-list-target="items">
         <% @movie.comments.includes([:user]).each do |comment| %>
