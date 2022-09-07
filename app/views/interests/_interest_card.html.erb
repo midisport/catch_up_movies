@@ -34,7 +34,7 @@
         </div>
 
       <div class="plot">
-        <p ><%= interest.movie.synopsis %></p>
+        <p ><%= interest.movie.synopsis.truncate(164, separator: /\s/) %></p>
       </div>
 
       <div class="film-details">
