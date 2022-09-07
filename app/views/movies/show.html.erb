@@ -12,7 +12,7 @@
           <% if current_user.movies.include?(@movie) %>
             <div class="col-8 mx-auto pl-0">
               <%= link_to interest_path(Interest.find_by(user:current_user, movie:@movie), source: "movie"), data: {turbo_method: :delete}, class: 'btn-rmv' do %>
-                <button class="btn-remove-watchlist"><i class="fa-solid fa-star fa-xl"></i></button>
+                <button class="btn-remove-watchlist"><i class="fa-solid fa-heart fa-xl"></i></button>
               <% end %>
             </div>
           <% else %>
@@ -20,7 +20,7 @@
               <%= simple_form_for [@movie, @interest] do |f| %>
                 <%= hidden_field_tag :source, "movie" %>
                 <%= button_tag(class: 'btn-interest') do %>
-                  <i class="fa-regular fa-star btn-watchlist fa-xl"></i>
+                  <i class="fa-regular fa-heart btn-watchlist fa-xl"></i>
                 <% end %>
               <% end %>
             </div>
