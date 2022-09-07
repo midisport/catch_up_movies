@@ -67,7 +67,7 @@
           </div>
         <% else %>
           <h4>Upcoming showings :</h4>
-          <% @movie_shows.each do |movie_show| %>
+          <% @movie_shows.order(:date, :start_at).each do |movie_show| %>
             <div class="seance">
               <div class="cine-name"><strong><%= link_to movie_show.cinema.name, cinema_path(movie_show.cinema) %></strong></div>
               <div class="seance-date"><i class="fa-solid fa-calendar-days"></i>  <%= movie_show.date.strftime('%a %d %B') %></div>
