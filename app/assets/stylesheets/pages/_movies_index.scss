@@ -56,6 +56,7 @@
   .movie-plot {
     grid-area: 2 / 2 / 4 / 6;
     align-self: center;
+    color: $text-muted
   }
   .movie-plot.text-ellipsis--3 {
     text-overflow: ellipsis;

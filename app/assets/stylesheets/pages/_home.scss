@@ -39,6 +39,12 @@
 .banner {
   padding-top: 195px;
   padding-bottom: 0;
+
+  span {
+    color: $violet;
+    text-shadow: 1px 1px 2px $background-main;
+
+  }
 }
 
 .container.home {

@@ -43,7 +43,7 @@
         <i class="fa-brands fa-imdb fa-xl"></i>
       </p>
       <p class="movie-plot"><%= @movie.synopsis %></p>
-      <p class="movie-runtime"><i class="fa-regular fa-clock fa-lg"></i>  <%= @movie.duration %> min</p>
+      <p class="movie-runtime"><i class="fa-regular fa-clock fa-lg"></i>  <%= pluralize(@movie.duration, 'min') %></p>
       <p class="movie-genre"><%= @movie.genre %>  <i class="fa-solid fa-masks-theater fa-lg"></i></p>
       <p class="movie-country"><i class="fa-solid fa-earth-americas fa-lg"></i>  <%= @movie.country %></p>
       <p class="movie-langage"><%= @movie.original_language %>  <i class="fa-solid fa-ear-listen fa-lg"></i></p>
