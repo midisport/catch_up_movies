@@ -143,11 +143,16 @@
       margin-bottom: 8px;
     }
 
+    .notif-btn {
+      margin: 1em auto;
+    }
+
     .btn-notif-interest {
       background-color: $violet;
       border-radius: 30px;
       border: $violet 1px;
-      color: $white;
+      color: $background-main;
+      font-weight: 500;
       margin-bottom: 0.5em;
       padding: 0.3em 1.5em !important;
 
@@ -232,7 +237,6 @@
     // Comments
   .comment-container {
     border-color: $violet;
-    // border-top-style: solid;
     border-width: thin;
     margin: 30px 0 16px 0;
     padding: 0 8px;
@@ -277,6 +281,7 @@
       .user-comment {
         color: $white;
         align-self: center;
+        border-bottom: solid 1px $violet;
       }
 
       .comment {
@@ -292,9 +297,30 @@
     }
 
     .post-btn {
+      background-color: $violet;
       border-radius: 20px;
+      border: $violet 1px;
       padding: 3px 23px;
       margin-left: 3px;
+      transition: 0.3s ease-in;
+
+      &:hover {
+        box-shadow: inset 75px 0px $violet-highlight;
+      }
+    }
+  }
+}
+
+.comment-form {
+  margin: 0 2.5em 0 1.5em;
+
+ textarea {
+    &:hover {
+      border: solid $violet 1px;
+    }
+
+    &:focus {
+      border: solid $violet 1px !important;
     }
   }
 }
