@@ -3,7 +3,7 @@ class FollowsController < ApplicationController
     @follows = policy_scope(Follow)
     @followers = Follow.where(followed: :user_id)
     @followeds = Follow.where(follower: :user_id)
-    raise
+    # raise
   end
 
   def create

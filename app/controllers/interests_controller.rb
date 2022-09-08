@@ -17,9 +17,9 @@ class InterestsController < ApplicationController
     @interested_user = current_user
 
     @interest = Interest.new(movie: @movie, user: @interested_user) # refactor this to use strong params
+    authorize @interest
     @movie_show = MovieShow.where(movie_id: @movie)
 
-    authorize @interest
 
     if @interest.save
       if params[:source] == "movie"
@@ -46,6 +46,7 @@ class InterestsController < ApplicationController
   end
 
   def update
+    authorize @interest
     @interest.update(interest_params)
     @interests = policy_scope(Interest)
     @user = User.find(params[:id])
@@ -54,8 +55,7 @@ class InterestsController < ApplicationController
     @seen_interests = Interest.includes(:user, :movie).where(user: @user, seen: true)
     @interests = Interest.includes(:movie, :user).where(user: @user)
 
-    render "interests/watchlist"
-    authorize @interest
+    render partial: "interests/watchlist"
   end
 
   def destroy
