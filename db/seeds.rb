@@ -1025,6 +1025,33 @@ movie_show36 = MovieShow.new(
 movie_show36.movie = movie5
 movie_show36.cinema = cinema45
 movie_show36.save!
+movie_show37 = MovieShow.new(
+  start_at: Time.parse("20:30"),
+  date: Date.parse("2022-09-02"),
+  language: "Telugu",
+  subtitle: "French"
+)
+movie_show37.movie = movie1
+movie_show37.cinema = cinema42
+movie_show37.save!
+movie_show38 = MovieShow.new(
+  start_at: Time.parse("21:30"),
+  date: Date.parse("2022-09-05"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show38.movie = movie2
+movie_show38.cinema = cinema15
+movie_show38.save!
+movie_show39 = MovieShow.new(
+  start_at: Time.parse("18:45"),
+  date: Date.parse("2022-09-09"),
+  language: "English",
+  subtitle: "French"
+)
+movie_show39.movie = movie5
+movie_show39.cinema = cinema69
+movie_show39.save!
 
 puts "Movie_shows created"
 
@@ -1041,6 +1068,9 @@ Booking.create!(user: user1, movie_show: movie_show7)
 Booking.create!(user: user2, movie_show: movie_show8)
 Booking.create!(user: user2, movie_show: movie_show9)
 Booking.create!(user: user4, movie_show: movie_show10)
+Booking.create!(user: user3, movie_show: movie_show37)
+Booking.create!(user: user3, movie_show: movie_show38)
+Booking.create!(user: user3, movie_show: movie_show39)
 
 30.times do
   Booking.create(user: User.all.sample, movie_show: MovieShow.all.sample)

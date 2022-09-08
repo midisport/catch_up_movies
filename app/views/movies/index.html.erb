@@ -9,7 +9,9 @@
         <div class="movies-index">
           <% @movies.each do |movie| %>
             <%# if movie.movie_shows.empty? == false %>
-            <%= render 'shared/movie_card', movie: movie %>
+            <% if movie.synopsis != "N/A" %>
+              <%= render 'shared/movie_card', movie: movie %>
+            <% end %>
             <%# end %>
           <% end %>
         </div>
