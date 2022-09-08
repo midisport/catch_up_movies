@@ -1,5 +1,3 @@
-
-<style>
 * { box-sizing: border-box; }
 .video-background {
   background: #000;
@@ -20,7 +18,7 @@
 	top: 0;
 	color: #fff;
 }
-.vid-info { position: absolute; top: 0; right: 0; width: 33%; background: rgba(0,0,0,0.3); color: #fff; padding: 1rem; font-family: Avenir, Helvetica, sans-serif; }
+.vid-info { top: 0; right: 0; background: rgba(0,0,0,0.3); color: #fff; padding: 1rem; font-family: Avenir, Helvetica, sans-serif; }
 .vid-info h1 { font-size: 2rem; font-weight: 700; margin-top: 0; line-height: 1.2; }
 .vid-info a { display: block; color: #fff; text-decoration: none; background: rgba(0,0,0,0.5); transition: .6s background; border-bottom: none; margin: 1rem auto; text-align: center; }
 @media (min-aspect-ratio: 16/9) {
@@ -36,22 +34,56 @@
 @media all and (max-width: 500px) {
 .vid-info .acronym { display: none; }
 }
-.title {
-  color: red;
-  font-family: 'Roboto';
-  font: bold;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  z-index: 999;
+
+.banner {
+  padding-top: 195px;
+  padding-bottom: 0;
+
+  span {
+    color: $violet;
+    text-shadow: 1px 1px 2px $background-main;
+
+  }
 }
-</style>
+
+.container.home {
+  padding: 8%;
+
+  h1 {
+    padding-bottom: 15px;
+  }
+
+   // search-bar
 
 
-<div class="video-background">
-  <a href = https://www.catchupmovies.xyz><h1 class="title">Our technicians are on it!</h1></a>
-  <div class="video-foreground">
-    <iframe src="https://www.youtube.com/embed/watch?v=OsJUaD5ctss?controls=0&showinfo=0&rel=0&autoplay=1&mute=1&loop=1&playlist=OsJUaD5ctss" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-  </div>
-</div>
+  .d-flex {
+    position: relative;
+    align-items: center;
+
+    .form-control {
+      background-color: #0E0000;
+      color: #6c6b6d;
+      border-radius: 50px;
+      height: 42px;
+    }
+
+    .btn {
+      background-color: #5B27ED;
+      color: #0E0000;
+      border-radius: 50px;
+      border-color: transparent;
+      position: absolute;
+      right: 1px;
+      height: 40px;
+    }
+  }
+}
+
+input:focus {
+  outline: none !important ;
+}
+
+.form-control:focus{
+  border: 1px solid white !important ;
+  box-shadow: none !important;
+}
