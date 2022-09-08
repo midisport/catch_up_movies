@@ -57,7 +57,7 @@ class InterestsController < ApplicationController
     @seen_interests = Interest.includes(:user, :movie).where(user: @user, seen: true)
     @interests = Interest.includes(:movie, :user).where(user: @user)
 
-    render partial: "interests/watchlist"
+    render partial: "interests/watchlist", locals: { user: @user }
   end
 
   def destroy
