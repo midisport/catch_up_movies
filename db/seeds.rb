@@ -1044,7 +1044,7 @@ movie_show38.movie = movie2
 movie_show38.cinema = cinema15
 movie_show38.save!
 movie_show39 = MovieShow.new(
-  start_at: Time.parse("18:45"),
+  start_at: Time.parse("19:45"),
   date: Date.parse("2022-09-09"),
   language: "English",
   subtitle: "French"
