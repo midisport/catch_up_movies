@@ -1,7 +1,9 @@
 
 <div class="banner d-none d-md-block home_info-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), ">
   <div class="container home">
-    <h1>Got some films to <span style="">Catch Up</span> on?</h1>
+    <h1>Got some films to <%= link_to movies_path do %>
+                            <span style="">Catch Up</span>
+                          <% end %>on?</h1>
     <%= render 'shared/search_bar' %>
   </div>
 </div>
