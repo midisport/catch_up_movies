@@ -14,14 +14,15 @@ class MoviesController < ApplicationController
       end
     else
       @movies = policy_scope(Movie)
-      @markers = Cinema.next_days_shows.near('paris', 2).map do |cinema|
-        {
-          lat: cinema.latitude,
-          lng: cinema.longitude,
-          info_window: render_to_string(partial: "movies/info_window", locals: { cinema: cinema },),
-          image_url: helpers.asset_url("logo-purple.png")
-        }
-      end
+
+    end
+    @markers = Cinema.next_days_shows.near('paris', 2).map do |cinema|
+      {
+        lat: cinema.latitude,
+        lng: cinema.longitude,
+        info_window: render_to_string(partial: "movies/info_window", locals: { cinema: cinema },),
+        image_url: helpers.asset_url("logo-purple.png")
+      }
     end
   end
 
