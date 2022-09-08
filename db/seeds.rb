@@ -1058,10 +1058,10 @@ puts "Movie_shows created"
 # Bookings
 puts "Creating bookings"
 
-Booking.create!(user: user3, movie_show: movie_show1)
-Booking.create!(user: user3, movie_show: movie_show2)
-Booking.create!(user: user3, movie_show: movie_show3)
-Booking.create!(user: user3, movie_show: movie_show4)
+Booking.create!(user: user1, movie_show: movie_show1)
+Booking.create!(user: user1, movie_show: movie_show2)
+Booking.create!(user: user2, movie_show: movie_show3)
+Booking.create!(user: user4, movie_show: movie_show4)
 Booking.create!(user: user4, movie_show: movie_show5)
 Booking.create!(user: user1, movie_show: movie_show6)
 Booking.create!(user: user1, movie_show: movie_show7)
