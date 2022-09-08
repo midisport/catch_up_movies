@@ -152,9 +152,11 @@
       padding: 0.3em 1.5em !important;
 
       position: relative;
-      transition: .2 transform ease-in-out;
+      overflow: hidden;
+      transition: 0.5s;
+      transform: ease-in-out;
       will-change: transform;
-      z-index: 0;
+      z-index: 1;
 
       &:after {
         background-color: $violet-highlight;
@@ -165,10 +167,10 @@
         width: 100%;
         position: absolute;
         left: 0;
-        top: 0;
-        transform: translate(-100%, 0) rotate(10deg);
+        top: 0px;
+        transform: translate(-100%, 0);
         transform-origin: top left;
-        transition: .2s transform ease-out;
+        transition: 0.4s transform ease-out;
         will-change: transform;
         z-index: -1;
       }
@@ -176,20 +178,7 @@
       &:hover::after {
         transform: translate(0, 0);
       }
-
-      &:hover {
-      color: $text-main;
-      transform: scale(1.05);
-      will-change: transform;
-      }
     }
-
-    .btn-notif-interest:hover {
-      // color: $white-muted;
-      background-color: $violet-highlight;
-
-    }
-
   }
 
   .map-seance {
