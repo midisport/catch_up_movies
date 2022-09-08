@@ -20,7 +20,7 @@
 
     <div class="bottom-line">
       <p><i class="fa-solid fa-map-location-dot"></i> <%= booking.movie_show.cinema.name %>, <%= booking.movie_show.cinema.address %></p>
-      <p><i class="fa-regular fa-clock"></i> <%= l(booking.movie_show.date, format: '%a %e %B') %> à <%= l(booking.movie_show.start_at, :format => '%H:%M') %></p>
+      <p><i class="fa-regular fa-clock"></i> <%= l(booking.movie_show.date, format: '%a %e %B') %> at <%= l(booking.movie_show.start_at, :format => '%H:%M') %></p>
     </div>
   </div>
 </div>
