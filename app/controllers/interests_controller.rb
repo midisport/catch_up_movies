@@ -23,8 +23,10 @@ class InterestsController < ApplicationController
 
     if @interest.save
       if params[:source] == "movie"
+        flash[:notice] = "#{@movie.title} was added to your Watchlist"
         redirect_to movie_path(@interest.movie), status: :see_other
       else
+        flash[:notice] = "#{@movie.title} was added to your Watchlist"
         redirect_to user_interests_path(@interested_user)
       end
     else
@@ -62,8 +64,10 @@ class InterestsController < ApplicationController
     authorize @interest
     @interest.destroy
     if params[:source] == "movie"
+      flash[:alert] = "#{@interest.movie.title} was removed from your Watchlist"
       redirect_to movie_path(@interest.movie), status: :see_other
     else
+      flash[:alert] = "#{@interest.movie.title} was removed from your Watchlist"
       redirect_to user_interests_path(current_user), status: :see_other
     end
   end

@@ -16,10 +16,13 @@ class BookingsController < ApplicationController
 
     if @booking.save
       if params[:source] == "movie"
+        flash[:notice] = "You booked #{@booking.movie_show.movie.title}"
         redirect_to movie_path(@booking.movie_show.movie), status: :see_other
       elsif params[:source] == "cine"
+        flash[:notice] = "You booked #{@booking.movie_show.movie.title}"
         redirect_to cinema_path(@booking.movie_show.cinema), status: :see_other
       else
+        flash[:notice] = "You booked #{@booking.movie_show.movie.title}"
         redirect_to "/dashboard/#{current_user.id}"
       end
     else
@@ -31,10 +34,13 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.destroy
     if params[:source] == "movie"
+      flash[:alert] = "You removed #{@booking.movie_show.movie.title} form your bookings"
       redirect_to movie_path(@booking.movie_show.movie), status: :see_other
     elsif params[:source] == "cine"
+      flash[:alert] = "You removed #{@booking.movie_show.movie.title} form your bookings"
       redirect_to cinema_path(@booking.movie_show.cinema), status: :see_other
     else
+      flash[:alert] = "You removed #{@booking.movie_show.movie.title} form your bookings"
       redirect_to "/dashboard/#{current_user.id}", status: :see_other
     end
   end
