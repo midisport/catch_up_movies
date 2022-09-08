@@ -37,3 +37,16 @@
   }
 
 }
+
+.follow-btn {
+  margin-left: 8px;
+
+  #follow-button {
+    border-radius: 20px;
+    padding: 5px 15px;
+  }
+  #follow-button:hover {
+    background-color: $violet-muted;
+    color: $white-muted;
+  }
+}

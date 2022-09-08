@@ -1,7 +1,7 @@
 <%= simple_form_for @follow do |f| %>
       <%= f.error :follower, class: "text-danger" %>
       <%= f.input :followed_id, as: :hidden, input_html: { value: @user.id } %>
-      <%= button_tag type: 'submit', class: "btn btn-primary", id: "register-button" do %>
-        <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+      <%= button_tag type: 'submit', class: "btn btn-primary", id: "follow-button" do %>
+        <%= "Follow #{@user.username}" %>
       <% end %>
 <% end %>
