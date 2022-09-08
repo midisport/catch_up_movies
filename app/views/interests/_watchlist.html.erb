@@ -1,7 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-10">
+    <div class="col-8">
       <h2><%= user == current_user ? "My Watchlist" : "#{user.username}'s Watchlist" %></h2>
+    </div>
+    <div class="follow-btn col-3">
+      <% unless @user == current_user %>
+        <%= render "follows/form" %>
+      <% end %>
     </div>
   </div>
   <div class="row">
