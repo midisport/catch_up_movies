@@ -223,11 +223,16 @@
     color: $violet-muted;
   }
 
+  hr{
+    color: $violet;
+    width: 50%;
+    margin-top: 3rem;
+  }
+
     // Comments
   .comment-container {
-    border-color: $white-muted;
-    border-radius: 5px;
-    border-style: solid;
+    border-color: $violet;
+    // border-top-style: solid;
     border-width: thin;
     margin: 30px 0 16px 0;
     padding: 0 8px;
@@ -284,6 +289,12 @@
     .infor {
       background-color: $grey-dark;
       margin-top: 8px;
+    }
+
+    .post-btn {
+      border-radius: 20px;
+      padding: 3px 23px;
+      margin-left: 3px;
     }
   }
 }
