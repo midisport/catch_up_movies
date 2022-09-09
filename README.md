@@ -19,7 +19,7 @@ Comme ca je serais au courant quand il y aura une séance
 
 J'ai quand meme envie de aller au cinéma, donc je vais regarder quelles autres films sont proposés.
 
-Ah, The King's Speech - c'est un super film et en plus il y a des séances bientôt !
+Ah, Lock, Stock and Two Smoking Barrels - c'est un super film et en plus il y a des séances bientôt !
 
 Alors, quelle cinéma - je vois qu'il y a d'autres gens qui vont aller au MK2 Gambetta le voir
 Je vais leur dire que j'y vais aussi
